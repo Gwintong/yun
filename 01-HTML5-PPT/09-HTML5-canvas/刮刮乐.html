@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+	margin:0;
+	padding:0;
+}
+#box {
+	width:300px;
+	height:150px;
+	border:10px dashed #ccc;
+	line-height:130px;
+	text-align:center;
+	font-size:40px;
+	box-sizing:border-box;
+	margin:50px;
+}
+#cvs {
+	position:absolute;
+	top:50px;
+	left:50px;
+	/* position:relative;
+	top:-200px;
+	left:50px;
+	*/
+}
+
+	</style>
+</head>
+<body>
+	<div id="box">谢谢惠顾</div>
+	<!-- cannvas是h5新增标签，是一个用来展示绘图效果的标签，和img类似，都是行内快元素 -->
+	<canvas id="cvs" height="150" width="300"></canvas>
+
+
+	<script>
+		var cvs = document.getElementById('cvs');
+		var box = document.getElementById('box');
+		
+		var arr = ['谢谢惠顾', '谢谢惠顾', '谢谢惠顾', '谢谢惠顾', '一等奖', '二等奖', '二等奖', '三等奖', '三等奖'		, '三等奖'];
+		var i = Math.floor(Math.random() * 10); //0-9
+		box.innerHTML = arr[i];
+
+		// 每个canvas元素都有一个对应的context对象（上下文对象）
+		// Context API定义在context对象上面，所需要获取这个对象；
+		// 方法使用getContext方法
+		
+		// 获取context   getContext是canvas对象的方法
+		// getContext方法指定参数2d，表示生成2D图案。如果参数是webg1，就表示生成3D图像；
+		var c = cvs.getContext('2d');  
+		// 填充色
+		c.fillStyle = '#ccc';
+		// 规定形状 位置 和尺寸填充方式
+		c.fillRect(0, 0, cvs.width, cvs.height);
+
+		
+		function draw(e) {
+			// canvas中的合成操作
+		    c.globalCompositeOperation = 'destination-out';
+		    c.beginPath(); //开始路径绘制  为了防止重绘之前路径 ，所以把之前的路径清除掉
+		    c.arc(e.clientX - cvs.offsetLeft, e.clientY - cvs.offsetTop, 20, 0, 2 * Math.PI, false)
+		    c.fill();
+		}
+		// 事件监听
+		cvs.addEventListener('mousedown', function() {
+		    cvs.addEventListener('mousemove', draw, false)
+		}, false)
+		document.addEventListener('mouseup', function() {
+		    cvs.removeEventListener('mousemove', draw, false)
+		}, false)
+	</script>
+</body>
+</html>

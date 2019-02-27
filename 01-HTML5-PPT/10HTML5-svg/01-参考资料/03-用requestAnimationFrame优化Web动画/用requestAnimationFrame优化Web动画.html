@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://www.webhek.com/post/requestanimationframe.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./用requestAnimationFrame优化Web动画_files/shares.php" charset="utf-8"></script>
+
+<meta name="viewport" content="width=device-width">
+<title>HTML5探秘：用requestAnimationFrame优化Web动画 – WEB骇客</title>
+<style type="text/css">
+	/*
+Theme Name: webhek2016
+Theme URI: http://www.webhek.com
+Author: the WordPress team
+Author URI: http://www.webhek.com
+*/
+
+body{color:#333; margin: 0;font-family: "Microsoft YaHei","微软雅黑",Lucida,Verdana,"Hiragino Sans GB","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif,Serif;}
+h1, h2, h3, h4, h5{color: #000}
+
+.full-width{
+	display: block;
+	position: relative;
+    margin: 0 auto;
+}
+.body-width{
+	display: block;
+	position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 2rem;
+	padding-right: 2rem;
+
+}
+#body-wrapper{margin-top: 30px}
+.comment-body .comment-meta{background-color:#eee}
+.columns{position: relative;}
+.column1{line-height: 2em; font-size: 14px;word-break: break-word; width: calc( 100% - 3rem - 300px ); float: left}
+.column3{width: 300px; padding-left: 3rem; float: right;}
+
+.column1 h2 a, .column1 h3 a{color: #000;}
+
+#top-nav{width: 100%; background-color: #000; height: 48px; line-height: 48px; position: relative;}
+
+#top-menu a{color: #fff;font-weight: bold; font-size: 20px; text-decoration: none;padding-right: 20px;}
+
+.best-title a{color: #fff; text-decoration: none; }
+
+.best-title h2{font-size: 20px; color: #fff}
+
+.best-title {    text-align: center; }
+
+.best-img{position: relative;}
+.best-txt {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+}
+.best-wrapper {    margin-bottom: 5px;}
+
+.entry-title{font-size: 45px;}
+
+.Header-wrapper{background-color: #000; }
+
+#top-header{background-color: #000; color: #fff; height: 140px;overflow: hidden;}
+
+#top-header a{color: #fff;}
+
+#top-header ul, #top-header li{margin: 0; padding: 0; display: inline-block;}
+#top-header ul{width: 100%}
+
+.post-meta a{ font-size: 12px; color: #666;margin-right: 15px; }
+
+.entry-meta{display: inline;}
+
+.alignleft,
+img.alignleft {
+    display: inline;
+    float: left;
+    margin-right: 24px;
+    margin-top: 4px;
+}
+.alignright,
+img.alignright {
+    display: inline;
+    float: right;
+    margin-left: 24px;
+    margin-top: 4px;
+}
+.aligncenter,
+img.aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+img.alignleft,
+img.alignright,
+img.aligncenter {
+    margin-bottom: 12px;
+}
+.wp-caption {
+    background: #f1f1f1;
+    line-height: 18px;
+    margin-bottom: 20px;
+    max-width: 632px !important; /* prevent too-wide images from breaking layout */
+    padding: 4px;
+    text-align: center;
+}
+
+
+.comment-author{display: inline-block;}
+
+.comment-metadata{float: right;}
+
+.comment-metadata a{font-size: 12px; color: #666;text-decoration: none}
+
+.commentlist{padding: 0; margin: 0}
+
+.commentlist li{list-style-type: none;}
+
+.commentlist .comment{border-top: 1px solid #666;}
+
+.content-sidebar{width: 300px;overflow: hidden;}
+
+.list-title .entry-title{font-size: 20px;}
+
+.list-title .entry-title a{text-decoration: none; color: #333;}
+
+.list-wrapper{box-sizing: border-box;}
+.list-wrapper *{box-sizing: inherit;}
+
+.list-img-wrapper, .list-txt-wrapper{width: 50%;}
+
+.list-img-wrapper{float: left;padding-left: 0}
+.list-txt-wrapper{float: right; padding-left: 1rem}
+
+.list-wrapper:nth-child(even) .list-img-wrapper{float: right; padding-left: 1rem}}
+.list-wrapper:nth-child(even) .list-txt-wrapper{float: left;padding-left: 0}
+
+.list-wrapper{margin-bottom: 1rem}
+
+.list-wrapper{margin-bottom: 1rem}
+
+.list-wrapper{margin-top: 1rem}
+
+.list-wrapper a{color: #666;}
+
+.column1 .list-img-wrapper img{  max-width: 100%;}
+
+.clearfix:after {
+  clear:both;
+  content:".";
+  display:block;
+  height:0;
+  line-height:0;
+  visibility:hidden;
+}
+
+
+
+pre{max-width: 100%; max-height: 500px}
+pre{
+    white-space: pre-wrap;
+    
+}
+.column1 img {max-width: 100%;}
+
+.share-title{ display: inline-block;    height: 32px;    line-height: 32px;    vertical-align: top; font-weight: bold;}
+.sharebar{ height: 32px;    line-height: 32px;    vertical-align: top;}
+
+.adblocked_view .adsense{ display: none; }
+.adblocked_view .mysense{ display: block; }
+
+.mysense{ display: none; }
+.adblocked_view .mysense.inline{ display: inline-block; }
+
+.single_responsive_wrapper{text-align: center; display: none;}
+.single_responsive_1 { display: none; }
+
+
+
+.demo-link {
+	display: inline-block;
+    margin-right: 20px;
+	padding-bottom: 30px;
+	margin-left: 2em;
+}
+
+.list-view .demo-link{display: inline-block; margin-right: 20px;}
+
+button, .demo-link a,
+.contributor-posts-link,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	background-color: #24890d;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 10px 30px 11px;
+	text-transform: uppercase;
+	vertical-align: bottom;
+}
+
+button:hover,.demo-link:hover a,
+button:focus,
+.contributor-posts-link:hover,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+	background-color: #41a62a;
+	color: #fff;
+}
+
+
+/* Comments form */
+input[type="submit"] {
+    color: #333;
+}
+#respond {
+    border-top: 1px solid #e7e7e7;
+    margin: 24px 0;
+    overflow: hidden;
+    position: relative;
+}
+#respond p {
+    margin: 0;
+}
+#respond .comment-notes {
+    margin-bottom: 1em;
+}
+.form-allowed-tags {
+    line-height: 1em;
+}
+.children #respond {
+    margin: 0 48px 0 0;
+}
+h3#reply-title {
+    margin: 18px 0;
+}
+#comments-list #respond {
+    margin: 0 0 18px 0;
+}
+#comments-list ul #respond {
+    margin: 0;
+}
+#cancel-comment-reply-link {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 18px;
+}
+#respond .required {
+    color: #ff4b33;
+    font-weight: bold;
+}
+#respond label {
+    color: #777;
+    font-size: 12px;
+}
+#respond input {
+    margin: 0 0 9px;
+    width: 98%;
+}
+#respond textarea {
+    width: 98%;
+}
+#respond .form-allowed-tags {
+    color: #777;
+    font-size: 12px;
+    line-height: 18px;
+}
+#respond .form-allowed-tags code {
+    font-size: 11px;
+}
+#respond .form-submit {
+    margin: 12px 0;
+}
+#respond .form-submit input {
+    font-size: 14px;
+    width: auto;
+}
+
+#respond .comment-form-author{width: 20%}
+#respond .comment-form-url{width: 50%}
+#respond .comment-form-author{float: left}
+#respond .comment-form-url{float: right;}
+#respond .comment-form-email{width: 30%; margin-left: 20%; margin-right: 50%;}
+.says{font-weight: bold;}
+
+#comment{height: 100px}
+
+.comment-content{word-wrap: break-word;}
+
+/* Comments form end */
+
+#demo-frame{display: none;z-index: 9999; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-color: #ffffff;}
+#demo-menu{ display: block; max-width: 1366px; width: 100%; margin: 0 auto; background-color: #000; position: fixed; top: 0; height: 50px;}
+#demo-iframe{max-width: 1366px; width: 100%; height: 100%; height: calc(100% - 50px); margin: 0 auto;}
+#demo-menu a{margin-left: 20px;line-height: 50px; vertical-align: middle; color: #ffffff;float: left;}
+#demo-menu a.close-demo-menu{margin-right: 20px; font-weight: bold;float: right;}
+.demo-frame-warp{height: 100%; width: 100%; margin: 0 auto;}
+
+#comment{max-width: 560px; width: 100%}
+
+
+
+#recomment-container{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    justify-content:         space-around;
+}
+
+#recomment-container a{
+  display: inline-block;
+  width: calc(100% / 3 - 4px);
+}
+
+#recomment-container img{
+  width: 100%;
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 940px) {
+
+	.columns { display: block;width: 100%; }
+	.column2 { display: none }
+	.column1, .column3{ display: block;width: 100%; }
+}
+
+
+@media screen and (max-width: 560px) {
+
+	.body-width{
+	    padding-left: 0.3rem;
+		padding-right: 0.3rem;
+	}
+
+	.column1 img {
+	    max-width: 100%;
+	}
+
+
+  #recomment-container a{
+  display: inline-block;
+  width: calc(100% / 2 - 4px);
+}
+
+  #top-header #top-drow-man, #top-header #album3d{display: none}
+  #top-header #top-cololr-test{float: right;}
+
+	pre{max-width: 100%; margin: 0; padding: 0}
+
+	#menu_html5, #menu_svg{display: none}
+
+	.entry-title{font-size: 25px;}
+
+  .list-desc{display: none;}
+
+	.post{margin: 0 10px;}
+
+  .single_responsive_wrapper{
+    background-color: #000;
+    display: block;
+    position: fixed;
+    height: 18px;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    top: 0;
+    text-align: center;
+    padding-top: 1px;
+  }
+
+    .single_responsive_1 { 
+        display: inline-block;
+    }
+    
+    .qrshare, .qrshare_wrapper, .square_shares{
+        display: none;
+    }
+}
+
+
+
+
+.page_nav{ clear: both;     font-family: arial;    font-size: 24px;    font-weight: bold;     text-align: center;}
+.page_nav .prev, .page_nav .next {    font-family: "Microsoft YaHei","微软雅黑",Lucida,Verdana,"Hiragino Sans GB","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif,Serif;   font-size: 16px;}
+.page-numbers {    margin-left: 0.5em;    text-decoration: none; color: #333;font-weight: lighter;}
+.page-numbers.current{font-weight: bold;}
+
+.img330x240 img{width: 330px; height: 240px;display: block;}
+
+p>code{
+    background-color: #eeefff;
+    border-radius: 3px;
+    font-family: Georgia, serif;
+    margin: auto 2px;
+    padding: 0 2px;
+}
+
+blockquote{
+  display:block;
+  background: #fff;
+  padding: 15px 20px 15px 45px;
+  margin: 20px 0;
+  position: relative;
+  
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #666;
+  text-align: justify;
+  
+  /*Borders - (Optional)*/
+  border-left: 15px solid #c76c0c;
+  border-right: 2px solid #c76c0c;
+  
+  /*Box Shadow - (Optional)*/
+  -moz-box-shadow: 2px 2px 15px #ccc;
+  -webkit-box-shadow: 2px 2px 15px #ccc;
+  box-shadow: 2px 2px 15px #ccc;
+}
+
+blockquote::before{
+  content: "\201C"; /*Unicode for Left Double Quote*/
+  
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #999;
+  
+  /*Positioning*/
+  position: absolute;
+  left: 10px;
+  top:5px;
+}
+
+blockquote::after{
+  /*Reset to make sure*/
+  content: "";
+}
+
+blockquote a{
+  text-decoration: none;
+  background: #eee;
+  cursor: pointer;
+  padding: 0 3px;
+  color: #c76c0c;
+}
+
+blockquote a:hover{
+ color: #666;
+}
+
+blockquote em{
+  font-style: italic;
+}
+
+#top-header img{width: 100%; display: inline-block;}
+
+.content-wrapper{position: relative;}
+
+#rest-butt-wrapper {
+    display: none;
+}
+
+.rest #rest-butt-wrapper {
+    display: block;
+}
+
+#rest-butt {
+    margin: 1rem auto;
+    line-height: 2.3rem;
+    display: block;
+    width: 8rem;
+    border-radius: 5px;
+    border: 1px solid red;
+    text-align: center;
+    cursor: pointer;
+    color: red;
+}
+
+.rest #content-wrapper {
+    overflow: hidden;
+}
+
+.rest-banner{
+  display: none;
+}
+
+
+@-webkit-keyframes scrollGood {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-254px, 0, 0);
+            transform: translate3d(-254px, 0, 0);
+  }
+}
+@keyframes scrollGood {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-254px, 0, 0);
+            transform: translate3d(-254px, 0, 0);
+  }
+}
+
+.rest .rest-banner {
+  overflow: hidden;
+  display: block;
+  background:transparent;
+  background-color: transparent;
+  height: 30px;
+  width: 100%;
+  margin-top: -29px; 
+}
+
+.rest-banner .scroll {
+  display: block;
+  background-color: transparent;
+  background-image: url(/wordpress/wp-content/themes/webhek2016/bg-wave.png);
+  height: 30px;
+  width: 200%;
+  -webkit-animation: scrollGood 20s linear infinite;
+  animation: scrollGood 20s linear infinite;
+}
+	</style>
+
+<meta name="description" content="在浏览器动画程序中，我们通常使用一个定时器来循环每隔几毫秒移动目标物体一次，来让它动起来。如今有一个好消息，浏览器开发商们决定：“嗨，为什么我们不在浏览器里提供这样一个API呢">
+
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="https://api.w.org/" href="http://www.webhek.com/wp-json/">
+<link rel="prev" title="12个你未必知道的CSS小知识" href="http://www.webhek.com/post/12-little-known-css-facts.html">
+<link rel="next" title="JavaScript小技巧：如何检测一个函数是否是JavaScript原生函数" href="http://www.webhek.com/post/detect-native-function.html">
+<link rel="canonical" href="http://www.webhek.com/post/requestanimationframe.html">
+<link rel="alternate" type="application/json+oembed" href="http://www.webhek.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.webhek.com%2Fpost%2Frequestanimationframe.html">
+<link rel="alternate" type="text/xml+oembed" href="http://www.webhek.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.webhek.com%2Fpost%2Frequestanimationframe.html&amp;format=xml">
+<link rel="stylesheet" type="text/css" href="./用requestAnimationFrame优化Web动画_files/prism.css"></head>
+<body class="post-template-default single single-post postid-1559 single-format-standard singular"><link href="./用requestAnimationFrame优化Web动画_files/jiathis_counter.css" rel="stylesheet" type="text/css"><link href="./用requestAnimationFrame优化Web动画_files/jiathis_share.css" rel="stylesheet" type="text/css"><iframe frameborder="0" style="position: absolute; display: none; opacity: 0;" src="./用requestAnimationFrame优化Web动画_files/saved_resource.html"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;"></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow: auto;"></div><iframe frameborder="0" src="./用requestAnimationFrame优化Web动画_files/jiathis_utility.html" style="display: none;"></iframe>
+<div id="page" class="hfeed site full-width">
+<div class="full-width Header-wrapper">
+<div id="top-header" class="body-width">
+<ul>
+<li style="width:160px"><a href="http://www.webhek.com/" rel="home"><img src="./用requestAnimationFrame优化Web动画_files/webhek-logo2.jpg"></a>
+</li><li id="album3d" style="width:410px;">
+<a href="http://www.webhek.com/post/3d-album.html" target="_blank"><img src="./用requestAnimationFrame优化Web动画_files/1.jpg"></a>
+</li><li id="top-drow-man" style="width: 170px"><a href="http://www.webhek.com/post/draw-a-stickman.html"><img src="./用requestAnimationFrame优化Web动画_files/draw-man.jpg"></a>
+</li><li id="top-cololr-test" style="width: 170px"><a href="http://www.webhek.com/post/color-test.html"><img src="./用requestAnimationFrame优化Web动画_files/color-test-170x140.png"></a>
+</li></ul>
+</div>
+</div>
+<div id="top-nav" class="full-width">
+<div id="top-menu" class="body-width">
+<a href="http://www.webhek.com/">首页</a>
+<a id="menu_html5" href="http://know.webhek.com/html5/html5-intro.html">HTML5手册</a>
+<a id="menu_svg" href="http://know.webhek.com/svg/svg-home.html">SVG手册</a>
+<a href="http://www.webhek.com/post/about.html">关于</a>
+<a href="http://www.webhek.com/post/contact.html">来信</a>
+<a href="http://www.webhek.com/post/all-posts.html">全部文章</a>
+</div>
+</div>
+<div id="body-wrapper" class="body-width">
+<div class="post" id="post-1559">
+<div class="single-title">
+<h1 class="entry-title">HTML5探秘：用requestAnimationFrame优化Web动画</h1> <div class="sharebar sticky">
+<div class="share-title">分享：</div>
+
+<div style="display: inline-block;" class="jiathis_style_32x32">
+<a class="jiathis_button_tsina" title="分享到微博"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+<a class="jiathis_button_weixin" title="分享到微信"><span class="jiathis_txt jtico jtico_weixin"></span></a>
+<a class="jiathis_button_qzone" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+<a class="jiathis_button_cqq" title="分享到QQ好友"><span class="jiathis_txt jtico jtico_cqq"></span></a>
+<a href="http://www.jiathis.com/share?uid=1541819" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_16" title="累计分享14次">14</span></a>
+</div>
+
+</div> </div>
+<div class="columns">
+<div id="column1" class="column1">
+<div id="content-wrapper" class="content-wrapper">
+<p><small>如果你从来没有开发过浏览器里的动画，那你不需要读这篇文章 🙂</small></p>
+<h2>requestAnimationFrame是什么？</h2>
+<p>在浏览器动画程序中，我们通常使用一个定时器来循环每隔几毫秒移动目标物体一次，来让它动起来。如今有一个好消息，浏览器开发商们决定：“嗨，为什么我们不在浏览器里提供这样一个API呢，这样一来我们可以为用户优化他们的动画。”所以，这个<code>requestAnimationFrame()</code>函数就是针对动画效果的API，你可以把它用在DOM上的风格变化或画布动画或WebGL中。</p>
+<h2>使用requestAnimationFrame有什么好处？</h2>
+<p>浏览器可以优化并行的动画动作，更合理的重新排列动作序列，并把能够合并的动作放在一个渲染周期内完成，从而呈现出更流畅的动画效果。比如，通过<code>requestAnimationFrame()</code>，JS动画能够和CSS动画/变换或SVG SMIL动画同步发生。另外，如果在一个浏览器标签页里运行一个动画，当这个标签页不可见时，浏览器会暂停它，这会减少CPU，内存的压力，节省电池电量。</p>
+<h2>requestAnimationFrame的用法</h2>
+<pre class="language-js"><span class="token comment" spellcheck="true">// shim layer with setTimeout fallback</span>
+window<span class="token punctuation">.</span>requestAnimFrame <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span>  window<span class="token punctuation">.</span>requestAnimationFrame       <span class="token operator">||</span>
+          window<span class="token punctuation">.</span>webkitRequestAnimationFrame <span class="token operator">||</span>
+          window<span class="token punctuation">.</span>mozRequestAnimationFrame    <span class="token operator">||</span>
+          <span class="token keyword">function</span><span class="token punctuation">(</span> callback <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            window<span class="token punctuation">.</span><span class="token function">setTimeout</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> <span class="token number">1000</span> <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">// usage:</span>
+<span class="token comment" spellcheck="true">// instead of setInterval(render, 16) ....</span>
+
+<span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">animloop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">requestAnimFrame</span><span class="token punctuation">(</span>animloop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// place the rAF *before* the render() to assure as close to</span>
+<span class="token comment" spellcheck="true">// 60fps with the setTimeout fallback.</span>
+</pre>
+<h2>对requestAnimationFrame更牢靠的封装</h2>
+<p>Opera浏览器的技术师Erik Möller <a href="http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating">把这个函数进行了封装</a>，使得它能更好的兼容各种浏览器。你可以读一读这篇文章，但基本上他的代码就是判断使用<code>4ms</code>还是<code>16ms</code>的延迟，来最佳匹配60fps。下面就是这段代码，你可以使用它，但请注意，这段代码里使用的是标准函数，我给它加上了兼容各种<a href="http://www.webhek.com/vendor-prefixes/">浏览器引擎前缀</a>。</p>
+<pre class="language-js"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> lastTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> vendors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'webkit'</span><span class="token punctuation">,</span> <span class="token string">'moz'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> x <span class="token operator">&lt;</span> vendors<span class="token punctuation">.</span>length <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>window<span class="token punctuation">.</span>requestAnimationFrame<span class="token punctuation">;</span> <span class="token operator">++</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        window<span class="token punctuation">.</span>requestAnimationFrame <span class="token operator">=</span> window<span class="token punctuation">[</span>vendors<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">'RequestAnimationFrame'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        window<span class="token punctuation">.</span>cancelAnimationFrame <span class="token operator">=</span>
+          window<span class="token punctuation">[</span>vendors<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">'CancelAnimationFrame'</span><span class="token punctuation">]</span> <span class="token operator">||</span> window<span class="token punctuation">[</span>vendors<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">+</span><span class="token string">'CancelRequestAnimationFrame'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>window<span class="token punctuation">.</span>requestAnimationFrame<span class="token punctuation">)</span>
+        window<span class="token punctuation">.</span>requestAnimationFrame <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> currTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> timeToCall <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">16</span> <span class="token operator">-</span> <span class="token punctuation">(</span>currTime <span class="token operator">-</span> lastTime<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> id <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">callback</span><span class="token punctuation">(</span>currTime <span class="token operator">+</span> timeToCall<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              timeToCall<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            lastTime <span class="token operator">=</span> currTime <span class="token operator">+</span> timeToCall<span class="token punctuation">;</span>
+            <span class="token keyword">return</span> id<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>window<span class="token punctuation">.</span>cancelAnimationFrame<span class="token punctuation">)</span>
+        window<span class="token punctuation">.</span>cancelAnimationFrame <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">clearTimeout</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+<h2>我来看看使用requestAnimationFrame的效果</h2>
+<p><iframe style="width: 100%; height: 300px;" src="./用requestAnimationFrame优化Web动画_files/saved_resource(1).html"></iframe></p>
+<h2>requestAnimationFrame API</h2>
+<pre class="language-js">window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token comment" spellcheck="true">/* time */</span> time<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// time ~= +new Date // the unix time</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+<p>回调函数里的参数可以传入时间。</p>
+<h2>各种浏览器对requestAnimationFrame的支持情况</h2>
+<p>谷歌浏览器，火狐浏览器，IE10+都实现了这个函数，即使你的浏览器很古老，上面的对requestAnimationFrame封装也能让这个方法在IE8/9上不出错。</p>
+</div>
+<div class="rest-banner">
+<div class="scroll"></div>
+</div>
+<div id="rest-butt-wrapper">
+<div id="rest-butt">阅读余下内容</div>
+</div>
+<script async="" src="./用requestAnimationFrame优化Web动画_files/analytics.js.下载"></script><script type="text/javascript" async="" src="./用requestAnimationFrame优化Web动画_files/jia.js.下载"></script><script type="text/javascript" async="" src="./用requestAnimationFrame优化Web动画_files/prism.js.下载"></script><script type="text/javascript" async="" src="./用requestAnimationFrame优化Web动画_files/jquery-3.1.1.min.js.下载"></script><script async="" src="./用requestAnimationFrame优化Web动画_files/adsbygoogle.js.下载"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px;margin-top: 1em;" data-ad-client="ca-pub-9195052014444206" data-ad-slot="6087842197"></ins>
+<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+<div class="post-meta">标签：<footer class="entry-meta"><span class="tag-links"><a href="http://www.webhek.com/tag/requestanimationframe" rel="tag">requestAnimationFrame</a><a href="http://www.webhek.com/tag/%e5%8a%a8%e7%94%bb" rel="tag">动画</a><a href="http://www.webhek.com/tag/%e6%80%a7%e8%83%bd" rel="tag">性能</a></span></footer></div>
+<div class="bottom_share">
+<div class="sharebar sticky">
+<div class="share-title">分享：</div>
+
+<div style="display: inline-block;" class="jiathis_style_32x32">
+<a class="jiathis_button_tsina" title="分享到微博"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+<a class="jiathis_button_weixin" title="分享到微信"><span class="jiathis_txt jtico jtico_weixin"></span></a>
+<a class="jiathis_button_qzone" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+<a class="jiathis_button_cqq" title="分享到QQ好友"><span class="jiathis_txt jtico jtico_cqq"></span></a>
+<a href="http://www.jiathis.com/share?uid=1541819" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_27" title="累计分享14次">14</span></a>
+</div>
+
+</div>
+</div>
+<div>
+<div class="related_posts"> <h3 style="margin-bottom:20px;">相关文章：</h3>
+<ol>
+<li><a href="http://www.webhek.com/post/using-requestanimationframe.html">使用requestAnimationFrame()优化JavaScript动画性能</a></li>
+<li><a href="http://www.webhek.com/post/console-time-console-timeend.html">console.time和console.timeEnd用法</a></li>
+<li><a href="http://www.webhek.com/post/impress-js.html">HTML5+CSS3特效幻灯片(impress.js)</a></li>
+<li><a href="http://www.webhek.com/post/3d-menu.html">教你如何用CSS实现3D翻转效果的菜单</a></li>
+<li><a href="http://www.webhek.com/post/svg-animate-element.html">SVG里的几个动画元素的用法介绍</a></li>
+<li><a href="http://www.webhek.com/post/using-requestanimationframe.html">使用requestAnimationFrame()优化JavaScript动画性能</a></li>
+<li><a href="http://www.webhek.com/post/css-shake.html">CSS发抖</a></li>
+<li><a href="http://www.webhek.com/post/css-loaders.html">你能相信吗？这些都是由一个DIV元素实现的动画，纯CSS3技术</a></li>
+<li><a href="http://www.webhek.com/post/css-animation-using-css-transforms.html">漫谈CSS transform动画技术</a></li>
+<li><a href="http://www.webhek.com/post/css-spin.html">纯CSS3实现光芒旋转四射的头像动画</a></li>
+</ol>
+</div>
+</div>
+<div style="margin-bottom: 2rem; margin-top: 2rem;"><a href="https://shop162567423.taobao.com/">
+<img title="程序员专用编程水杯 生日礼物 礼品" alt="程序员专用编程水杯 生日礼物 礼品" width="100%" src="./用requestAnimationFrame优化Web动画_files/bab8ab1fgw1f5iwkmfiptj20qy06yq5d.jpg">
+</a></div>
+<div id="recomment-container" class="recomment-container"><a href="http://www.webhek.com/post/the-notch-and-css.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/09/t01e46b39b326ccfab1-300x280.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">用CSS里的 viewport-fit 标签应对iPhone X 的刘海</div></a><a href="http://www.webhek.com/post/css-shapes-iphone-x-notch.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/09/2017-09-18_220454-300x226.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">使用CSS Shapes实现滚动环绕iPhone X刘海效果</div></a><a href="http://www.webhek.com/post/settimeout-sleep-0-second.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/08/Unofficial_JavaScript_logo_2.svg-300x280.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">setTimeout延时0毫秒的作用</div></a><a href="http://www.webhek.com/post/who-said-javascript-was-easy.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/08/Unofficial_JavaScript_logo_2.svg-300x280.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">JavaScript中8个常见的陷阱</div></a><a href="http://www.webhek.com/post/practical-modern-javascript.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/08/Unofficial_JavaScript_logo_2.svg-300x280.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">现代JavaScript使用技巧：ES6中的简写语法</div></a><a href="http://www.webhek.com/post/javascript-arrow-function.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/08/maxresdefault-300x280.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">JavaScript箭头函数语法小结</div></a><a href="http://www.webhek.com/post/5-array-methods-all-javascript-beginners-should-know.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/07/10e8ef7e1af21e8688475b40a28a0cc1-300x280.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">每个JavaScript程序员都需要知道的5个数组方法</div></a><a href="http://www.webhek.com/post/7-tips-web-front-developer-must-know__trashed.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/07/8cdd769fc7814e37f78295d48e735712-300x280.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">七个Web前端程序员必须会用css技巧</div></a><a href="http://www.webhek.com/post/making-a-short-alias-for-document-queryselectorall.html"><img class="lazy" data-original="http://www.webhek.com/wordpress/wp-content/uploads/2017/06/2-300x280.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"><div class="trend_title">如何正确的简写 document.querySelectorAll</div></a></div>
+<div style="max-width: 560px; overflow: hidden;"><iframe width="100%" height="230" class="share_self" frameborder="0" scrolling="no" src="./用requestAnimationFrame优化Web动画_files/index.html"></iframe></div>
+
+<h3 id="comments">
+2条回应：“HTML5探秘：用requestAnimationFrame优化Web动画”	</h3>
+<div class="navigation">
+<div class="alignleft"></div>
+<div class="alignright"></div>
+</div>
+<ol class="commentlist">
+<li id="comment-935" class="comment even thread-even depth-1">
+<article id="div-comment-935" class="comment-body">
+<footer class="comment-meta">
+<div class="comment-author vcard">
+<img alt="" src="./用requestAnimationFrame优化Web动画_files/d219af79b45e5891507fda4c4c2139a0" srcset="http://1.gravatar.com/avatar/d219af79b45e5891507fda4c4c2139a0?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32"> <b class="fn">test</b><span class="says">说道：</span> </div>
+<div class="comment-metadata">
+<a href="http://www.webhek.com/post/requestanimationframe.html#comment-935">
+<time datetime="2016-01-14T19:55:14+00:00">
+2016年1月14日 下午7:55 </time>
+</a>
+</div>
+</footer>
+<div class="comment-content">
+<p><a href="http://www.webhek.com/post/&#39;" title="" rel="nofollow"></a></p>
+</div>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.webhek.com/post/requestanimationframe.html?replytocom=935#respond" onclick="return addComment.moveForm( &quot;div-comment-935&quot;, &quot;935&quot;, &quot;respond&quot;, &quot;1559&quot; )" aria-label="回复给test">回复</a></div> </article>
+</li>
+<li id="comment-1558" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="div-comment-1558" class="comment-body">
+<footer class="comment-meta">
+<div class="comment-author vcard">
+<img alt="" src="./用requestAnimationFrame优化Web动画_files/641f5e6371c8075f8ec8dcafee368fb3" srcset="http://0.gravatar.com/avatar/641f5e6371c8075f8ec8dcafee368fb3?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32"> <b class="fn">Jane</b><span class="says">说道：</span> </div>
+<div class="comment-metadata">
+<a href="http://www.webhek.com/post/requestanimationframe.html#comment-1558">
+<time datetime="2017-01-27T00:44:12+00:00">
+2017年1月27日 上午12:44 </time>
+</a>
+</div>
+</footer>
+<div class="comment-content">
+<p>博主这个蓝黄色的demo还能更恶心点嘛 demo效果在安卓机上也特别流畅 感谢分享</p>
+</div>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.webhek.com/post/requestanimationframe.html?replytocom=1558#respond" onclick="return addComment.moveForm( &quot;div-comment-1558&quot;, &quot;1558&quot;, &quot;respond&quot;, &quot;1559&quot; )" aria-label="回复给Jane">回复</a></div> </article>
+</li>
+</ol>
+<div class="navigation">
+<div class="alignleft"></div>
+<div class="alignright"></div>
+</div>
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.webhek.com/post/requestanimationframe.html#respond" style="display:none;">取消回复</a></small></h3> <form action="http://www.webhek.com/wordpress/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+<p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span> 必填项已用<span class="required">*</span>标注</p><p class="comment-form-comment"><label for="comment">评论</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">姓名 <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required="required"></p>
+<p class="comment-form-url"><label for="url">站点</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200"></p>
+<p class="comment-form-email"><label for="email">电子邮件 <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="发表评论"> <input type="hidden" name="comment_post_ID" value="1559" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2880bd28f5"></p><p style="display: none;"></p> <input type="hidden" id="ak_js" name="ak_js" value="1512356066743"></form>
+</div>
+</div>
+<div class="column2"></div>
+<div class="column3"><div id="content-sidebar" class="content-sidebar widget-area" role="complementary">
+<div class="best-wrapper">
+<div class="best-img">
+<div class="google-ad adsense">
+<script async="" src="./用requestAnimationFrame优化Web动画_files/adsbygoogle.js.下载"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9195052014444206" data-ad-slot="4750709795"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img">
+<div><a href="http://static.webhek.com/tb.html"><img style="width:300px;height:auto;" src="./用requestAnimationFrame优化Web动画_files/gsdf.jpg.jpg"></a></div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/color-test.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2016/05/color-test-330x240.png" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="./用requestAnimationFrame优化Web动画_files/color-test-330x240.png" style=""> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/color-test.html">
+<h2>你对颜色敏感吗？过不了16关就不要再玩手机了！</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/draw-a-stickman.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2016/04/pQ-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="./用requestAnimationFrame优化Web动画_files/pQ-330x240.jpg" style=""> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/draw-a-stickman.html">
+<h2>趣味游戏：请画一个小人</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/html5-color-spin-game.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2016/03/a3551665615_10-e1458637443719-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/html5-color-spin-game.html">
+<h2>HTML5旋转拼图智力游戏</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img">
+<div class="google-ad adsense">
+<script async="" src="./用requestAnimationFrame优化Web动画_files/adsbygoogle.js.下载"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9195052014444206" data-ad-slot="7704176197"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/pathfinding.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2015/11/The-Maze-Runner-Movie-Mazes.jpg-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/pathfinding.html">
+<h2>动画展示计算机迷宫路径各种搜索算法</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/species-in-pieces.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2015/07/143150732595360500_a580x330-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/species-in-pieces.html">
+<h2>中文版濒危动物CSS碎片拼图</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/inverter.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/07/dd-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/inverter.html">
+<h2>HTML5小游戏：蓝色拼图</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img">
+<div class="google-ad adsense">
+<script async="" src="./用requestAnimationFrame优化Web动画_files/adsbygoogle.js.下载"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-9195052014444206" data-ad-slot="3134375799"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/css-blend-mode.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/07/css3-logo.jpg-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/css-blend-mode.html">
+<h2>CSS颜色混合模式</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/css-loaders.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/07/css3-logo.jpg-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/css-loaders.html">
+<h2>你能相信吗？这些都是由一个DIV元素实现的动画，纯CSS3技术</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/impress-js.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/07/impress-js-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/impress-js.html">
+<h2>HTML5+CSS3特效幻灯片(impress.js)</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/link-style.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/04/css3-logo-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="css3-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/link-style.html">
+<h2>超链接特效</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/css-shake.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/05/hmtl5css3tutorials-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/css-shake.html">
+<h2>CSS发抖</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/responsive-web-design.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/06/devices-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/responsive-web-design.html">
+<h2>什么是自适应网页设计？</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/circumscrible.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/04/grafik-692-webinfo-3d-maker-7-int_22-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="3d" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/circumscrible.html">
+<h2>HTML5技术秀：你的3D立体旋转名字</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/unitethelovers.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/04/lover-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/unitethelovers.html">
+<h2>一个内衣公司用HTML5制作的公益游戏：让爱做主</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="best-wrapper">
+<div class="best-img img330x240">
+<a href="http://www.webhek.com/post/3d-album.html" class="">
+<img data-original="http://www.webhek.com/wordpress/wp-content/uploads/2014/04/b-330x240.jpg" class="attachment-thumbnail size-thumbnail wp-post-image lazy " alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"> </a>
+<div class="best-txt">
+<div class="best-title">
+<a href="http://www.webhek.com/post/3d-album.html">
+<h2>程序员给女朋友用HTML5制作的3D相册</h2>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="demo-frame">
+<div id="demo-menu">
+<div class="demo-menu-a"><a class="demo-home" href="http://www.webhek.com/">WEB骇客</a> <a href="http://www.webhek.com/">返回首页</a> <a onclick="close_demo()" href="javascript:;">返回文章</a> <a onclick="close_demo()" href="javascript:;"><img src="./用requestAnimationFrame优化Web动画_files/close-demo.png" title="关闭演示"></a> <a class="close-demo-menu" onclick="close_demo()" href="javascript:;"><img src="./用requestAnimationFrame优化Web动画_files/close-demo.png" title="关闭演示"></a></div>
+</div>
+<div class="demo-frame-warp">
+<div style="height:50px;"></div>
+<iframe id="demo-iframe" frameborder="0" src="./用requestAnimationFrame优化Web动画_files/saved_resource(2).html"></iframe>
+</div>
+</div>
+<script type="text/javascript" src="./用requestAnimationFrame优化Web动画_files/form.js.下载"></script>
+<span id="pageendflag"></span>
+</div>
+</div>
+<script type="text/javascript">
+	var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript">
+	(function() {
+	  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  ga.src = 'http://www.webhek.com/wordpress/wp-content/themes/webhek2016/js/jquery-3.1.1.min.js?v=7';
+	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+<script type="text/javascript" async="" src="./用requestAnimationFrame优化Web动画_files/su.js.下载"></script>
+
+
+</body></html>

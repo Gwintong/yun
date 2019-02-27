@@ -1,0 +1,44 @@
+各PC设备、平板、手机尺寸
+
+仿真器(平板、手机)：
+
+Amazon Kindle Fire HDX  1600*2560
+Apple iPad  768*1024
+Apple Mini  768*1024
+Apple iPhone 4   320*480
+Apple iPhone 5   320*568
+Apple iPhone 6   375*627
+Apple iPhone 6 plus  414*736  (3)     1242*2208
+BlackBerry PlayBook   600*1024 (1)
+BlackBerry Z30   360*640
+Google Nexus 10  800*1280
+Google Nexus 4   384*567
+Google Nexus 5   360*567  (3)
+Google Nexus 6   412*659  (3.5)
+Google Nexus 7   600*960
+LG Optimus L70   380*640
+Laptop with HiDPI screen  1440*900
+Laptop with MDPI screen  1280*800 (1)
+Laptop with touch   1280*950 (1)
+Nokia Lumia 520   320*533
+Nokia N9     360*640
+Samsung Galaxy Note3   360*640 (3)
+Samsung Galaxy Note2   360*640
+Samsung Galaxy S3      360*640
+Samsung Galaxy S4      360*640 (3)
+
+PC端：
+
+800*600
+1024*768
+1280*720
+1280*1024
+1360*768
+1366*768
+1400*900
+1600*900
+1600*1200
+1680*1050
+1920*1080
+
+

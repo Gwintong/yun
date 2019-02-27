@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://www.cnblogs.com/zhanggf/p/5911338.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="same-origin">
+<title>如何给SVG填充和描边应用线性渐变 - 看不懂。。 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./如何给SVG填充和描边应用线性渐变 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./如何给SVG填充和描边应用线性渐变 - 博客园_files/bundle-darkgreentrip.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./如何给SVG填充和描边应用线性渐变 - 博客园_files/bundle-darkgreentrip-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/zhanggf/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/zhanggf/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/zhanggf/wlwmanifest.xml">
+<script async="" src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/analytics.js.下载"></script><script type="text/javascript" src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/encoder.js.下载"></script><script src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+<script type="text/javascript">var currentBlogApp = 'zhanggf', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/zhanggf/"><img id="blogLogo" src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/zhanggf/">看不懂。。</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/zhanggf/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E7%9C%8B%E4%B8%8D%E6%87%82%E3%80%82%E3%80%82">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/zhanggf/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/zhanggf/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 26&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 3</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/zhanggf/p/5911338.html">如何给SVG填充和描边应用线性渐变</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>给SVG元素应用填充和描边有三种方法（戳<a href="http://www.w3cplus.com/svg/svg-fill-stroke.html" target="_blank">这里</a>学习SVG填充和描边的相关内容）。你可以使用纯色、图案或渐变。前面两种方法我们之前已经讲过了，现在我们来讨论第三种方法——渐变。</p>
+<p>SVG提供了两种渐变——<a href="http://www.w3cplus.com/content/css3-gradient" target="_blank">线性、径向</a>。我今天先讲线性渐变，下篇我们再看看径向渐变。</p>
+<h2>SVG线性渐变</h2>
+<p>如果你看过这系列的SVG之前的<a href="http://www.w3cplus.com/blog/tags/411.html" target="_blank">文章</a>，你应该对这里渐变的很多概念都比较熟悉啦。在<code>&lt;defs&gt;</code>中定义，然后在后面把它们作为填充或描边来引用。</p>
+<p>我们使用<span style="color: #ff0000;"><code>&lt;linearGradient&gt;</code></span>元素来定义<a href="http://tutorials.jenkov.com/svg/svg-gradients.html#linear-gradients" target="_blank">线性渐变</a>。我们从一个简单的“蓝色-&gt;绿色”的渐变实例开始看起。</p>
+<p>PS：如果我是SVG的创造者，大家有没有觉得在SVG元素和属性的命名这块做得还不错呢</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">svg </span><span style="color: #ff0000;">width</span><span style="color: #0000ff;">="660"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="220"</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">defs</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">linearGradient </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="linear"</span><span style="color: #ff0000;"> x1</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> y1</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> x2</span><span style="color: #0000ff;">="100%"</span><span style="color: #ff0000;"> y2</span><span style="color: #0000ff;">="0%"</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;">   stop-color</span><span style="color: #0000ff;">="#05a"</span><span style="color: #0000ff;">/&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="100%"</span><span style="color: #ff0000;"> stop-color</span><span style="color: #0000ff;">="#0a5"</span><span style="color: #0000ff;">/&gt;</span>
+    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">linearGradient</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">defs</span><span style="color: #0000ff;">&gt;</span>
+
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rect </span><span style="color: #ff0000;">x</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> y</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> width</span><span style="color: #0000ff;">="600"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="200"</span><span style="color: #ff0000;"> fill</span><span style="color: #0000ff;">="url(#linear)"</span> <span style="color: #0000ff;">/&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">svg</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>上面的实例在<code>&lt;defs&gt;</code>标签内定义了一个线性渐变，并给它赋了一个id为<code>linear</code>。这个id用于在后面矩形引用它作为填充的时候使用。我们前面的<a href="http://www.w3cplus.com/svg/svg-pattern-element.html" target="_blank">pattern</a>那块已经讲过<code>id</code>是用来引用的，还有<a href="http://www.w3cplus.com/svg/structuring-grouping-referencing-in-svg.html" target="_blank">symbol以及group</a>。就是在一个地方定义，然后在另一个地方引用~</p>
+<p>我们来关注一下新的内容。看看<code>&lt;linearGradient&gt;</code>元素，以及它的四个属性。<code>x</code>和<code>y</code>的值确定渐变的起点和终点。在这里，<code>x</code>方向上渐变从<code>0%</code>开始，到<code>100%</code>结束；<code>y</code>方向上保留在<code>0%</code>的位置。也就是说这是一个水平渐变。</p>
+<p>我选择使用百分比来表示，是因为<code>x</code>和<code>y</code>的值可以是百分比或者是用<code>0.0</code>到<code>1.0</code>之间的数表示。如果没有指定数值，那么就默认是<code>0</code>或者<code>0%</code>。</p>
+<p>在<code>&lt;linearGradient&gt;</code>标签内定义了两个颜色结点，使用<code>&lt;stop&gt;</code>元素定义。第一个颜色结点在offset为<code>0%</code>的位置设置了一个蓝色，第二个结点在<code>100%</code>的位置设置了绿色。</p>
+<p>这是上面的实例的效果。</p>
+<div>&nbsp;<img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/1031614-20160927013407391-763224634.png" alt="">
+<p>&nbsp;</p>
+</div>
+<p>结果应该是你意料之中的。第一个颜色结点（蓝色）是左边缘（<code>0%</code>）处的颜色，第二个颜色结点（绿色）是右边缘（<code>100%</code>）处的颜色，<a href="http://www.vanseodesign.com/css/transitions/" target="_blank">中间是过渡</a>。</p>
+<p>当我把<code>x2</code>的值改为<code>50%</code>。你可以看到填充在<code>0%-50%</code>的位置是“蓝色-&gt;绿色”的渐变，<code>50%-100%</code>的位置完全变成了绿色。</p>
+<div>&nbsp;<img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/1031614-20160927013433766-516504189.png" alt="">
+<p>&nbsp;</p>
+</div>
+<p>渐变除了可以作为填充，也可以作为描边。这里我把前面实例的矩形稍作修改。填充设置为纯色，把渐变变成矩形的描边。<code>stroke-width</code>为<code>20</code>。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rect </span><span style="color: #ff0000;">x</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> y</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> width</span><span style="color: #0000ff;">="600"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="200"</span><span style="color: #ff0000;"> stroke</span><span style="color: #0000ff;">="url(#linear)"</span><span style="color: #ff0000;"> stroke-width</span><span style="color: #0000ff;">="20"</span><span style="color: #ff0000;"> fill</span><span style="color: #0000ff;">="#630"</span> <span style="color: #0000ff;">/&gt;</span></pre>
+</div>
+<p>结果如下。</p>
+<div>&nbsp;<img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/1031614-20160927013519656-662074838.png" alt="">
+<p>&nbsp;</p>
+</div>
+<p>你可以看到渐变现在已经变成了描边，而不是填充。我把描边设置得足够宽，这样我们可以很清楚地看到从<code>0%</code>到<code>50%</code>位置的渐变，和前面的示例一样。</p>
+<p>你可以不止设置开始<code>0%</code>和结束<code>100%</code>位置的颜色结点，想多定义几个结点都是可以的。这里我设置了三个颜色结点，在蓝色和绿色中间<code>50%</code>的位置加了一块红色。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">svg </span><span style="color: #ff0000;">width</span><span style="color: #0000ff;">="660"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="220"</span><span style="color: #0000ff;">&gt;</span>
+ <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">defs</span><span style="color: #0000ff;">&gt;</span>
+   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">linearGradient </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="linear"</span><span style="color: #ff0000;"> x1</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> y1</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> x2</span><span style="color: #0000ff;">="100%"</span><span style="color: #ff0000;"> y2</span><span style="color: #0000ff;">="0%"</span><span style="color: #0000ff;">&gt;</span>
+     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;">   stop-color</span><span style="color: #0000ff;">="#05a"</span><span style="color: #0000ff;">/&gt;</span>
+     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="50%"</span><span style="color: #ff0000;">  stop-color</span><span style="color: #0000ff;">="#a55"</span><span style="color: #0000ff;">/&gt;</span>
+     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="100%"</span><span style="color: #ff0000;"> stop-color</span><span style="color: #0000ff;">="#0a5"</span><span style="color: #0000ff;">/&gt;</span>
+   <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">linearGradient</span><span style="color: #0000ff;">&gt;</span>
+ <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">defs</span><span style="color: #0000ff;">&gt;</span>
+
+ <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rect </span><span style="color: #ff0000;">x</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> y</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> width</span><span style="color: #0000ff;">="600"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="200"</span><span style="color: #ff0000;"> fill</span><span style="color: #0000ff;">="url(#linear)"</span> <span style="color: #0000ff;">/&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">svg</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>结果如下，<code>0%</code>的位置是蓝色，<code>50%</code>的位置是红色，<code>100%</code>的位置是绿色，中间是过渡。</p>
+<div>&nbsp;<img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/1031614-20160927013601781-2057801425.png" alt="">
+<p>&nbsp;</p>
+</div>
+<p>这些对于线性渐变都是非常基础的，希望你学得也容易上手。但是，还有很多内容哟。</p>
+<h2><code>&lt;stop&gt;</code>元素的属性</h2>
+<p>在<code>&lt;linearGradient&gt;</code>和<code>&lt;stop&gt;</code>元素中我都设置了一些属性，还有几个没有用到的。我们先<code>&lt;stop&gt;</code>的属性，因为这块只有一个属性比较陌生。</p>
+<p><code>&lt;stop&gt;</code>元素一共有属性，<code>offset</code>，<code>stop-color</code>，<code>stop-opacity</code>。前两个我们都已经看过了。</p>
+<ul>
+<li><strong><code>offset</code></strong>:对于线性渐变，<code>offset</code>表示渐变矢量的位置。它定义了渐变结点的位置。它可以是<code>0</code>到<code>1</code>之间的值，也可以是<code>0%</code>到<code>100%</code>之间的值。</li>
+<li><strong><code>stop-color</code></strong>:定义颜色的在offset结点位置的颜色</li>
+<li><strong><code>stop-opacity</code></strong>:<a href="http://www.vanseodesign.com/css/transparency/" target="_blank">定义颜色结点的透明度</a>，它可以是<code>0</code>到<code>1</code>之间的值，或者是<code>0%</code>到<code>100%</code>之间的值。</li>
+</ul>
+<p>目前我还没有用过<code>stop-opacity</code>属性，不过我想你应该知道如何使用吧(⊙v⊙)。它的默认值是<code>1.0</code>，我们之前的实例中它都是完全不透明的。</p>
+<p>下面这个实例中，我把第一个颜色结点设置了<code>50%</code>的透明度（<code>0.5</code>），第二个结点保留<code>100%</code>（<code>1.0</code>）。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">svg </span><span style="color: #ff0000;">width</span><span style="color: #0000ff;">="660"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="220"</span><span style="color: #0000ff;">&gt;</span>
+ <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">defs</span><span style="color: #0000ff;">&gt;</span>
+   <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">linearGradient </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="linear"</span><span style="color: #ff0000;"> x1</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> y1</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> x2</span><span style="color: #0000ff;">="100%"</span><span style="color: #ff0000;"> y2</span><span style="color: #0000ff;">="0%"</span><span style="color: #0000ff;">&gt;</span>
+     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;">   stop-color</span><span style="color: #0000ff;">="#05a"</span><span style="color: #ff0000;"> stop-opacity</span><span style="color: #0000ff;">="0.5"</span> <span style="color: #0000ff;">/&gt;</span>
+     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="100%"</span><span style="color: #ff0000;"> stop-color</span><span style="color: #0000ff;">="#0a5"</span><span style="color: #ff0000;"> stop-opacity</span><span style="color: #0000ff;">="1.0"</span> <span style="color: #0000ff;">/&gt;</span>
+   <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">linearGradient</span><span style="color: #0000ff;">&gt;</span>
+ <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">defs</span><span style="color: #0000ff;">&gt;</span>
+
+ <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rect </span><span style="color: #ff0000;">x</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> y</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> width</span><span style="color: #0000ff;">="600"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="200"</span><span style="color: #ff0000;"> fill</span><span style="color: #0000ff;">="url(#linear)"</span> <span style="color: #0000ff;">/&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">svg</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>结果如下，应该也是预料之中的结果。</p>
+<p><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/1031614-20160927013650891-458124005.png" alt=""></p>
+<h2><code>&lt;linearGradient&gt;</code>元素的属性</h2>
+<p>关于<code>&lt;linearGradients&gt;</code>还有不止一个属性，但是，如果你看过这系列之前的文章，这应该也不陌生。</p>
+<ul>
+<li><strong><code>x1</code>,&nbsp;<code>x2</code>,&nbsp;<code>y1</code>,&nbsp;<code>y2</code></strong>:定义渐变的起点和终点。</li>
+<li><strong><code>id</code></strong>:用于渐变的引用</li>
+<li><strong><code>xlink:href</code></strong>:在一个渐变中引用另一个渐变的方法。被引用的渐变的属性是可继承的，也可以被重写。</li>
+</ul>
+<p>下面这个实例展示的是如何在一个渐变中引用另一个渐变，继承它的值，然后重写部分值。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">svg </span><span style="color: #ff0000;">width</span><span style="color: #0000ff;">="660"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="220"</span><span style="color: #0000ff;">&gt;</span>
+ <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">linearGradient </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="gradient1"</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="stop1"</span><span style="color: #ff0000;"> offset</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> stop-color</span><span style="color: #0000ff;">="#05a"</span><span style="color: #ff0000;"> stop-opacity</span><span style="color: #0000ff;">="0.5"</span> <span style="color: #0000ff;">/&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="stop2"</span><span style="color: #ff0000;"> offset</span><span style="color: #0000ff;">="100%"</span><span style="color: #ff0000;"> stop-color</span><span style="color: #0000ff;">="#0a5"</span><span style="color: #0000ff;">/&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">linearGradient</span><span style="color: #0000ff;">&gt;</span>
+
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">linearGradient </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="gradient2"</span><span style="color: #ff0000;"> x1</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> x2</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> y1</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> y2</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;">
+     xlink:href</span><span style="color: #0000ff;">="#gradient1"</span><span style="color: #0000ff;">/&gt;</span>
+
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rect </span><span style="color: #ff0000;">x</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> y</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> width</span><span style="color: #0000ff;">="600"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="200"</span><span style="color: #ff0000;"> fill</span><span style="color: #0000ff;">="url(#gradient2)"</span> <span style="color: #0000ff;">/&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">svg</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>第一个渐变拿的是原来的实例中的例子。第二个渐变引用了第一个渐变，通过设置<code>x2</code>和<code>y2</code>的值，把方向改成垂直。</p>
+<p>结果如下，渐变还是从蓝色到绿色的渐变，但是它是垂直方向的，而不是水平的。</p>
+<p><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/1031614-20160927013733063-1480277962.png" alt=""></p>
+<p>接下来的两个属性是新的，但是它们看起来也很眼熟。正如<a href="http://www.w3cplus.com/svg/svg-markers.html" target="_blank">Markers有<code>markerUnits</code></a>，图案有<a href="http://www.w3cplus.com/svg/svg-pattern-element.html" target="_blank"><code>patternUnits</code></a>，这样marker和图案才可以选择是否随着应用的元素一起缩放。猜一下渐变对应的这个属性是什么。</p>
+<p><code>gradientUnit</code>！它有两个的值，<code>userSpaceOnUse</code>和<code>objectBoundingBox</code>，这用于决定渐变是否随着引用它的元素进行缩放。也就是说它决定了<code>x1</code>、<code>y1</code>、<code>x2</code>、<code>y2</code>的缩放。</p>
+<ul>
+<li><strong><code>userSpaceOnUse</code></strong>:&nbsp;<code>x1</code>、<code>y1</code>、<code>x2</code>、<code>y2</code>表示当前用户坐标系统的坐标。也就是说渐变中的值都是绝对值。</li>
+<li><strong><code>objectBoundingBox</code></strong>:&nbsp;<code>x1</code>,&nbsp;<code>y1</code>,&nbsp;<code>x2</code>,&nbsp;<code>y2</code>表示应用渐变的元素创建的边界坐标系统。也就是说渐变随着应用的元素进行了缩放。</li>
+</ul>
+<p>我们目前位置遇到的元素都可以变换，渐变也是一样。<code>gradientTransform</code>属性允许你给任何渐变添加像<code>rotate()</code>和<code>transition()</code>这样的变换（关于SVG 的<code>transform</code>变换，学习戳<a href="http://www.w3cplus.com/html5/svg-transformations.html" target="_blank">这里</a>）。</p>
+<p>这里我给第二个渐变添加了一个<code>gradientTransform</code>，让它旋转了<code>-50</code>度。</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">linearGradient </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="gradient2"</span><span style="color: #ff0000;"> x1</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> y1</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> x2</span><span style="color: #0000ff;">="0"</span><span style="color: #ff0000;"> y2</span><span style="color: #0000ff;">="1"</span><span style="color: #ff0000;"> xlink:href</span><span style="color: #0000ff;">="#gradient1"</span><span style="color: #ff0000;"> gradientTransform</span><span style="color: #0000ff;">="rotate(-50)"</span> <span style="color: #0000ff;">/&gt;</span></pre>
+</div>
+<p><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/1031614-20160927013817016-1631182348.png" alt=""></p>
+<p>与图案相比，渐变的旋转效果比较难看出（SVG图案变换的内容戳<a href="http://www.w3cplus.com/svg/svg-pattern-attributes.html" target="_blank">这里</a>），但是你应该可以发现渐变是旋转了的。如果看不出来，和前面的实例对比一下，就会发现不同了。</p>
+<p>现在来到<code>&lt;linearGradient&gt;</code>的最后一个属性，<code>spreadMethod</code>，这个是非常新的属性了唷。<code>spreadMethod</code>属性接受三个值，<code>pad</code>、<code>reflect</code>和<code>repeat</code>。它定义了渐变如何扩散到元素的其它位置，如果图形中的开始和结束的颜色结点不是<code>0%</code>和<code>100%</code>。</p>
+<ul>
+<li><strong><code>pad</code></strong>: （默认值）使用渐变的颜色结点来填充剩余的空间。例如，如果第一个结点是<code>20%</code>，那么<code>0%</code>到<code>20%</code>这部分就是相同的颜色。</li>
+<li><strong><code>reflect</code></strong>: 映射渐变图案，从'start-to-end'，再从'end-to-start'，然后'start-to-end'，直到空间都填满了。</li>
+<li><strong><code>repeat</code></strong>: 重复渐变图案，从起点-&gt;终点，直到空间填满。</li>
+</ul>
+<p>这三个值都很容易理解，我们结合下面的实例来看看。这是一个水平渐变的例子，添加了<code>spreadMethod</code>属性。因为颜色结点是在矩形中，在<code>spreadMethod</code>前面有很多效果，我把<code>x1</code>的值改成了<code>40%</code>，<code>x2</code>的值改成了<code>60%</code>。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">svg </span><span style="color: #ff0000;">width</span><span style="color: #0000ff;">="660"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="220"</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">defs</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">linearGradient </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="linear"</span><span style="color: #ff0000;"> x1</span><span style="color: #0000ff;">="40%"</span><span style="color: #ff0000;"> y1</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> x2</span><span style="color: #0000ff;">="60%"</span><span style="color: #ff0000;"> y2</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;"> spreadMethod</span><span style="color: #0000ff;">="pad"</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="0%"</span><span style="color: #ff0000;">   stop-color</span><span style="color: #0000ff;">="#05a"</span><span style="color: #0000ff;">/&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">stop </span><span style="color: #ff0000;">offset</span><span style="color: #0000ff;">="100%"</span><span style="color: #ff0000;"> stop-color</span><span style="color: #0000ff;">="#0a5"</span><span style="color: #0000ff;">/&gt;</span>
+    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">linearGradient</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">defs</span><span style="color: #0000ff;">&gt;</span>
+
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rect </span><span style="color: #ff0000;">x</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> y</span><span style="color: #0000ff;">="10"</span><span style="color: #ff0000;"> width</span><span style="color: #0000ff;">="600"</span><span style="color: #ff0000;"> height</span><span style="color: #0000ff;">="200"</span><span style="color: #ff0000;"> fill</span><span style="color: #0000ff;">="url(#linear)"</span> <span style="color: #0000ff;">/&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">svg</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>第一个结果中<code>spreadMethod</code>的值为<code>pad</code>，它和初始示例的效果相似，颜色结点是<code>0%</code>和<code>100%</code>。只是纯色多一点，然后中间的过渡比较少，但是还是很相似的。</p>
+<p><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/1031614-20160927013858953-982558285.png" alt=""></p>
+<p><strong>注意：</strong>有一些浏览器对于<code>reflect</code>和<code>repeat</code>这两个值的<a href="http://jonibologna.com/svg-gradient-browser-quirks/" target="_blank">支持是有问题的</a>。不仅是Safari，其它浏览器也是。我下面放了效果的截图（Firefox），表示本来看到结果应该是什么样的（如果你的浏览器中这个属性有问题的话）。</p>
+<p>这是和上面一样的渐变，但是把<code>spreadMethod</code>的值设置为<code>reflect</code>。蓝色和绿色的渐变过渡来回了四次。在<code>40%</code>处的颜色是最初设置的蓝色，然后<code>60%</code>是初始设置的第二个颜色结点——绿色。</p>
+<p><strong>SVG</strong></p>
+<div>&nbsp;</div>
+<p><strong>截图</strong></p>
+<p><img title="svg渐变" src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/spreadMethod-reflect.jpg" alt="svg渐变"></p>
+<p><code>reflect</code>让渐变在两个颜色结点间来回了四次。看起来就像它聚焦在某个纯色结点的位置之后，又散开然后再次聚焦在下一个位置。</p>
+<p>下面<code>spreadMethod</code>设置为<code>repeat</code>的情况。它从蓝色过渡到绿色，但是在某个点的时候它突然跳成了蓝色，然后又过渡到绿色。</p>
+<p><strong>SVG</strong></p>
+<div>&nbsp;</div>
+<p><strong>截图</strong></p>
+<p><img title="svg渐变" src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/spreadMethod-repeat.jpg" alt="svg渐变"></p>
+<p>图案持续这样突然变成蓝色，然后又过渡成绿色。直到<code>100%</code>的位置，矩形填满。如果你将它和上一个例子进行对比，你会发现填充在<code>40%</code>和<code>60%</code>的位置都是分别是蓝色和绿色。</p>
+<h2>总结</h2>
+<p>图案、<code>marker</code>、<code>symbol</code>和渐变，都是可以在<a href="http://www.vanseodesign.com/web-design/svg-definition-reuse/" target="_blank">一个位置定义</a>，然后引用，也可以作为另一个SVG元素的<code>fill</code>或<code>stroke</code>。</p>
+<p>在每个<code>&lt;linearGradient&gt;</code>中你可以使用<code>&lt;stop&gt;</code>元素引入颜色结点，然后分别给渐变和颜色结点添加属性，创建出好玩的线性渐变。</p>
+<p>使用<code>xlink:href</code>属性可以让一个渐变继承另一个渐变，也就是我们在一个渐变中定义颜色结点，然后在另一个渐变中引用它，只改变其方向，变得非常容易。</p>
+<p>SVG还可以创建径向渐变，我们下篇文章见。如果你已经理解了线性渐变，那么径向渐变也可以很快掌握哒。</p>
+<p>&nbsp;</p>
+<p>原文<a href="http://www.w3cplus.com/svg/svg-linear-gradients.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank">http://www.w3cplus.com/svg/svg-linear-gradients.html?utm_source=tuicool&amp;utm_medium=referral</a></p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/zhanggf/category/887700.html" target="_blank">svg</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5911338,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;fd6af946-3d81-e611-9fc1-ac853d9f53cc&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zhanggf/" target="_blank"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/zhanggf/">看不懂。。</a><br>
+            <a href="http://home.cnblogs.com/u/zhanggf/followees">关注 - 0</a><br>
+            <a href="http://home.cnblogs.com/u/zhanggf/followers">粉丝 - 1</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;fd6af946-3d81-e611-9fc1-ac853d9f53cc&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(5911338,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(5911338,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/zhanggf/p/5911329.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/zhanggf/p/5911329.html" title="发布于2016-09-27 01:25">深度掌握SVG路径path的贝塞尔曲线指令</a><br><a href="http://www.cnblogs.com/zhanggf/p/5920593.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/zhanggf/p/5920593.html" title="发布于2016-09-29 17:15">canvas arcTo()用法详解</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-09-27 01:41</span> <a href="http://www.cnblogs.com/zhanggf/">看不懂。。</a> 阅读(<span id="post_view_count">1390</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5911338" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/zhanggf/p/5911338.html#" onclick="AddToWz(5911338);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=307647,cb_entryId=5911338,cb_blogApp=currentBlogApp,cb_blogUserGuid='fd6af946-3d81-e611-9fc1-ac853d9f53cc',cb_entryCreatedDate='2016/9/27 1:41:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/zhanggf/p/5911338.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/zhanggf/p/5911338.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="https://www.yunqi2050.com/" target="_blank">【活动】2050 大会 - 年青人因科技而团聚（5.26-5.27 杭州·云栖小镇）</a><br><a href="http://clickc.admaster.com.cn/c/a105960,b2436452,c1705,i0,m101,8a1,8b2,h" target="_blank">【推荐】0元免费体验华为云服务</a><br><a href="https://cloud.tencent.com/act/first_purchase?fromSource=gwzcw.919198.919198.919198" target="_blank">【活动】腾讯云云服务器新购特惠，5折上云</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1&#39;);" href="https://cloud.tencent.com/act/event/cdbbasic.html?fromSource=gwzcw.919199.919199.919199" target="_blank"><img width="300" height="250" src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/24442-20180502205118653-1977595167.jpg" alt="腾讯云0502"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/595970/" target="_blank">生活在NASA新飞船中啥感觉？拥挤、眩晕还危险</a><br> ·  <a href="https://news.cnblogs.com/n/595979/" target="_blank">埃隆·马斯克计划创立一家糖果公司</a><br> ·  <a href="https://news.cnblogs.com/n/595969/" target="_blank">OpenAI的Debate Game教导机器人如何辩论和说谎</a><br> ·  <a href="https://news.cnblogs.com/n/595963/" target="_blank">是谁真正击倒了摩拜？</a><br> ·  <a href="https://news.cnblogs.com/n/595977/" target="_blank">新三板小贷公司营收净利双降 已有6家摘牌1家跑路</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/26880/" target="_blank"><img src="./如何给SVG填充和描边应用线性渐变 - 博客园_files/TB1WDRaXMoQMeJjy0FnXXb8gFXa-468-60.jpg" alt="" style="width: 468px; height: 60px;"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/578689/" target="_blank">如何成为优秀的程序员？</a><br> ·  <a href="http://kb.cnblogs.com/page/594930/" target="_blank">菜鸟工程师的超神之路 -- 从校园到职场</a><br> ·  <a href="http://kb.cnblogs.com/page/593985/" target="_blank">如何识别人的技术能力和水平？</a><br> ·  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a><br> ·  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/zhanggf/">看不懂。。</a><br>园龄：<a href="https://home.cnblogs.com/u/zhanggf/" title="入园时间：2016-09-23">1年7个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/zhanggf/followers/">1</a><br>关注：<a href="https://home.cnblogs.com/u/zhanggf/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;fd6af946-3d81-e611-9fc1-ac853d9f53cc&#39;)">+加关注</a></div><script>getFollowStatus('fd6af946-3d81-e611-9fc1-ac853d9f53cc')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/04/01&#39;);return false;">&lt;</a></td><td align="center">2018年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/06/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td class="CalWeekendDay" align="center">5</td></tr><tr><td class="CalWeekendDay" align="center">6</td><td class="CalTodayDay" align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td align="center">11</td><td class="CalWeekendDay" align="center">12</td></tr><tr><td class="CalWeekendDay" align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td class="CalWeekendDay" align="center">19</td></tr><tr><td class="CalWeekendDay" align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td class="CalWeekendDay" align="center">26</td></tr><tr><td class="CalWeekendDay" align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td></tr><tr><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block"></div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/zhanggf/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/zhanggf/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/zhanggf/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/zhanggf/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/zhanggf/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/zhanggf/category/886614.html">html5+css3(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/zhanggf/category/887683.html">iscroll(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/zhanggf/category/887662.html">js+jQuery(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/zhanggf/category/887684.html">mobiscroll(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/zhanggf/category/887700.html">svg(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/zhanggf/category/1113079.html">vue</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/zhanggf/category/887663.html">杂七杂八(3)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/zhanggf/archive/2018/04.html">2018年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/zhanggf/archive/2018/03.html">2018年3月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/zhanggf/archive/2016/09.html">2016年9月 (20)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhanggf/p/8601762.html#3927425">1. Re:web网页、手机app设计规范</a></li>
+        <li class="recent_comment_body"><a href="https://www.cnblogs.com/zhanggf/p/5911338.html" target="_blank"></a><br><a href="https://www.cnblogs.com/zhanggf/p/5911338.html" target="_blank"></a></li>
+        <li class="recent_comment_author">--看不懂。。</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhanggf/p/8601762.html#3927423">2. Re:web网页、手机app设计规范</a></li>
+        <li class="recent_comment_body"><a href="https://www.cnblogs.com/zhanggf/p/5911338.html" target="_blank"></a></li>
+        <li class="recent_comment_author">--看不懂。。</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/zhanggf/p/5903410.html#3762817">3. Re:Less:优雅的写CSS代码</a></li>
+        <li class="recent_comment_body">有帮助！<br><a href="https://www.cnblogs.com/zhanggf/p/5911338.html" target="_blank"></a></li>
+        <li class="recent_comment_author">--归来去</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhanggf/p/5910879.html">1. $.ajax()方法详解(4337)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5903410.html">2. Less:优雅的写CSS代码(3535)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5911201.html">3. HTMl5的存储方式sessionStorage和localStorage详解(2335)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5910936.html">4. 【IScroll深入学习】解决IScroll疑难杂症(1484)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5911338.html">5. 如何给SVG填充和描边应用线性渐变(1390)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5910891.html">6. 详解用CSS3制作圆形滚动进度条动画效果(1335)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/8504317.html">7. 在线查看PDF文件,pdf.js使用方法(687)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5923890.html">8. 【转】40条常见的移动端Web页面问题解决方案(577)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5903356.html">9. CSS3文字渐变效果(394)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5910923.html">10. mobiscroll之treelist使用(326)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhanggf/p/8601762.html">1. web网页、手机app设计规范(2)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5903410.html">2. Less:优雅的写CSS代码(1)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/zhanggf/p/5903410.html">1. Less:优雅的写CSS代码(1)</a></li><li><a href="http://www.cnblogs.com/zhanggf/p/5910879.html">2. $.ajax()方法详解(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 看不懂。。
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+<div id="cli_dialog_div"></div></body></html>

@@ -1,0 +1,177 @@
+一、 HTML5新增的标签
+	
+	（1）header nav main  footer  section article hgroup  figure figcaption  aside  
+
+	    video  audio canvas 
+                 （2）如何让新标签兼容低版本浏览器：  html5shiv.js
+
+
+二、 HTML5新增的表单控件
+
+     一、表单控件的新属性
+             <input type="text"  placeholder=""  required  autofocus  pattern="abc" >
+     二、新增的表单控件
+
+     （1）<input type="email">
+     （2）<input type="url">
+      （3）数字控件：  type="number"
+       (4)  滑动组件：   type="range"
+       (5)  拾色器：      type="color"
+       (6)  日期控件：    type="date"
+
+三、本地存储
+
+     1、 三种本地存储 ：  cookie webStorage(localStorage  sessionStorage)
+
+     2、localStorage的API
+
+       (1)写入：   localStorage.setItem(键，值);   //值只能是字符串
+                   
+        		localStorage.user = "123" localStorage["user"] = "123"
+
+       （2）读取   var user = localStorage.getItem("user")
+
+                  var user = localStorage.user;
+
+         (3)删除：   localStorage.removeItem("user")    localStorage.clear()
+
+        （4）修改：  localStorage.setItem("user","890")
+
+
+     3、sessionStorage的API
+	sessionStorage.setItem(键，值);
+        sessionStorage.getItem(键);
+        sessionStorage.removeItem(键);
+	sessionStorage.clear();
+
+     **********重点**********
+      4、cookie webStorage(localStorage  sessionStorage)三者的区别
+
+四、离线存储
+
+    （1） *.manifest   (*.appcache)   
+
+          index.html   <html manifest="*.manifest">
+
+     (2) 理解离线存储的更新方式
+
+五、移动端的布局思路：
+
+
+	1、设备像素比（倍率）  逻辑像素尺寸 （360px   320px   375px  414px）
+
+             window.devicePixelRatio
+
+
+        2、 <meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0,initial-scale=1.0,user-scalable=no"">
+
+	3、使用rem单位
+
+      
+六、地理定位
+
+	if (navigator.geolocation){   
+            navigator.geolocation.getCurrentPosition(success,error,{
+                 timeout: 5000
+            });
+            function success(pos){
+                纬度:   pos.coords.latitute
+                经度：  pos.coords.longtitude
+            }
+        }
+
+        navigator.geolocation.watchPosition(success);
+
+七、地理定位和百度地图API的结合
+        
+            
+八、视频，音频   <video autoplay="autoplay" controls="controls" loop="loop" poster="" preload="preload">   <audio>
+
+
+九、移动端事件：  
+
+	(1) ontouchstart  ontouchmove  ontouchend
+	(2) 如何判断是否为移动端：  if ("ontouchstart" in document){}
+        (3) 移动端事件的事件对象及常用属性
+	 
+           e.touches[0].clientX  e.touches[0].clientY   e.touches[0].target
+
+	   
+        (4) 移动端常见问题及解决方案：
+
+		a、 click事件 300ms的延迟：  <1>zepto的tap事件   （2） fastclick.js
+		b、 zepto的tap事件有点透问题 ：  （1） fastclick.js
+
+        (5) zepto的touch模块：  tap   singleTap  doubleTap  longTap   
+
+
+                swipeLeft  swipeRight  swipeUp  swipeDown
+
+
+十、swiper.js的使用  （参考官网）
+
+
+十一、 canvas 
+
+	(1)  <canvas width="600" id="can"></canvas>    300*150
+     
+        (2)   var can = document.getElementById("can");
+	      var cxt = can.getContext("2d");
+		
+		  cxt.beginPath();
+		  cxt.moveTo(100,200);
+		  cxt.lineTo(200,400);
+                  cxt.strokeStyle = '#f00';
+		  cxt.stroke();
+
+
+                  cxt.clearRect(0,0,200,300);
+			
+                  context.globalCompositeOperation="destination-out";  (了解)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

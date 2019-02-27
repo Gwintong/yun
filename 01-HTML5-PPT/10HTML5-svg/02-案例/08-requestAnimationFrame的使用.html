@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>清除</button>
+    <script>
+        var num = 1
+        function animate() {  
+            console.log(num);
+            num++;
+            timer = requestAnimationFrame(animate);  
+        }  
+        var timer = requestAnimationFrame(animate);  //帧
+
+        function show(){
+            console.log(num);
+            num++;
+            setTimeout(show,16.7);
+        }
+        setTimeout(show,16.7);
+        
+        var btn = document.querySelector("button");
+            btn.onclick = function(){
+                cancelAnimationFrame(timer);
+            }
+    </script>
+</body>
+</html>

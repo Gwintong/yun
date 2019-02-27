@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="UTF-8">
+   		<title>Video.js | HTML5 Video Player</title>
+    	<link href="http://vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
+</head>
+<body>
+	<script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
+	<script src="http://vjs.zencdn.net/5.0.2/video.js"></script>
+	<!-- 这里引用的是flash的swf文件（必须） -->
+	<script type="text/javascript">
+		//ie8中使用flash播放器播放。这里不能播放  网上查了查是因为ie8下本地的falsh文件不能播放，文件路径必须以http开头
+		videojs.options.flash.swf = 'swf/iceage4.swf';
+	</script>
+	<!-- data-setup是指定默认播放方式,如果浏览器不支持html5就用Flash播放 -->
+	<video class="video-js" width="800" height="400" controls data-setup='{"techOrder": ["flash", "html5"]}'>
+	　　<!-- source的type属性规定媒体资源的 MIME 类型（不清楚就百度下） -->
+		该浏览器不支持h5
+	　　<source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+	</video>
+	
+</body>
+</html>

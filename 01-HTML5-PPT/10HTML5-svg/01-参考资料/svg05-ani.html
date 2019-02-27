@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+  <title>Two Animated Gears</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge"/> <!--  Remove this line in production. -->
+</head>
+
+<body>
+  <div align="center"> <!-- An inexpensive way to center everything. -->
+    <div style=" margin-bottom: 8px;">
+      <button id="startButton" type="button" onclick="startAnim();">
+        Start Animation
+      </button> 
+    </div> 
+    <svg id="svgElement" width="800px" height="800px" viewBox="0 0 800 800"> 
+      <rect x="0" y="0" width="100%" height="100%" rx="16" ry="16" 
+            style="fill: none; stroke: black; stroke-dasharray: 10, 5;" />
+  
+      <defs> 
+        <g id="gearTemplate">
+          <circle cx="0" cy="0" r="150" style="stroke: black;" />
+          <line x1="0" y1="-150" x2="0" y2="150" style="stroke: white;"/> 
+          <line x1="-150" y1="0" x2="0" y2="0" style="stroke: white;"/> 
+          <line x1="0" y1="0" x2="150" y2="0" style="stroke: darkGreen;"/>
+        </g>
+      </defs>
+  
+      <g transform="translate(400, 400)"> 
+        <use id="gear0" x="-150" y="0" xlink:href="#gearTemplate" style="fill: orange;" /> 
+        <use id="gear1" x="150" y="0" xlink:href="#gearTemplate" style="fill: mediumPurple;" /> 
+      </g>
+    </svg>
+  </div>
+  <script>
+    "use strict";
+
+    
+    var initialTheta = 0; 
+    var currentTheta = initialTheta;
+    var thetaDelta = 0.5; 
+    var angularLimit = 360; 
+
+    /* GLOBALS */
+    var requestAnimationFrameID;
+    //创建一个一般的变换对象。
+    var transformObject = svgElement.createSVGTransform(); 
+    var gear0 = document.getElementById('gear0');
+    var gear1 = document.getElementById('gear1');
+
+    // 将变换对象附加到 DOM。这样，dom 对象便可以继承与某个变换对象关联的所有方法和属性。具体而言就是setRotate 方法。完成此操作后，我们只需调用 dom的setRotate 方法就可以旋转它，
+    gear0.transform.baseVal.appendItem(transformObject); 
+    gear1.transform.baseVal.appendItem(transformObject);
+
+    function startAnim() {
+      // 按钮的自定义属性
+      if (!startButton.startButtonClicked) 
+      {
+        startButton.startButtonClicked = true; 
+        requestAnimationFrameID = requestAnimationFrame(doAnim);
+      }
+    }
+
+    function doAnim() {
+      if (currentTheta > angularLimit) {
+        startButton.startButtonClicked = false; 
+        currentTheta = initialTheta; 
+        cancelAnimationFrame(requestAnimationFrameID); 
+        return; 
+      }
+
+      // setRotate(旋转的度数，旋转中的x, y)
+      // setRotate(旋转的度数，150, 0) 是以组合的中心点为(0,0)
+      gear0.transform.baseVal.getItem(0).setRotate(currentTheta, -150, 0); 
+      gear1.transform.baseVal.getItem(0).setRotate(-currentTheta, 150, 0); 
+      currentTheta += thetaDelta; 
+      requestAnimationFrameID = requestAnimationFrame(doAnim); 
+    }
+  </script>
+</body>
+</html>

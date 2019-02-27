@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://www.jq22.com/jquery-info404 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>视频播放插件Video.js</title>
+<meta name="description" content="Video.js 是一个通用的在网页上嵌入视频播放器的 JS 库，Video.js 自动检测浏览器对 HTML5 的支持情况，如果不支持 HTML5 则自动使用 Flash 播放器。（要支持ie低版本请下载5.4.3版 ）"> 
+<meta name="keywords" content="视频播放,播放插件,Video.js,jquery视频播放插件,flashs视频播放,播放器,jquery视频,VideoJS,VideoJS是什么,VideoJS下载,VideoJS使用教程,VideoJS汉化,">
+<meta name="author" content="jQuery插件库">
+<meta name="Copyright" content="jQuery插件库">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<link rel="Shortcut icon" href="http://www.jq22.com/favicon.ico">
+<link href="./视频播放插件Video.js_files/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="./视频播放插件Video.js_files/font-awesome.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="./视频播放插件Video.js_files/wangEditor.css">
+<link rel="stylesheet" type="text/css" href="./视频播放插件Video.js_files/pifu.css">
+<style>
+.affix{display:block;margin-top:40px;-webkit-animation:fadeInDown 1s .2s ease both;-moz-animation:fadeInDown 1s .2s ease both;}@-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translateY(-20px)}100%{opacity:1;-webkit-transform:translateY(0)}}@-moz-keyframes fadeInDown{0%{opacity:0;-moz-transform:translateY(-20px)}100%{opacity:1;-moz-transform:translateY(0)}}
+    .dz {font-size:14px;padding-left:10px;font-family:Vrinda;color:#666666}
+     .dzs {color:#91ab4e;padding-left:5px;}
+    .inad {background-image: url(img/inadbg.png);background-repeat: no-repeat;background-position: 0% 650px;}
+    @media screen and (max-width:1000px){
+        .inad {background-image: none;}    
+}.jcjg{border: 1px solid #c3e4b4;box-sizing: border-box;cursor:auto}
+</style>
+<script src="./视频播放插件Video.js_files/hm.js.下载"></script><script src="./视频播放插件Video.js_files/jquery.min.js.下载"></script>
+<!--[if lt IE 9]>
+ 	<script src="/js/respond.min.js"></script> 
+	<script src="/js/html5shiv.min.js"></script>    
+<![endif]-->
+<link href="./视频播放插件Video.js_files/my.css" rel="stylesheet" media="screen">	
+<script>var n = 1;</script>
+<script src="./视频播放插件Video.js_files/share.js.下载"></script><link rel="stylesheet" href="./视频播放插件Video.js_files/share_style0_24.css"></head>
+<body data-spy="scroll" data-target=".navbar-example" style="background-color: rgb(244, 244, 244);">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-logo" href="http://www.jq22.com/"><img src="./视频播放插件Video.js_files/logo.png" height="100%" alt="jQuery插件,jQuery,jQuery特效.jQuery ui,jQuery 教程,css3,网页特效,JS特效"></a> </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://www.jq22.com/daima"><i class="fa fa-code"></i> &nbsp;在线代码</a></li>
+        <li><a href="http://www.jq22.com/textDifference"><i class="fa fa-balance-scale" aria-hidden="true"></i> &nbsp;文本比较</a></li>
+      	<li><a href="http://www.jq22.com/jquery-info122"><i class="fa fa-download"></i> &nbsp;jQuery下载</a></li>
+        <li><a href="http://www.jq22.com/jquery/jquery.html" target="_blank"><i class="fa fa-ship" aria-hidden="true"></i> &nbsp;前端库</a></li>
+        <li><a href="http://www.jq22.com/chm/jquery1.8.3.html" target="_blank"><i class="fa fa-book"></i> &nbsp;在线手册</a></li>
+        <li class="dropdown"><a rel="nofollow" href="http://weibo.com/jq22" target="_blank"><i class="fa fa-weibo"></i> &nbsp;微博</a></li>
+        <li>
+             
+       <a href="http://www.jq22.com/jquery-info404#" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-user"></i> &nbsp;注册/登录<span class="sr-only">(current)</span></a>
+    
+        </li>
+      </ul>
+    </div>
+    <!--/.nav-collapse --> 
+  </div>
+</nav>
+<!--end nav-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content2 tcc">
+         <div class="modal-header2 top20">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  ×
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               
+            </h4>
+         </div>
+         <div class="modal-body tcck">     
+            <div class="input-group input-group-lg parentCls">
+              <span class="input-group-addon" id="email"><i class="fa fa-envelope-o"></i></span>                
+              <input type="text" class="form-control inputElem" placeholder="请输入登录邮箱" aria-describedby="email" id="ema" style="width: 466px;">             
+            </div>
+            <div class="input-group input-group-lg top20">
+              <span class="input-group-addon" id="pwd"><i class="fa fa-unlock-alt" style="width:18px"></i></span>
+              <input type="password" class="form-control" placeholder="请输入登录密码" aria-describedby="pwd" id="pw">
+              <span class="input-group-btn tccBut">
+                <button class="btn btn-success" type="button" onclick="emdl()">登 录</button>
+              </span>
+            </div>          
+         </div>
+               
+        <div class="modal-footer2">
+            <div class="f">
+            <a href="http://www.jq22.com/pwd.aspx">忘记密码?</a></div>
+            <div class="r"><a href="http://www.jq22.com/register.aspx">注册新用户</a></div>
+            <div class="dr"></div>
+         </div>
+         
+         <div class="d3f modal-body tcck2">          
+             <a href="http://www.jq22.com/jquery-info404#" onclick="tz()" class="qq"></a>
+             <a href="https://api.weibo.com/oauth2/authorize?client_id=3364913104&amp;redirect_uri=http%3A%2F%2Fwww.jq22.com%2FWeiboReturn.aspx&amp;response_type=code&amp;display=default" class="sina"></a>
+             <a href="http://www.jq22.com/zfbReturn.aspx" class="zfb"></a>
+             <a href="http://www.jq22.com/jquery-info404#" onclick="gt()" class="git"></a>
+         </div>
+         <script>          
+             function tz() {
+                 var urldz = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101135281&redirect_uri=http://www.jq22.com/QQReturn.aspx?tjurl=" + window.location.href;
+                window.location.href = urldz;
+             }
+             function gt() {
+                 var urldz = "https://github.com/login/oauth/authorize?client_id=cf869185ea7d8fcab6df&state=jq22&redirect_uri=http://www.jq22.com/github.aspx?tjurl=" + window.location.href;
+                 window.location.href = urldz;
+             }
+         </script>
+         
+      </div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+ 	
+<div class="yn jz container-fluid nav-bgn m0 menuFixed" id="menu_wrap">	
+	<div class="container m0" style="position:relative;"><a class="nzz" href="http://www.jq22.com/jqueryUI-1-jq" id="z1"><span class="sort"><i class="fa fa-paint-brush"></i>&nbsp;UI <i class="fa fa-angle-down"></i></span></a>|<a class="nzz" href="http://www.jq22.com/jquery%E8%BE%93%E5%85%A5-1-jq" id="z2"><span class="sort"><i class="fa fa-keyboard-o"></i>&nbsp;输入 <i class="fa fa-angle-down"></i></span></a>|<a class="nzz" href="http://www.jq22.com/jquery%E5%AA%92%E4%BD%93-1-jq" id="z3"><span class="sort"><i class="fa fa-film"></i>&nbsp;媒体 <i class="fa fa-angle-down"></i></span></a>|<a class="nzz" href="http://www.jq22.com/jquery%E5%AF%BC%E8%88%AA-1-jq" id="z4"><span class="sort "><i class="fa fa-paper-plane-o"></i>&nbsp;导航 <i class="fa fa-angle-down"></i></span></a><span class="navxs">|<a class="nzz" href="http://www.jq22.com/jquery%E5%85%B6%E4%BB%96-1-jq" id="z5"><span class="sort"><i class="fa fa-dropbox"></i>&nbsp;其他 <i class="fa fa-angle-down"></i></span></a></span><span class="navxs">|<a href="http://www.jq22.com/jquery-plugins%E5%B8%83%E5%B1%80-1-jq" target="_blank"><span class="sort"><i class="fa fa-th-large"></i>&nbsp;网页模板</span></a>|<a href="http://www.jq22.com/webinfo1" target="_blank"><span class="sort"><i class="fa fa-file-code-o"></i>&nbsp;常用代码</span></a></span><span class="adgg">|<a href="https://www.vpsor.com/action/aff/?id=12952" target="_blank" onclick="adtonji2()"><span class="sort"><i class="fa fa-thumbs-up"></i>&nbsp; 虚拟主机</span></a></span></div>
+<script>
+    function adtonji2() { $.post("adtongji.aspx", { name: "a2" }) }
+</script>
+<div class="container-fluid"><div id="n1" class="nav-zi ty" style="display: none;"><ul id="nz1" class="nn list-inline container m0" style="display: none;"><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E8%83%8C%E6%99%AF-1-jq"><i class="fa fa-delicious ls"></i>背景</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%AF%B9%E8%AF%9D%E6%A1%86%E5%92%8C%E7%81%AF%E7%AE%B1-1-jq"><i class="fa fa-bell-o ls"></i>对话框和灯箱</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E7%AD%9B%E9%80%89%E5%8F%8A%E6%8E%92%E5%BA%8F-1-jq"><i class="fa fa-sort-numeric-desc ls"></i>筛选及排序</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%8F%8D%E9%A6%88-1-jq"><i class="fa fa-comments-o ls"></i>反馈</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%BC%B9%E5%87%BA%E5%B1%82-1-jq"><i class="fa fa-stack-overflow ls"></i>弹出层</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%82%AC%E5%81%9C-1-jq"><i class="fa fa-hand-o-up ls"></i>悬停</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%B8%83%E5%B1%80-1-jq"><i class="fa fa-th-large ls"></i>布局</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%9B%BE%E8%A1%A8-1-jq"><i class="fa fa-bar-chart ls"></i>图表</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%8A%A0%E8%BD%BD-1-jq"><i class="fa fa-spinner ls"></i>加载</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%9C%86%E8%BE%B9-1-jq"><i class="fa fa-circle-o ls"></i>圆边</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%BB%9A%E5%8A%A8-1-jq"><i class="fa fa-long-arrow-down ls"></i>滚动</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%A0%87%E7%AD%BE-1-jq"><i class="fa fa-tags ls"></i>标签</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%96%87%E6%9C%AC%E9%93%BE%E6%8E%A5-1-jq"><i class="fa fa-link ls"></i>文本链接</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA-1-jq"><i class="fa fa-info-circle ls"></i>工具提示</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B-1-jq"><i class="fa fa-code-fork ls"></i>网络类型</a></li></ul><ul id="nz2" class="nn list-inline container m0" style="display: none;"><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%8B%BE%E8%89%B2%E5%99%A8-1-jq"><i class="fa fa-eyedropper ls"></i>拾色器</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%AE%9A%E5%88%B6%E5%92%8C%E9%A3%8E%E6%A0%BC-1-jq"><i class="fa fa-paint-brush ls"></i>定制和风格</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4-1-jq"><i class="fa fa-clock-o ls"></i>日期和时间</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%8B%96%E5%92%8C%E6%94%BE-1-jq"><i class="fa fa-arrows ls"></i>拖和放</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E9%80%9A%E7%94%A8%E8%BE%93%E5%85%A5-1-jq"><i class="fa fa-keyboard-o ls"></i>通用输入</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E8%87%AA%E5%8A%A8%E5%AE%8C%E6%88%90-1-jq"><i class="fa fa-calculator ls"></i>自动完成</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%AF%86%E7%A0%81-1-jq"><i class="fa fa-lock ls"></i>密码</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%8A%95%E7%A5%A8%E7%8E%87-1-jq"><i class="fa fa-thumbs-up ls"></i>投票率</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%90%9C%E7%B4%A2-1-jq"><i class="fa fa-search ls"></i>搜索</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E9%80%89%E6%8B%A9%E6%A1%86-1-jq"><i class="fa fa-caret-square-o-down ls"></i>选择框</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%BF%AB%E6%8D%B7%E9%94%AE-1-jq"><i class="fa fa-adn ls"></i>快捷键</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E8%A7%A6%E6%91%B8-1-jq"><i class="fa fa-hand-o-down ls"></i>触摸</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E4%B8%B0%E5%AF%8C%E7%9A%84%E8%BE%93%E5%85%A5-1-jq"><i class="fa fa-h-square ls"></i>丰富的输入</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E4%B8%8A%E4%BC%A0-1-jq"><i class="fa fa-upload ls"></i>上传</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E9%AA%8C%E8%AF%81-1-jq"><i class="fa fa-key ls"></i>验证</a></li></ul><ul id="nz3" class="nn list-inline container m0" style="display: none;"><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E9%9F%B3%E9%A2%91%E5%92%8C%E8%A7%86%E9%A2%91-1-jq"><i class="fa fa-play-circle-o ls"></i>音频和视频</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%B9%BB%E7%81%AF%E7%89%87%E5%92%8C%E8%BD%AE%E6%92%AD%E5%9B%BE-1-jq"><i class="fa fa-exchange ls"></i>幻灯片和轮播图</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA-1-jq"><i class="fa fa-eye ls"></i>图片展示</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%9B%BE%E5%83%8F-1-jq"><i class="fa fa-picture-o ls"></i>图像</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%9C%B0%E5%9B%BE-1-jq"><i class="fa fa-map-marker ls"></i>地图</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%BB%91%E5%9D%97%E5%92%8C%E6%97%8B%E8%BD%AC-1-jq"><i class="fa fa-arrows-h ls"></i>滑块和旋转</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-pluginsTabs-1-jq"><i class="fa fa-folder-o ls"></i>Tabs</a></li></ul><ul id="nz4" class="nn list-inline container m0" style="display: none;"><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%B0%B4%E5%B9%B3%E5%AF%BC%E8%88%AA-1-jq"><i class="fa fa-long-arrow-right ls"></i>水平导航</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%9E%82%E7%9B%B4%E5%AF%BC%E8%88%AA-1-jq"><i class="fa fa-long-arrow-down ls"></i>垂直导航</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%96%87%E4%BB%B6%E6%A0%91-1-jq"><i class="fa fa-sitemap ls"></i>文件树</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%88%86%E9%A1%B5-1-jq"><i class="fa fa-chevron-right ls"></i>分页</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%89%8B%E9%A3%8E%E7%90%B4%E8%8F%9C%E5%8D%95-1-jq"><i class="fa fa-trello ls"></i>手风琴菜单</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%85%B6%E4%BB%96%E5%AF%BC%E8%88%AA-1-jq"><i class="fa fa-location-arrow ls"></i>其他导航</a></li></ul><ul id="nz5" class="nn list-inline container m0" style="display: none;"><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-1-jq"><i class="fa fa-rocket ls"></i>动画效果</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E6%95%B4-1-jq"><i class="fa fa-expand ls"></i>浏览器调整</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E7%A7%BB%E5%8A%A8-1-jq"><i class="fa fa-arrows-v ls"></i>移动</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E7%8B%AC%E7%AB%8B%E7%9A%84%E9%83%A8%E4%BB%B6-1-jq"><i class="fa fa-cogs ls"></i>独立的部件</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%9D%82%E9%A1%B9-1-jq"><i class="fa fa-gift ls"></i>杂项</a></li><li><a class="c-btn c-btn--border-line" href="http://www.jq22.com/jquery-plugins%E6%B8%B8%E6%88%8F-1-jq"><i class="fa fa-gamepad ls"></i>游戏</a></li></ul></div></div>
+ 	   
+</div>
+<!--主体-->
+        <div class="container m0 bod top70" id="zt">
+            <!--左-->
+            <div class="col-lg-9 col-md-12 col-sm-12">
+                <div class="project">
+                    <div class="adinfo">
+                           
+                    </div>
+                	<div class="project-header">                       
+                    	<h1>视频播放插件Video.js</h1>
+                        <p>所属分类：媒体-音频和视频</p>
+                        <div class="row pd10">
+                            <div class="f">
+                                <span><i class="fa fa-eye"></i>  &nbsp;1284860 </span>
+                                <span><i class="fa fa-heart"></i>  &nbsp;845 </span>
+                                <span style="border-right: 0;  "><a href="http://www.jq22.com/message404"><i class="fa fa-comment"></i>  &nbsp;查看评论 <span style="color:#ff0000;border-right: 0; font: 20px/24px Georgia;">(719)</span></a> </span>
+                            </div>
+                            <div class="r fx">                                
+                                <div class="bdsharebuttonbox bdshare-button-style0-24" data-tag="share_1" data-bd-bind="1512088575960">	
+                                    <a class="ttqq" data-cmd="sqq" title="分享到QQ好友"></a>  
+                                    <a class="ttwx" data-cmd="weixin" href="http://www.jq22.com/jquery-info404#" title="分享到微信"></a>                                  
+                                    <a class="ttqzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                                    <a class="ttsina" data-cmd="tsina" title="分享到新浪微博"></a>	
+                                    <a class="ttbdhome" data-cmd="bdhome" title="分享到百度新首页"></a>                                                              
+	                                <a class="tttqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                                    <a class="tthuaban" data-cmd="huaban" title="分享到花瓣"></a>  
+                                    <a class="ttfbook" data-cmd="fbook" title="分享到Facebook"></a>
+                                    <a class="ttmore" data-cmd="more"></a>                                   
+                                </div>
+                            </div>
+                            
+                            <div class="dr"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="project-content inad">
+                    	<img src="./视频播放插件Video.js_files/2015-08-25-23-08-04.jpg" class="thumbile" alt="视频播放插件Video.js">
+                        <img src="./视频播放插件Video.js_files/6.png" class="thumbile" alt="ie兼容6">
+                         <div class="row text-center" style="margin-bottom:30px;margin-top: 10px;" onclick="adtonji4()">                    
+                            <a href="http://web.tanzhouedu.com/index/keCourse.html" target="_blank"><img src="./视频播放插件Video.js_files/dwad820-90.png"></a>
+                             <script>
+                                 function adtonji4() { $.post("adtongji.aspx", { name: "a4" }) }
+                            </script>
+                        </div>
+
+                        <div class="thumbile">
+                            <a href="http://www.jq22.com/yanshi404" target="_blank" class="btn btn-success"><i class="fa fa-eye"></i> &nbsp;查看演示</a>
+                            <a href="http://www.videojs.com/" target="_blank" class="btn btn-info" style="display:inline-block"><i class="fa fa-globe"></i> &nbsp;website</a>
+                            <a href="javascript:void(0)" onclick="mydown()" class="btn btn-danger" data-toggle="modal" data-target="#mydown"><i class="fa fa-cloud-download"></i> &nbsp;立即下载</a>  
+                            <a class="btn jcjg" style="line-height: 28px;"><img src="./视频播放插件Video.js_files/jcjg.png"></a>                          
+                        </div>
+
+                       <div class="alert cjms" role="alert">插件描述：Video.js 是一个通用的在网页上嵌入视频播放器的 JS 库，Video.js 自动检测浏览器对 HTML5 的支持情况，如果不支持 HTML5 则自动使用 Flash 播放器。（要支持ie低版本请下载5.4.3版 ）</div>                    
+                        <p style="white-space: normal;"><strong><span style="font-size: 18px;">Video.js最新v6.2.8版 2017-11-09更新</span></strong></p><p style="white-space: normal;"><a href="http://www.jq22.com//jquery/jQueryVideo.js6.2.8.zip" target="_self" title="Video.js v6.2.8版" textvalue="点击下载地址">点击下载地址</a></p><p style="white-space: normal;"><br></p><p style="white-space: normal;"><strong><span style="font-size: 18px;"></span></strong></p><p style="white-space: normal;"><strong><span style="font-size: 18px;">Video.js最新v6.2.5版 2017-8-21更新</span></strong></p><p style="white-space: normal;"><a href="http://www.jq22.com//jquery/jQueryVideo.js6.2.5.zip" target="_self" title="Video.js v6.2.5版" textvalue="点击下载地址">点击下载地址</a></p><p style="white-space: normal;"><strong><span style="font-size: 18px;"><br></span></strong></p><p style="white-space: normal;"><strong><span style="font-size: 18px;">Video.js最新v5.18.4版 2017-3-24更新(支持ie8)</span></strong></p><p style="white-space: normal;"><a href="http://www.jq22.com//jquery/jQueryVideo.js5.18.4.zip" target="_self" title="Video.js v5.18.4版" textvalue="点击下载地址">点击下载地址</a></p><p><br></p><p style="white-space: normal;"><strong><span style="font-size: 18px;">Video.js最新v5.16版 2017-2-16更新</span></strong></p><p style="white-space: normal;"><a href="http://www.jq22.com//jquery/jQueryVideo.js5.16.zip" target="_self" title="Video.js v5.16版" textvalue="点击下载地址">点击下载地址</a></p><p><br></p><p><strong><span style="font-size: 18px;">Video.js最新v5.10.8版 2016-10-11更新</span></strong></p><p><a href="http://www.jq22.com//jquery/jQuery-video5.10.8.zip" target="_self" title="Video.js v5.10.8版" textvalue="点击下载地址">点击下载地址</a></p><p><br></p><p><strong><span style="font-size: 18px;">Video.js v5.8.8版 2016-4-11更新</span></strong></p><p><a href="http://www.jq22.com//jquery/jQuery-video5.8.zip" target="_self" title="video5.8" textvalue="点击下载地址">点击下载地址</a></p><p><br></p><p><strong><span style="font-size: 18px;">Video.js历史v5.4.3版 2015-12-09更新</span></strong></p><p><a href="http://www.jq22.com//jquery/Video5.zip" target="_self">点击下载地址</a></p><p><br></p><p>Video.js 是一个通用的在网页上嵌入视频播放器的 JS 库，Video.js 自动检测浏览器对 HTML5 的支持情况，如果不支持 HTML5 则自动使用 Flash 播放器。</p><h3>使用方法</h3><p>在页面中引用video-js.cs样式文件和video.js</p><div><div id="highlighter_729052" class="syntaxhighlighter  html"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="html plain">&lt;</code><code class="html keyword">link</code>&nbsp;<code class="html color1">href</code><code class="html plain">=</code><code class="html string">"video-js.css"</code>&nbsp;<code class="html color1">rel</code><code class="html plain">=</code><code class="html string">"stylesheet"</code>&nbsp;<code class="html color1">type</code><code class="html plain">=</code><code class="html string">"text/css"</code><code class="html plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="html plain">&lt;</code><code class="html keyword">script</code>&nbsp;<code class="html color1">src</code><code class="html plain">=</code><code class="html string">"video.js"</code><code class="html plain">&gt;&lt;/</code><code class="html keyword">script</code><code class="html plain">&gt;</code></div></div></td></tr></tbody></table></div></div><p><br></p><p>设置flash路径，Video.js会在不支持html5的浏览中使用flash播放视频文件</p><div><div id="highlighter_394573" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">&lt;script&gt;</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">videojs.options.flash.swf&nbsp;=&nbsp;</code><code class="js string">"video-js.swf"</code><code class="js plain">;</code></div><div class="line number3 index2 alt2"><code class="js plain">&lt;/script&gt;</code></div></div></td></tr></tbody></table></div></div><p><strong>html</strong></p><p>poster="**"播放初始图。可使用三种视频格式，根据所需要格式选择对应的。</p><div><div id="highlighter_818105" class="syntaxhighlighter  html"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="html plain">&lt;</code><code class="html keyword">video</code>&nbsp;<code class="html color1">id</code><code class="html plain">=</code><code class="html string">"example_video_1"</code>&nbsp;<code class="html color1">class</code><code class="html plain">=</code><code class="html string">"video-js&nbsp;vjs-default-skin"</code>&nbsp;<code class="html plain">controls&nbsp;</code><code class="html color1">preload</code><code class="html plain">=</code><code class="html string">"none"</code>&nbsp;<code class="html color1">width</code><code class="html plain">=</code><code class="html string">"640"</code>&nbsp;<code class="html color1">height</code><code class="html plain">=</code><code class="html string">"264"</code></div><div class="line number2 index1 alt1"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html color1">poster</code><code class="html plain">=</code><code class="html string">"<a href="http://video-js.zencoder.com/oceans-clip.png">http://video-js.zencoder.com/oceans-clip.png</a>"</code></div><div class="line number3 index2 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html color1">data-setup</code><code class="html plain">=</code><code class="html string">"{}"</code><code class="html plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">source</code>&nbsp;<code class="html color1">src</code><code class="html plain">=</code><code class="html string">"<a href="http:">http://</a>视频地址格式1.mp4"</code>&nbsp;<code class="html color1">type</code><code class="html plain">=</code><code class="html string">'video/mp4'</code>&nbsp;<code class="html plain">/&gt;</code></div><div class="line number5 index4 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">source</code>&nbsp;<code class="html color1">src</code><code class="html plain">=</code><code class="html string">"<a href="http:">http://</a>视频地址格式2.webm"</code>&nbsp;<code class="html color1">type</code><code class="html plain">=</code><code class="html string">'video/webm'</code>&nbsp;<code class="html plain">/&gt;</code></div><div class="line number6 index5 alt1"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">source</code>&nbsp;<code class="html color1">src</code><code class="html plain">=</code><code class="html string">"<a href="http:">http://</a>视频地址格式3.ogv"</code>&nbsp;<code class="html color1">type</code><code class="html plain">=</code><code class="html string">'video/ogg'</code>&nbsp;<code class="html plain">/&gt;</code></div><div class="line number7 index6 alt2"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">track</code>&nbsp;<code class="html color1">kind</code><code class="html plain">=</code><code class="html string">"captions"</code>&nbsp;<code class="html color1">src</code><code class="html plain">=</code><code class="html string">"demo.captions.vtt"</code>&nbsp;<code class="html color1">srclang</code><code class="html plain">=</code><code class="html string">"en"</code>&nbsp;<code class="html color1">label</code><code class="html plain">=</code><code class="html string">"English"</code><code class="html plain">&gt;&lt;/</code><code class="html keyword">track</code><code class="html plain">&gt;</code><code class="html comments">&lt;!--&nbsp;Tracks&nbsp;need&nbsp;an&nbsp;ending&nbsp;tag&nbsp;thanks&nbsp;to&nbsp;IE9&nbsp;--&gt;</code></div><div class="line number8 index7 alt1"><code class="html spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="html plain">&lt;</code><code class="html keyword">track</code>&nbsp;<code class="html color1">kind</code><code class="html plain">=</code><code class="html string">"subtitles"</code>&nbsp;<code class="html color1">src</code><code class="html plain">=</code><code class="html string">"demo.captions.vtt"</code>&nbsp;<code class="html color1">srclang</code><code class="html plain">=</code><code class="html string">"en"</code>&nbsp;<code class="html color1">label</code><code class="html plain">=</code><code class="html string">"English"</code><code class="html plain">&gt;&lt;/</code><code class="html keyword">track</code><code class="html plain">&gt;</code><code class="html comments">&lt;!--&nbsp;Tracks&nbsp;need&nbsp;an&nbsp;ending&nbsp;tag&nbsp;thanks&nbsp;to&nbsp;IE9&nbsp;--&gt;</code></div><div class="line number9 index8 alt2"><code class="html plain">&lt;/</code><code class="html keyword">video</code><code class="html plain">&gt;</code></div></div></td></tr></tbody></table></div></div><p>设置自动播放将下面代码加到html中代码后面<br></p><div><div id="highlighter_689576" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">&lt;script&nbsp;type=</code><code class="js string">"text/javascript"</code><code class="js plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">var</code>&nbsp;<code class="js plain">myPlayer&nbsp;=&nbsp;videojs(</code><code class="js string">'example_video_1'</code><code class="js plain">);</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">videojs(</code><code class="js string">"example_video_1"</code><code class="js plain">).ready(</code><code class="js keyword">function</code><code class="js plain">(){</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">var</code>&nbsp;<code class="js plain">myPlayer&nbsp;=&nbsp;</code><code class="js keyword">this</code><code class="js plain">;</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">myPlayer.play();</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">});</code></div><div class="line number7 index6 alt2"><code class="js plain">&lt;/script&gt;</code></div></div></td></tr></tbody></table></div></div><p>默认情况下，大的播放按钮是被定为在左上角的，这样就不会覆盖视频内容。如果你想让这个播放按钮居中，你可以给你的<span style="color: rgb(192, 80, 77);"> video </span>标签添加额外的 <span style="color: rgb(192, 80, 77);">vjs-big-play-centered </span>样式，比如：</p><div><div id="highlighter_936318" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">&lt;video&nbsp;id=</code><code class="js string">"example_video_1"</code>&nbsp;<code class="js plain">class=</code><code class="js string">"video-js&nbsp;vjs-default-skin&nbsp;vjs-big-play-centered"</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">controls&nbsp;preload=</code><code class="js string">"auto"</code>&nbsp;<code class="js plain">width=</code><code class="js string">"640"</code>&nbsp;<code class="js plain">height=</code><code class="js string">"264"</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">poster=</code><code class="js string">"<a href="http://video-js.zencoder.com/oceans-clip.png">http://video-js.zencoder.com/oceans-clip.png</a>"</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">data-setup=</code><code class="js string">'{"example_option":true}'</code><code class="js plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js plain">...</code></div><div class="line number6 index5 alt1"><code class="js plain">&lt;/video&gt;</code></div></div></td></tr></tbody></table></div></div><p>如果你还对播放按钮样式不满意可重新定义<span style="color: rgb(192, 80, 77);">.video-js .vjs-big-play-button</span>{/*这里的样式重写*/}。</p><h4>为动态加载的 HTML 元素设置 Video.js</h4><p>如果你的 web 页面或者应用是动态加载 video 标签的（ajax，appendChild，等等）,这样在页面加载后这个元素是不存在的，那么你会想要手动设置播放器而不是依靠 <span style="color: rgb(192, 80, 77);">data-setup </span>属性。要做到这一点，首先将 <span style="color: rgb(192, 80, 77);">data-setup</span> 属性从<span style="color: rgb(192, 80, 77);"> video</span> 标签中移除掉，这样在播放器初始化的时候就不会混乱了。接下来，运行下面的 javascript ，有时在 Video.js 加载后，有时是在 video 标签被加载进 DOM 后，</p><div><div id="highlighter_871764" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">videojs(</code><code class="js string">"example_video_1"</code><code class="js plain">,&nbsp;{},&nbsp;</code><code class="js keyword">function</code><code class="js plain">(){</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js comments">//&nbsp;Player&nbsp;(this)&nbsp;is&nbsp;initialized&nbsp;and&nbsp;ready.</code></div><div class="line number3 index2 alt2"><code class="js plain">});</code></div></div></td></tr></tbody></table></div></div><p>videojs 方法中的第一个参数是你的 video 标签的 ID，用你自己的代替。</p><p>第二个参数是一个选项对象。它允许你像设置 data-setup 属性一样设置额外的选项。</p><p>第三个参数是一个 'ready' 回调。一旦 Video.js 初始化完成后，就会触发这个回调。</p><p>你也可以传入一个元素本身的引用来代替元素ID：</p><div><div id="highlighter_381694" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">videojs(document.getElementById(</code><code class="js string">'example_video_1'</code><code class="js plain">),&nbsp;{},&nbsp;</code><code class="js keyword">function</code><code class="js plain">()&nbsp;{</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js comments">//&nbsp;This&nbsp;is&nbsp;functionally&nbsp;the&nbsp;same&nbsp;as&nbsp;the&nbsp;previous&nbsp;example.</code></div><div class="line number3 index2 alt2"><code class="js plain">});</code></div><div class="line number4 index3 alt1"><code class="js plain">videojs(document.getElementsByClassName(</code><code class="js string">'awesome_video_class'</code><code class="js plain">)[0],&nbsp;{},&nbsp;</code><code class="js keyword">function</code><code class="js plain">()&nbsp;{</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;</code><code class="js comments">//&nbsp;You&nbsp;can&nbsp;grab&nbsp;an&nbsp;element&nbsp;by&nbsp;class&nbsp;if&nbsp;you'd&nbsp;like,&nbsp;just&nbsp;make&nbsp;sure</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;</code><code class="js comments">//&nbsp;if&nbsp;it's&nbsp;an&nbsp;array&nbsp;that&nbsp;you&nbsp;pick&nbsp;one&nbsp;(here&nbsp;we&nbsp;chose&nbsp;the&nbsp;first).</code></div><div class="line number7 index6 alt2"><code class="js plain">});</code></div></div></td></tr></tbody></table></div></div><p>如果您无法播放内容，您得确保使用了 正确的格式，你的 HTTP 服务器可能无法提供正确的 MIME类型 的内容</p><p><br></p><p><strong>以下感谢网友<a href="http://www.jq22.com/mem417718" target="_blank" title="">怀念★往事</a> 的分享</strong></p><hr><p>var videoObj = videojs(“videoId”);</p><p><strong>ready:</strong></p><div><div id="highlighter_331039" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.ready(</code><code class="js keyword">function</code><code class="js plain">(){</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//在回调函数中，this代表当前播放器，</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//可以调用方法，也可以绑定事件。</code></div><div class="line number4 index3 alt1"><code class="js plain">})</code></div></div></td></tr></tbody></table></div></div><p><strong>播放：</strong></p><div><div id="highlighter_564058" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.play();</code></div></div></td></tr></tbody></table></div></div><p><strong>暂停：</strong></p><div><div id="highlighter_720085" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.pause();</code></div></div></td></tr></tbody></table></div></div><p><strong>获取播放进度：</strong></p><div><div id="highlighter_702798" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code>&nbsp;<code class="js plain">whereYouAt&nbsp;=&nbsp;myPlayer.currentTime();</code></div></div></td></tr></tbody></table></div></div><p><strong>设置播放进度：</strong></p><div><div id="highlighter_283490" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.currentTime(120);</code></div></div></td></tr></tbody></table></div></div><p><strong>视频持续时间</strong>，加载完成视频才可以知道视频时长，且在flash情况下无效</p><div><div id="highlighter_960058" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code>&nbsp;<code class="js plain">howLongIsThis&nbsp;=&nbsp;myPlayer.duration();</code></div></div></td></tr></tbody></table></div></div><p><strong>缓冲</strong>，就是返回下载了多少</p><div><div id="highlighter_942581" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code>&nbsp;<code class="js plain">whatHasBeenBuffered&nbsp;=&nbsp;myPlayer.buffered();</code></div></div></td></tr></tbody></table></div></div><p><strong>百分比的缓冲</strong></p><div><div id="highlighter_581255" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code>&nbsp;<code class="js plain">howMuchIsDownloaded&nbsp;=&nbsp;myPlayer.bufferedPercent();</code></div></div></td></tr></tbody></table></div></div><p><strong>声音大小</strong>（0-1之间）</p><div><div id="highlighter_357626" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code>&nbsp;<code class="js plain">howLoudIsIt&nbsp;=&nbsp;myPlayer.volume();</code></div></div></td></tr></tbody></table></div></div><p><strong>设置声音大小</strong></p><div><div id="highlighter_822458" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.volume(0.5);</code></div></div></td></tr></tbody></table></div></div><p><strong>取得视频的宽度</strong></p><div><div id="highlighter_333184" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code>&nbsp;<code class="js plain">howWideIsIt&nbsp;=&nbsp;myPlayer.width();</code></div></div></td></tr></tbody></table></div></div><p><strong>设置宽度：</strong></p><div><div id="highlighter_663496" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.width(640);</code></div></div></td></tr></tbody></table></div></div><p><strong>获取高度</strong></p><div><div id="highlighter_844084" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">var</code>&nbsp;<code class="js plain">howTallIsIt&nbsp;=&nbsp;myPlayer.height();</code></div></div></td></tr></tbody></table></div></div><p><strong>设置高度：</strong></p><div><div id="highlighter_987619" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.height(480);</code></div></div></td></tr></tbody></table></div></div><p><strong>一步到位的设置大小：</strong></p><div><div id="highlighter_926862" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.size(640,480);</code></div></div></td></tr></tbody></table></div></div><p><strong>全屏</strong></p><div><div id="highlighter_271667" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.enterFullScreen();</code></div></div></td></tr></tbody></table></div></div><p><strong>离开全屏</strong></p><div><div id="highlighter_771067" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.enterFullScreen();</code></div></div></td></tr></tbody></table></div></div><p><strong>添加事件</strong></p><div><div id="highlighter_145079" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">durationchange</code></div><div class="line number2 index1 alt1"><code class="js plain">ended&nbsp;</code><code class="js comments">//播放结束</code></div><div class="line number3 index2 alt2"><code class="js plain">firstplay</code></div><div class="line number4 index3 alt1"><code class="js plain">fullscreenchange</code></div><div class="line number5 index4 alt2"><code class="js plain">loadedalldata</code></div><div class="line number6 index5 alt1"><code class="js plain">loadeddata</code></div><div class="line number7 index6 alt2"><code class="js plain">loadedmetadata</code></div><div class="line number8 index7 alt1"><code class="js plain">loadstart</code></div><div class="line number9 index8 alt2"><code class="js plain">pause&nbsp;</code><code class="js comments">//暂停</code></div><div class="line number10 index9 alt1"><code class="js plain">play&nbsp;&nbsp;</code><code class="js comments">//播放</code></div><div class="line number11 index10 alt2"><code class="js plain">progress</code></div><div class="line number12 index11 alt1"><code class="js plain">seeked</code></div><div class="line number13 index12 alt2"><code class="js plain">seeking</code></div><div class="line number14 index13 alt1"><code class="js plain">timeupdate</code></div><div class="line number15 index14 alt2"><code class="js plain">volumechange</code></div><div class="line number16 index15 alt1"><code class="js plain">waiting</code></div><div class="line number17 index16 alt2"><code class="js plain">resize&nbsp;inherited</code></div><div class="line number18 index17 alt1"><code class="js spaces">&nbsp;</code>&nbsp;</div><div class="line number19 index18 alt2"><code class="js keyword">var</code>&nbsp;<code class="js plain">myFunc&nbsp;=&nbsp;</code><code class="js keyword">function</code><code class="js plain">(){</code></div><div class="line number20 index19 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js comments">//&nbsp;Do&nbsp;something&nbsp;when&nbsp;the&nbsp;event&nbsp;is&nbsp;fired</code></div><div class="line number21 index20 alt2"><code class="js plain">};</code></div></div></td></tr></tbody></table></div></div><p><strong>事件绑定</strong></p><div><div id="highlighter_587264" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.on(</code><code class="js string">"ended"</code><code class="js plain">,&nbsp;</code><code class="js keyword">function</code><code class="js plain">(){</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">console.log(</code><code class="js string">"end"</code><code class="js plain">,&nbsp;</code><code class="js keyword">this</code><code class="js plain">.currentTime());</code></div><div class="line number3 index2 alt2"><code class="js plain">});</code></div><div class="line number4 index3 alt1"><code class="js plain">myPlayer.on(</code><code class="js string">"pause"</code><code class="js plain">,&nbsp;</code><code class="js keyword">function</code><code class="js plain">(){</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">console.log(</code><code class="js string">"pause"</code><code class="js plain">)</code></div><div class="line number6 index5 alt1"><code class="js plain">});</code></div></div></td></tr></tbody></table></div></div><p><strong>删除事件</strong></p><div><div id="highlighter_185306" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">myPlayer.removeEvent(“eventName”,&nbsp;myFunc);</code></div></div></td></tr></tbody></table></div></div><p><strong>一个页面中有多个视频</strong>，需要点击后触发bootstrap 的模态窗，再弹出视频</p><p>我个人的方法是：</p><p><strong>html:</strong></p><div><div id="highlighter_62795" class="syntaxhighlighter  html"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="html plain">&lt;</code><code class="html keyword">a</code>&nbsp;<code class="html color1">videohref</code><code class="html plain">=</code><code class="html string">"<a href="http://xxx.mp4/">http://xxx.mp4</a>"</code>&nbsp;<code class="html color1">class</code><code class="html plain">=</code><code class="html string">"video_link"</code><code class="html plain">&gt;&lt;</code><code class="html keyword">img</code>&nbsp;&nbsp;<code class="html color1">src</code><code class="html plain">=</code><code class="html string">"../images/xxx.jpg"</code><code class="html plain">/&gt;&lt;/</code><code class="html keyword">a</code><code class="html plain">&gt;</code></div></div></td></tr></tbody></table></div></div><p><strong>JS:</strong></p><div><div id="highlighter_75967" class="syntaxhighlighter  js"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js plain">$(</code><code class="js string">".video_link"</code><code class="js plain">).click(</code><code class="js keyword">function</code><code class="js plain">()&nbsp;{</code></div><div class="line number2 index1 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">var</code>&nbsp;<code class="js plain">myPlayer&nbsp;=&nbsp;videojs(</code><code class="js string">'my-video'</code><code class="js plain">);</code></div><div class="line number3 index2 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js keyword">var</code>&nbsp;<code class="js plain">videoUrl&nbsp;=&nbsp;$(</code><code class="js keyword">this</code><code class="js plain">).attr(</code><code class="js string">"videohref"</code><code class="js plain">);</code></div><div class="line number4 index3 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">videojs(</code><code class="js string">"my-video"</code><code class="js plain">,&nbsp;{},&nbsp;</code><code class="js keyword">function</code><code class="js plain">()&nbsp;{</code></div><div class="line number5 index4 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">window.myPlayer&nbsp;=&nbsp;</code><code class="js keyword">this</code><code class="js plain">;</code></div><div class="line number6 index5 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">"#mymoda&nbsp;.video-con&nbsp;#my-video&nbsp;source"</code><code class="js plain">).attr(</code><code class="js string">"src"</code><code class="js plain">,&nbsp;videoUrl);</code></div><div class="line number7 index6 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">myPlayer.src(videoUrl);</code></div><div class="line number8 index7 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">myPlayer.load(videoUrl);</code></div><div class="line number9 index8 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">myPlayer.play();</code></div><div class="line number10 index9 alt1"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">});</code></div><div class="line number11 index10 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">$(</code><code class="js string">".click-modal"</code><code class="js plain">).click();</code></div><div class="line number12 index11 alt1"><code class="js plain">});</code></div><div class="line number13 index12 alt2"><code class="js comments">//&nbsp;模态窗消失时，关闭视频&nbsp;&nbsp;&nbsp;&nbsp;</code></div><div class="line number14 index13 alt1"><code class="js plain">$(</code><code class="js string">'#mymoda'</code><code class="js plain">).on(</code><code class="js string">'hidden.bs.modal'</code><code class="js plain">,&nbsp;</code><code class="js keyword">function</code><code class="js plain">()&nbsp;{</code></div><div class="line number15 index14 alt2"><code class="js spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="js plain">myPlayer.pause();</code></div><div class="line number16 index15 alt1"><code class="js plain">});</code></div></div></td></tr></tbody></table></div></div>                                      
+                        <ul class="x-top" style="padding-left:0px">
+                            <div class="fy f zhs"><span class="jg35">PREVIOUS:</span></div>
+                            <div class="fy f txtRight zhs"><span class="jg352">NEXT:</span></div>
+                            <div class="fy f"><a class="PREVIOUS" href="http://www.jq22.com/jquery-info405"> js Bing登陆页面 </a> </div>
+                            <div class="fy f txtRight"><a class="NEXT" href="http://www.jq22.com/jquery-info403"> jQuery iframe 嵌入插件Pym.js </a> </div>
+                            <div class="dr"></div>
+                            <div class="df"></div>
+                        </ul>
+                    </div>
+                   
+                   		<div class="in100">
+                               <div class="row" style="padding:0px 20px 10px 20px">
+                                    <div class="f z16"> 相关插件-音频和视频</div>
+                                    <div class="r z16"><a href="http://www.jq22.com/jquery-plugins%E9%9F%B3%E9%A2%91%E5%92%8C%E8%A7%86%E9%A2%91-1-jq"> 查看更多 <i class="fa fa-angle-right"></i></a></div>
+                               </div>
+                            
+                   			<div class="col-lg-4 col-md-3 col-sm-4">
+                                <a href="http://www.jq22.com/jquery-info3446"><img src="./视频播放插件Video.js_files/1506112224563618.jpg"></a>
+                                <div class="cover-info">
+                                    <a href="http://www.jq22.com/jquery-info3446"><h4>CKplayer</h4></a>
+                                    <small>简单的CKplayer demo</small>                       
+                                </div>  
+                                <div class="cover-fields">
+                                    <i class="fa fa-list-ul"></i> &nbsp;
+                                    音频和视频
+                                </div>
+                                <div class="cover-stat">
+                                    <i class="fa fa-eye"></i><span class="f10"> &nbsp;44760</span>
+                                    <i class="fa fa-heart"></i><span class="f10"> &nbsp;95</span>
+                                    <div class="cover-yh">
+                                        <a href="http://www.jq22.com/mem39" data-container="body" data-toggle="popover" data-placement="top" data-content="云~{^_^}~一涵 " data-original-title="" title="">
+                                            <i class="fa fa-user-secret"></i>
+                                        </a>
+                                    </div>
+                                </div>        
+                            </div>                    
+                            
+                   			<div class="col-lg-4 col-md-3 col-sm-4">
+                                <a href="http://www.jq22.com/jquery-info10905"><img src="./视频播放插件Video.js_files/2016-11-25-11-11-21.png"></a>
+                                <div class="cover-info">
+                                    <a href="http://www.jq22.com/jquery-info10905"><h4>Html5 手机视频播放器自适应</h4></a>
+                                    <small>Html5 手机视频播放器自适应</small>                       
+                                </div>  
+                                <div class="cover-fields">
+                                    <i class="fa fa-list-ul"></i> &nbsp;
+                                    音频和视频
+                                </div>
+                                <div class="cover-stat">
+                                    <i class="fa fa-eye"></i><span class="f10"> &nbsp;34637</span>
+                                    <i class="fa fa-heart"></i><span class="f10"> &nbsp;186</span>
+                                    <div class="cover-yh">
+                                        <a href="http://www.jq22.com/mem184810" data-container="body" data-toggle="popover" data-placement="top" data-content="PéiGǔangTíng " data-original-title="" title="">
+                                            <i class="fa fa-user-secret"></i>
+                                        </a>
+                                    </div>
+                                </div>        
+                            </div>                    
+                            
+                   			<div class="col-lg-4 col-md-3 col-sm-4">
+                                <a href="http://www.jq22.com/jquery-info144"><img src="./视频播放插件Video.js_files/pc-f56bd500-29c8-11e4-a320-000c29f61318.png"></a>
+                                <div class="cover-info">
+                                    <a href="http://www.jq22.com/jquery-info144"><h4>jQuery关灯效果视频插件</h4></a>
+                                    <small>jQuery关灯效果视频插件</small>                       
+                                </div>  
+                                <div class="cover-fields">
+                                    <i class="fa fa-list-ul"></i> &nbsp;
+                                    音频和视频
+                                </div>
+                                <div class="cover-stat">
+                                    <i class="fa fa-eye"></i><span class="f10"> &nbsp;19715</span>
+                                    <i class="fa fa-heart"></i><span class="f10"> &nbsp;28</span>
+                                    <div class="cover-yh">
+                                        <a href="http://www.jq22.com/mem4" data-container="body" data-toggle="popover" data-placement="top" data-content="大圣 " data-original-title="" title="">
+                                            <i class="fa fa-user-secret"></i>
+                                        </a>
+                                    </div>
+                                </div>        
+                            </div>                    
+                            
+                   			<div class="col-lg-4 col-md-3 col-sm-4">
+                                <a href="http://www.jq22.com/jquery-info15454"><img src="./视频播放插件Video.js_files/2017-08-24-01-18-09.png"></a>
+                                <div class="cover-info">
+                                    <a href="http://www.jq22.com/jquery-info15454"><h4>Canvas获取音乐频谱</h4></a>
+                                    <small>Canvas实现的音乐频谱，兼容性较差，请使用Chrome浏览器观赏！</small>                       
+                                </div>  
+                                <div class="cover-fields">
+                                    <i class="fa fa-list-ul"></i> &nbsp;
+                                    音频和视频
+                                </div>
+                                <div class="cover-stat">
+                                    <i class="fa fa-eye"></i><span class="f10"> &nbsp;3826</span>
+                                    <i class="fa fa-heart"></i><span class="f10"> &nbsp;25</span>
+                                    <div class="cover-yh">
+                                        <a href="http://www.jq22.com/mem96394" data-container="body" data-toggle="popover" data-placement="top" data-content="nta.kim " data-original-title="" title="">
+                                            <i class="fa fa-user-secret"></i>
+                                        </a>
+                                    </div>
+                                </div>        
+                            </div>                    
+                            
+                            
+                            <div class="df"></div>  
+                   		</div>
+                  
+                    	<div class="in2">
+                            	<h4>讨论这个项目（719）<span class="z14">回答他人问题或分享插件使用方法奖励jQ币</span></h4>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem691632"><img src="./视频播放插件Video.js_files/28.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 水?たいい <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/30 17:03:16</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>视频路径改成本地视频的话进度条就用不了了。。是什么问题呢？哪位帅哥帮我解答一下呗</p><p>另外这个插件真的很好用，赞一下</p>
+                                                                                       
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem691632"><img src="./视频播放插件Video.js_files/28.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f"> 水?たいい<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/30 17:08:57</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p>看了好多网友都有这个问题。@hacker大大可以解答一下吗？</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                
+                                          <a class="hf" name="48137">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem583505"><img src="./视频播放插件Video.js_files/34.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 冥冥之中天注定 <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/29 11:44:41</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>怎么在一个页面同时播放两个视频。或者修改两侧黑边的颜色，急急急</p>
+                                            
+                                          <a class="hf" name="48034">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem498766"><img src="./视频播放插件Video.js_files/12.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> Crazy┽Rainbow. <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/28 21:32:43</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>求告知视频是哪部动画的</p>
+                                                                                       
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem18"><img src="./视频播放插件Video.js_files/45.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f">   西瓜<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/28 22:33:03</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p>瑞克与莫蒂第三季，第三集。</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                
+                                          <a class="hf" name="48012">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem392096"><img src="./视频播放插件Video.js_files/8.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 吃饭睡觉打豆豆 <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/27 19:13:28</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    wjczhs2017/11/17 8:53:41同问
+                                            
+                                          <a class="hf" name="47941">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem364290"><img src="./视频播放插件Video.js_files/34.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 团子圆 <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/26 13:39:27</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>“一个页面中有多个视频，需要点击后触发bootstrap 的模态窗，再弹出视频</p><p>我个人的方法是：”</p><p>因为我也需要这样的效果，所以用了他的代码，但是报错;</p><p>&nbsp;The element or ID supplied is not valid</p>
+                                            
+                                          <a class="hf" name="47846">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem538154"><img src="./视频播放插件Video.js_files/23.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 深圳 - 国贸 - 徐伟勇 <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/23 19:06:59</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>本地视频为什么不能播放？</p>
+                                                                                       
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem18"><img src="./视频播放插件Video.js_files/45.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f">   西瓜<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/28 22:34:35</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p>可以播放，注意路径和视屏格式就行了。</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                
+                                          <a class="hf" name="47727">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem281565"><img src="./视频播放插件Video.js_files/26.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 演?。 <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/22 17:34:33</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>老师。。 我想问下&nbsp; 我想用这个插件来播放iphone 的mov格式视频 能不能播放</p>
+                                            
+                                          <a class="hf" name="47636">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem697713"><img src="./视频播放插件Video.js_files/23.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 小溪 <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/19 12:08:16</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>To view this video please enable JavaScript, and consider upgrading to a web browser that</p>什么原因会不播放视频显示这段文字
+                                            
+                                          <a class="hf" name="47351">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem82664"><img src="./视频播放插件Video.js_files/22.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 猪小二呐呐呐 <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/18 16:23:13</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>ios 默认状态下怎么去掉进度条，点击播放才显示</p><p>还有，ios点击播放后，一直点不出进度条出来了</p>
+                                                                                       
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem701511"><img src="./视频播放插件Video.js_files/21.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f"> 徐<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/24 13:44:19</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p>还支持ios？</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                
+                                          <a class="hf" name="47325">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pl">
+                                	<div class="tx"><a href="http://www.jq22.com/mem697713"><img src="./视频播放插件Video.js_files/23.png"></a></div>
+                                	<ul class="plbg">
+                                    	<div class="f"> 小溪 <span class="jl">0</span></div>
+                                        <div class="r"> <span class="z12">2017/11/17 9:25:05</span></div>
+                                        <div class="dr"></div>
+  									</ul>
+                                    <ul style="word-wrap: break-word;width: 100%">
+                                    <p>&nbsp;To view this video please enable JavaScript, and consider upgrading to a web browser that&nbsp;&nbsp;&nbsp;&nbsp;supports HTML5 video 我上传服务器，打开网页直接显示这个，在本机上预览还好用能看到视频，是不是服务器上应该设置什么？</p>
+                                                                                       
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem697713"><img src="./视频播放插件Video.js_files/23.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f"> 小溪<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/17 9:26:04</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p>是我服务器没安装flash播放器？</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                                                           
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem292493"><img src="./视频播放插件Video.js_files/7.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f"> 灿烂星空<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/17 11:06:52</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p>IIS上没有MP4解析</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                                                           
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem697713"><img src="./视频播放插件Video.js_files/23.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f"> 小溪<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/17 15:12:38</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p>就是MIME添加文件类型，已经做了</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                                                           
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem697713"><img src="./视频播放插件Video.js_files/23.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f"> 小溪<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/17 15:15:23</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p data-filtered="filtered">服务器是IE6.0是不是这个原因，但客户端浏览器都是IE11</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                                                           
+                                            <ul>
+                                                <div class="pl">
+                                                    <div class="tx tx2"><a href="http://www.jq22.com/mem697713"><img src="./视频播放插件Video.js_files/23.png"></a></div>
+                                                    <ul class="plbg plbg2">
+                                    	                <div class="f"> 小溪<span class="jl">0</span></div>
+                                                        <div class="r"> <span class="z12">2017/11/17 15:23:15</span></div>
+                                                        <div class="dr"></div>
+  									                </ul>
+                                                    <ul style="padding-top: 10px; padding-bottom: 10px;word-wrap: break-word;width: 100%">
+                                                         <p>我的服务器不能上互联网，是局域网</p>
+                                                    </ul>
+                                                </div>
+                                             </ul>
+                                                
+                                          <a class="hf" name="47249">回复</a>
+                                          <div class="lyhf"></div>
+                                           
+                                         <div class="dr"></div>
+                                    </ul>
+                                </div>
+                                
+                                 <div class="text-center z20 top20 pla plb"><a href="http://www.jq22.com/message404"><i class="fa fa-comment" aria-hidden="true"></i> 查看更多评论 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></div>
+                                 <a name="anchor"></a>
+                                <div class="df dr"></div> 
+                        </div>
+
+                        <div class="in2">
+                            <div id="err" class="alert alert-danger" role="alert" style="display:none"><i class="fa fa-smile-o"></i> 登录后才可以评论</div>
+                            <div id="err2" class="alert alert-warning" role="alert" style="display:none"><i class="fa fa-smile-o"></i> 30秒后在评论吧!</div>
+                            <div class="wangEditor-container"><div class="wangEditor-btn-container clearfix"><div class="wangEditor-btn-container-group"><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">插入代码</div></div><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title=""><i class="icon-wangEditor-terminal"></i></a><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">加粗</div></div><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title="" commandname="bold"><i class="icon-wangEditor-bold"></i></a></div><div class="wangEditor-btn-container-group"><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">列表</div></div><ul class="wangEditor-drop-menu" style="display: none;"><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="InsertUnorderedList"><i class="icon-wangEditor-list-bullet"> 无序列表</i></a></li><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="InsertOrderedList"><i class="icon-wangEditor-list-numbered"> 有序列表</i></a></li></ul><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title=""><i class="icon-wangEditor-list-bullet"></i><i class="icon-wangEditor-angle-down" style="margin-left:3px;"></i></a><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">对齐</div></div><ul class="wangEditor-drop-menu" style="display: none;"><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="JustifyLeft"><i class="icon-wangEditor-align-left"> 左对齐</i></a></li><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="JustifyCenter"><i class="icon-wangEditor-align-center"> 居中</i></a></li><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="JustifyRight"><i class="icon-wangEditor-align-right"> 右对齐</i></a></li></ul><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title=""><i class="icon-wangEditor-align-left"></i><i class="icon-wangEditor-angle-down" style="margin-left:3px;"></i></a></div><div class="wangEditor-btn-container-group"><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">横线</div></div><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title="" commandname="InsertHorizontalRule"><i class="icon-wangEditor-minus"></i></a><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">撤销</div></div><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title="" commandname="commonUndo"><i class="icon-wangEditor-ccw"></i></a></div></div><div class="wangEditor-textarea-container" style="height: 156px;"><div class="wangEditor-textarea" contenteditable="true" style="min-height: 146px;"><p><br></p></div></div><a href="http://www.jq22.com/jquery-info404#" class="wangEditor-elemDeleteBtn"><i class="icon-wangEditor-cancel"></i></a><div class="wangEditor-imgResize"></div></div><textarea id="textarea1" style="height: 200px; width: 100%; display: none;"></textarea>
+                            
+                            <div class="r top10">
+                            <button onclick="getPlainTxt()" type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                              发表评论
+                            </button>
+                            
+                            </div>
+                            <div class="dr"></div>
+                        </div>
+
+                        <div class="huif">                         
+                             <div class="wangEditor-container"><div class="wangEditor-btn-container clearfix"><div class="wangEditor-btn-container-group"><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">插入代码</div></div><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title=""><i class="icon-wangEditor-terminal"></i></a><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">加粗</div></div><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title="" commandname="bold"><i class="icon-wangEditor-bold"></i></a></div><div class="wangEditor-btn-container-group"><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">列表</div></div><ul class="wangEditor-drop-menu" style="display: none;"><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="InsertUnorderedList"><i class="icon-wangEditor-list-bullet"> 无序列表</i></a></li><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="InsertOrderedList"><i class="icon-wangEditor-list-numbered"> 有序列表</i></a></li></ul><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title=""><i class="icon-wangEditor-list-bullet"></i><i class="icon-wangEditor-angle-down" style="margin-left:3px;"></i></a><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">对齐</div></div><ul class="wangEditor-drop-menu" style="display: none;"><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="JustifyLeft"><i class="icon-wangEditor-align-left"> 左对齐</i></a></li><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="JustifyCenter"><i class="icon-wangEditor-align-center"> 居中</i></a></li><li><a href="http://www.jq22.com/jquery-info404#" customcommandname="JustifyRight"><i class="icon-wangEditor-align-right"> 右对齐</i></a></li></ul><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title=""><i class="icon-wangEditor-align-left"></i><i class="icon-wangEditor-angle-down" style="margin-left:3px;"></i></a></div><div class="wangEditor-btn-container-group"><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">横线</div></div><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title="" commandname="InsertHorizontalRule"><i class="icon-wangEditor-minus"></i></a><div class="wangEditor-toolTip"><div class="wangEditor-toolTip-content">撤销</div></div><a class="wangEditor-btn-container-btn wangEditor-btn-container-btn-default" href="http://www.jq22.com/jquery-info404#" title="" commandname="commonUndo"><i class="icon-wangEditor-ccw"></i></a></div></div><div class="wangEditor-textarea-container" style="height: 142px;"><div class="wangEditor-textarea" contenteditable="true" style="min-height: 132px;"><p><br></p></div></div><a href="http://www.jq22.com/jquery-info404#" class="wangEditor-elemDeleteBtn"><i class="icon-wangEditor-cancel"></i></a><div class="wangEditor-imgResize"></div></div><textarea id="textarea2" style="height: 150px; width: 100%; display: none;"></textarea>
+                             <button onclick="hftj()" type="button" class="btn btn-primary top10">回复</button>
+                            <a class="qxhf" onclick="qx()" style="padding-top: 10px;">取消回复</a>
+                        </div>
+                </div>
+  
+           </div>
+      
+            <!--end左-->
+            
+            <!--右-->
+            <div class="col-lg-2 visible-lg" style="width:200px">
+                <div class="affd affix-top" style="width:200px">
+                <ul class="zuo f ">
+                    <h6>PROMULGATOR</h6>
+                    <a href="http://www.jq22.com/mem1"><img src="./视频播放插件Video.js_files/8.png"></a>
+                    <div class="zuox f">
+                    	<h4>hacker</h4>
+                        <i class="fa fa-map-marker"></i> <span>火星</span>
+                    </div>
+                    <button type="button" class="btn btn-z top20" onclick="zuozhe()"><i class="fa fa-plus-circle"></i> 关注作者 <span>(550)</span></button>
+                    <button type="button" class="btn btn-z top10" onclick="sc()"><i class="fa fa-heart-o"></i> 收藏此插件 <span>(845)</span></button>
+                    <a href="http://www.jq22.com/shoucangadd.aspx" class="btn  btn-danger top10" style="display:none" id="scs"> 收藏插件以超出上限！<br><b> 点击增加上限数 </b></a>
+                    <div class="df"></div>
+                </ul>
+                <div class="df"></div>
+                 </div>
+            	<ul class="list-group" style="margin-bottom:10px">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="搜索插件.." style="height: 34px; margin-top: 8px;" id="searchtxt">
+    <span class="input-group-btn">
+    <button class="btn btn-default" type="button" id="seobut" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-left-width: 0px;"><i class="fa fa-search"></i></button>
+    </span> 
+    
+  </div>
+</ul>
+ 
+                <ul class="list-group">
+                  <a class="list-group-item on" href="http://www.jq22.com/jq1-jq1" data-para="time"><i class="fa fa-flag"></i> &nbsp;最新发布</a>
+                  <a class="list-group-item" href="http://www.jq22.com/jq1-jq4" data-para="comments"><i class="fa fa-heart"></i> &nbsp;最多收藏</a>
+                  <a class="list-group-item" href="http://www.jq22.com/jq1-jq2" data-para="comments"><i class="fa fa-comments-o"></i> &nbsp;最多评论</a>
+                  <a class="list-group-item" href="http://www.jq22.com/jq1-jq3" data-para="downloads"><i class="fa fa-arrow-circle-o-down"></i> &nbsp;最多下载</a>
+                  <a class="list-group-item" href="http://www.jq22.com/jq1-jq8" data-para="ie8"><i class="fa fa-bus"></i> &nbsp;兼容IE8</a>
+                  <a class="list-group-item" href="http://www.jq22.com/jq1-jq6" data-para="ie6"><i class="fa fa-motorcycle"></i> &nbsp;兼容IE6</a> 
+                </ul>
+                <ul class="list-group">
+                     <a class="list-group-item on" href="http://www.jq22.com/cssgsh" data-para="time"><i class="fa fa-css3"></i> &nbsp;css 格式化工具</a>
+                     <a class="list-group-item on" href="http://www.jq22.com/jsgsh" data-para="time"><i class="fa fa-code"></i> &nbsp;js 格式化工具</a>
+                     <a class="list-group-item on" href="http://www.jq22.com/cdn" data-para="time"><i class="fa fa-rocket"></i> &nbsp;CDN加速</a>
+                </ul>
+                <ul class="list-group" style="margin-top:0px">
+                    <button type="button" class="btn btn-info" style="width:100%" onclick="fbcj()">发布资源获得jQ币</button> 
+                    <a class="btn btn-success top10" style="width:100%" href="http://www.jq22.com/zxzf.aspx">直接获得jQ币</a> 
+                </ul>
+                </div>
+           
+            <!--end右-->        
+    </div>  
+<!--end主体-->
+
+
+<div class="itop" style="display: block;"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="mydown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content dwontop">
+      <div class="modal-header dwonbtbg dwonx">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title " id="myModalLabel">视频播放插件Video.js</h4>
+      </div>
+      <div class="modal-body ">
+         <div class="yuei">
+         	<i class="fa fa-btc"></i> 我当前jQ币余额：<span class="z30 f20 og" id="jf">正在获取..</span> <i class="fa fa-download"></i> 已下载次数：<span class="z30">49324</span>   
+         </div>
+         <div class="yuei">
+         	<span class="xzsm">所需jQ币：<span class="en">0</span></span><a href="javascript:void(0)" onclick="xz()" class="xzsm xza"><i class="fa fa-download"></i> 开始下载</a>  
+         </div>
+         <div id="err3" class="alert alert-danger top20" role="alert" style="display:none;background-color: #FFF6F6;"><i class="fa fa-frown-o"></i> <span id="xzts"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form id="openWin" action="http://www.jq22.com/jquery-info404#" target="_blank" method="get"></form>
+<script src="./视频播放插件Video.js_files/bootstrap.min.js.下载"></script>
+<script src="./视频播放插件Video.js_files/m.js.下载"></script>
+<script type="text/javascript" src="./视频播放插件Video.js_files/shCore.js.下载"></script>
+<script type="text/javascript" src="./视频播放插件Video.js_files/shBrushXml.js.下载"></script>
+<script type="text/javascript">SyntaxHighlighter.highlight();</script>
+<script type="text/javascript" src="./视频播放插件Video.js_files/wangEditor.min.js.下载"></script>
+<script type="text/javascript" charset="utf-8">
+    $('.affd').affix({ offset: { top: $('.affd').offset().top + 500 } });
+    $("#seobut").click(function () { var seo = $("#searchtxt").val(); if (seo.length > 1) { window.location.href = "search?seo=" + seo; } });
+    $('#searchtxt').bind('keypress', function (event) { if (event.keyCode == "13") { var seo = $("#searchtxt").val(); if (seo.length > 1) { window.location.href = "search?seo=" + seo; } } });
+    $(function () {
+        var editor = $('#textarea1').wangEditor({
+            'menuConfig': [
+				['insertCode', 'bold'],
+				['list', 'justify'],
+				['insertHr', 'undo']
+            ]
+        });
+        var editor2 = $('#textarea2').wangEditor({
+            'menuConfig': [
+				['insertCode', 'bold'],
+				['list', 'justify'],
+				['insertHr', 'undo']
+            ]
+        });
+    });
+    var a = "404";
+    var dzurl = window.location.href.substr(0, 26);
+    var dzurl2 = window.location.href.substr(0, 22);
+    var dzurl3 = window.location.href.substr(0, 27);
+    var dzurl4 = window.location.href.substr(0, 11);
+    if (dzurl == "http://www.jq22.com/plugin" || dzurl2 == "http://jq22.com/plugin" || dzurl3 == "http://jq22.com/jquery-info" || dzurl4 == "http://demo") {
+        window.location.href = "http://www.jq22.com/jquery-info" + a;
+    }
+    var errstr = window.location.href;
+    sperrstr = errstr.split("");
+    errul = sperrstr[sperrstr.length - 1];
+    if (errul == "/") {
+        errstr = errstr.substring(0, errstr.length - 1);
+        window.location.href = errstr;
+    }
+    var b = "1";
+    var lytjbut = document.getElementById('myButton');
+    function getPlainTxt() {
+        if ($('#textarea1').val().length > 5) {
+            lytjbut.disabled = true;
+        }
+        setTimeout(function () {        
+            var k="o";
+            if(k=="0"){
+                myLogin($('#textarea1').val());
+            }
+            else
+            {
+                $("#err").css("display", "block");
+            }
+            
+        }, 1000);        
+    }
+    var pid;
+    $(".hf").click(function () {
+        pid=$(this).attr("name");
+        $(".hf").css("padding-bottom", "10px");
+        $(".huif").css({ "top": $(this).offset().top - 30, "display": "block" });
+        $(this).css("padding-bottom", "300px");
+    });
+    function qx() {
+        $(".hf").css("padding-bottom", "10px");
+        $(".huif").css("display", "none");
+    }
+    function hftj() {
+        var jhf = document.getElementById("textarea2").value;
+        jhf = jhf.replace(/<(script)[\S\s]*?\1>|style\=".+?"|title\=".+?"|class\=".+?"/gi, "");
+        jhf = jhf.replace(/<p><br><\/p>|<p><\/p>/gi, "");
+        jhf = jhf.replace(/<\/?([a-o]|[q-s]|[u-z])[^>]*>/gi, "");
+        jhf = jhf.replace(/<\/?(textarea)[^>]*>/gi, "");
+        var hfHTML = encodeURIComponent(jhf);
+        if (hfHTML.length > 5) {
+            var h = $.ajax({
+                type: 'post',
+                url: '/fyadd.aspx',
+                data: { yy: pid, nr:hfHTML, ww:a},
+                cache: false,
+                dataType: 'text',
+                success: function (data){
+                    if (data == "y") {
+                        window.location.reload();
+                    } else {
+                        $("#err2").css("display", "block");
+                        $("#err2").addClass("dou2");
+                    }
+                },
+                error: function () { }
+            });
+        }
+    }
+    function myLogin(aa) {
+        var jhf = aa;
+        jhf = jhf.replace(/<(script)[\S\s]*?\1>|style\=".+?"|title\=".+?"|class\=".+?"/gi, "");
+        jhf = jhf.replace(/<p><br><\/p>|<p><\/p>/gi, "");
+        jhf = jhf.replace(/<\/?([a-o]|[q-s]|[u-z])[^>]*>/gi, "");
+        jhf = jhf.replace(/<\/?(textarea)[^>]*>/gi, "");
+        var encodeHTML = encodeURIComponent(jhf);
+        if (aa.length > 3) {
+            var yz = $.ajax({
+                type: 'post',
+                url: '/lyadd.aspx',
+                data: { wz: a, nr: encodeHTML, zz: b },
+                cache: false,
+                dataType: 'text',
+                success: function (data) {
+                    if (data == "y") {                        
+                        window.location.reload();
+                    } else {
+                        $("#err2").css("display", "block");
+                        $("#err2").addClass("dou2");
+                    }
+                },
+                error: function () { }
+            });
+        }
+    }
+    function mydown() {
+        var yz = $.ajax({
+            type: 'post',
+            url: '/down.aspx',
+            data: {},
+            cache: false,
+            dataType: 'text',
+            success: function (data) {
+                $("#jf").html(data);
+            },
+            error: function () { }
+        });
+    }
+    function xz() {
+        var yz = $.ajax({
+            type: 'post',
+            url: '/xz.aspx',
+            data: { wz: a },
+            cache: false,
+            dataType: 'text',
+            success: function (data) {
+                if (data == '3') {
+                    $("#xzts").html("登录后才可以下载！");
+                    $("#err3").css("display", "block");
+                    $("#err3").addClass("dou2");
+                }
+                else if (data == '0') {
+                    $("#err3").css("display", "block");
+                    $("#err3").addClass("dou2");
+                    $("#xzts").html("余额不足,发布资源、回答他人提问、分享插件使用方法奖励jQ币，或者直接 <b><a href='http://www.jq22.com/zxzf.aspx' target='_blank' style='color: #24B900; font-size:17px'>充值!</a></b>");
+                }
+                else
+                {
+                    $("#xzts").html(data);
+                    window.location.href = "../"+data;
+                }
+            },
+            error: function () { }
+        });
+    }
+    function sc() {     
+        var yz = $.ajax({
+            type: 'post',
+            url: '/shou.aspx',
+            data: { wz:a},
+            cache: false,
+            dataType: 'text',
+            success: function (data) {
+                if (data == "m") {                  
+                    $("#myModal").modal();
+                }
+                else if (data == "s") {
+                   // alert("nnnnnnnnn");
+                    $("#scs").fadeIn(800);
+                }
+                else {
+                    window.location.href = window.location;
+                    lytjbut.disabled = false;
+                }
+            },
+            error: function () { }
+        });     
+    }
+    function zuozhe() {
+        var yz = $.ajax({
+            type: 'post',
+            url: '/zuozhe.aspx',
+            data: {z:b },
+            cache: false,
+            dataType: 'text',
+            success: function (data) {
+                if (data == "m") {
+                    $("#myModal").modal();
+                } else {
+                    window.location.href = window.location;
+                }
+            },
+            error: function () { }
+        });
+    }
+    function fbcj() {
+        yh = "";
+        if (yh != "") {
+            window.location.href = "jq22Release.aspx";
+        } else {
+            $("#myModal").modal();
+        }
+    }
+    $(".jl").each(function () {
+        if ($(this).text() > 0) {
+            $(this).css('display', 'inline-block');
+            $(this).html("评论奖励 " + $(this).text() + " jQ币");
+        }
+    });
+    $(function () { var e = $(".itop"); $(window).scroll(function () { var t = $(document).scrollTop(); if (t > 300) { e.fadeIn("slow") } else { e.fadeOut("slow") } }); e.click(function () { $("html,body").animate({ scrollTop: 0 }, 500) }) });
+
+    $.post("newsMessage.aspx", function (data) { if (data == "y") { $(".xyd").fadeIn("slow") } });
+</script>
+<script>
+	window._bd_share_config = {
+		common : {
+			bdText : '视频播放插件Video.js',	
+			bdDesc : 'Video.js 是一个通用的在网页上嵌入视频播放器的 JS 库，Video.js 自动检测浏览器对 HTML5 的支持情况，如果不支持 HTML5 则自动使用 Flash 播放器。（要支持ie低版本请下载5.4.3版 ）',	
+		    bdUrl: 'http://www.jq22.com/jquery-info404',
+		    bdPic: 'http://assets.jq22.com/plugin/2015-08-25-23-08-04.jpg'
+		},
+		share : [{
+			"bdSize" : 24
+		}],				
+	}
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<div id="pfk"><div class="pfys"><i class="fa fa-cog " aria-hidden="true"></i><a class="pfysA pfy1" name="#222222"></a><a class="pfysA pfy2" name="#f4f4f4"></a></div></div>
+<script src="./视频播放插件Video.js_files/pifu.js.下载"></script>
+
+
+<!--底部-->
+<nav class="foot navbar-inverse navbar-fixed-bottom">
+	<ul class="list-inline">
+      <li class="footer-ss"><a href="http://www.jq22.com/copyright.aspx">版权声明</a></li>
+      <li class="footer-ss"><a href="http://www.jq22.com/feedback.aspx">在线反馈</a></li>
+      <li class="footer-ss"><a href="http://www.jq22.com/cooperation.aspx">广告合作</a></li>
+      <li class="footer-ss">帮助中心</li>
+      <li>Copyright © 2012-2017 jQuery插件库Version 3.0.0. 备案号:<a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">沪ICP备13043785号-1</a></li>
+    </ul>
+    <ul class="list-inline text-right">
+   	 	<li>               
+    	</li>
+    </ul>
+</nav>
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?b3a3fc356d0af38b811a0ef8d50716b8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+ 	
+<!--end底部-->
+
+
+
+<div class="wangEditor-modal-container"><div class="wangEditor-modal"><div class="wangEditor-modal-header clearfix"><a href="http://www.jq22.com/jquery-info404#" commandname="close" class="wangEditor-modal-header-close"><i class="icon-wangEditor-cancel"></i></a><b>插入代码</b><div class="wangEditor-modal-header-line"></div></div><p>请输入代码 ：</p><div><textarea id="wangeditor_08298044545266416_1" style="width:100%; height:100px;"></textarea></div><button id="wangeditor_08298044545266416_3" type="button" class="wangEditor-modal-btn">插入</button></div></div><div class="wangEditor-modal-container"><div class="wangEditor-modal"><div class="wangEditor-modal-header clearfix"><a href="http://www.jq22.com/jquery-info404#" commandname="close" class="wangEditor-modal-header-close"><i class="icon-wangEditor-cancel"></i></a><b>插入代码</b><div class="wangEditor-modal-header-line"></div></div><p>请输入代码 ：</p><div><textarea id="wangeditor_08298044545266416_4" style="width:100%; height:100px;"></textarea></div><button id="wangeditor_08298044545266416_6" type="button" class="wangEditor-modal-btn">插入</button></div></div></body></html>

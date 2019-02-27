@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script>
+    window.onload=function(){
+      var canvas = document.getElementById("canvas");
+      
+             if (canvas == null)
+                 return false;
+             var context = canvas.getContext("2d");
+            context.arc(50, 50, 50, 0, 2*Math.PI , false);
+            context.fillStyle = 'rgba(255,0,0,0.8)';
+            context.fill();
+            context.strokeStyle = 'rgba(255,0,0,1)'
+            context.stroke();
+
+
+            //1/4圆弧
+            context.moveTo(100,150); //决定是饼状还是圆弧
+            context.arc(100, 150, 50, 0, Math.PI/2 , false);
+            context.fillStyle = 'rgba(255,0,0,0.8)';
+            context.fill();
+            context.strokeStyle = 'rgba(255,0,0,1)'
+            context.stroke();
+            
+    }
+</script>
+<style>
+    canvas { background:orange;}
+</style>
+</head>
+<body>
+    <canvas id="canvas" width="500px" height="300px"></canvas>
+</body>
+</html>

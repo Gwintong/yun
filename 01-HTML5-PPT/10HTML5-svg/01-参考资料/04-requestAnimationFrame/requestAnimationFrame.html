@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0124)http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/ -->
+<html lang="zh-CN"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="张鑫旭的个人博客_web前端技术文章_CSS3动画那么强，requestAnimationFrame还有毛线用？">
+<meta name="keywords" content="web前端,HTML5,CSS3,jQuery,SVG,canvas">
+<meta name="author" content="张鑫旭,zhangxinxu">
+<title>CSS3动画那么强，requestAnimationFrame还有毛线用？ «  张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="./requestAnimationFrame_files/style.css">
+<link rel="pingback" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » Feed" href="http://www.zhangxinxu.com/wordpress/feed/">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » 评论Feed" href="http://www.zhangxinxu.com/wordpress/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » CSS3动画那么强，requestAnimationFrame还有毛线用？评论Feed" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/feed/">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./requestAnimationFrame_files/pagenavi-css.css" type="text/css" media="all">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.zhangxinxu.com/wordpress/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="一些SVG向下兼容优雅降级技术" href="http://www.zhangxinxu.com/wordpress/2013/09/svg-fallbacks/">
+<link rel="next" title="理解DOMString、Document、FormData、Blob、File、ArrayBuffer数据类型" href="http://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/">
+<meta name="generator" content="WordPress 4.1.21">
+<link rel="canonical" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/">
+<link rel="shortlink" href="http://www.zhangxinxu.com/wordpress/?p=3695">
+<link href="./requestAnimationFrame_files/bdsstyle.css" rel="stylesheet" type="text/css"></head>
+<body class="single single-post postid-3695 single-format-standard"><iframe frameborder="0" style="display: none;" src="./requestAnimationFrame_files/saved_resource.html"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0" src="./requestAnimationFrame_files/saved_resource(1).html"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_renren rrw">人人网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_douban db">豆瓣网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_thx thx">和讯微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="bds_more">更多...</a></li></ul><p><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" class="goWebsite">百度分享</a></p></div></div></div>
+<div id="page">
+<div id="header" role="banner">
+	<div id="headerimg">
+		<a href="http://www.zhangxinxu.com/" class="page_logo">张鑫旭-鑫空间-鑫生活</a>
+        <a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#searchform" id="iconSearch" class="icon-search"></a>
+		<div class="description">it's my whole life!</div>
+	</div>
+    <div id="menubar">
+<ul class="menu_tab">
+<li class="">
+<a href="http://www.zhangxinxu.com/" class="boss">网站首页</a>
+<a href="http://www.zhangxinxu.com/php/microCode.php">我的微码</a>
+<a href="http://www.zhangxinxu.com/php/advise.php">建议反馈</a>
+</li>
+<li class="on">
+<a class="boss" href="http://www.zhangxinxu.com/wordpress/">前端技术</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=3">css</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=5">js/jQuery</a>
+<a href="http://www.zhangxinxu.com/wordpress/category/html/">HTML</a>
+</li>
+<li class="">
+<a class="boss" href="http://www.zhangxinxu.com/life/">生活与创作</a>
+<a href="http://www.zhangxinxu.com/life/?cat=3">生活</a>
+<a href="http://www.zhangxinxu.com/life/?cat=5">散文</a>
+<a href="http://www.zhangxinxu.com/life/?cat=4">小说</a>
+</li>
+<li class="">
+<span class="boss">前端在线资源</span>
+<a href="http://www.zhangxinxu.com/css3/">CSS3参考</a>
+<a href="http://www.zhangxinxu.com/jq/api14/">jQuery1.4参考</a>
+</li>
+</ul><form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="" value="" name="s" id="s"><input type="submit" id="searchsubmit" data-value="Search" value="搜索">
+</div>
+</form>
+    </div>
+</div>
+<script type="text/javascript" async="" src="./requestAnimationFrame_files/ga.js.下载"></script><script>
+var isSlideHide = false;
+if (window.localStorage) {
+	var slideHideTime = +localStorage.slideHideTime;
+	var slideNowTime = +new Date();
+	if (screen.width < 1600 && slideNowTime - slideHideTime < 1000*60*30) {
+		// 不足半小时
+		isSlideHide = true;
+		document.getElementById("page").className = "slide_hide";
+	} else if (slideHideTime > slideNowTime) {
+		localStorage.removeItem('slideHideTime');
+	}
+}
+</script>
+<div class="the_main">
+	<div id="content" class="widecolumn" role="main">
+    <div class="shink_rel"><a href="javascript:" id="shinkSlide" class="shink_a" title="收起右边栏">►</a></div>
+<script>if (window.localStorage && window.isSlideHide) {
+	(function() {
+		var eleShink = document.getElementById("shinkSlide");	
+		eleShink.title = "展开右边栏";
+		// 左箭头
+		eleShink.innerHTML = "&#x25c4;";
+	})();
+}</script>
+	
+		<div class="navigation">
+			<div class="alignleft">« <a href="http://www.zhangxinxu.com/wordpress/2013/09/svg-fallbacks/" rel="prev">一些SVG向下兼容优雅降级技术</a></div>
+			<div class="alignright"><a href="http://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/" rel="next">理解DOMString、Document、FormData、Blob、File、ArrayBuffer数据类型</a> »</div>
+		</div>
+
+		<div class="post-3695 post type-post status-publish format-standard hentry category-web tag-animate tag-requestanimationframe tag-204 tag-121 tag-868 tag-322 tag-129" id="post-3695">
+			<h2>CSS3动画那么强，requestAnimationFrame还有毛线用？<span id="qrCode" class="qr_code"><img src="./requestAnimationFrame_files/api.php"></span></h2>
+			<div class="entry">
+            	<div class="postmetadata alt">
+					<small>
+												这篇文章发布于 2013年09月30日，星期一，19:12，归类于 <a href="http://www.zhangxinxu.com/wordpress/category/web/" rel="category tag">web综合</a>。                        阅读 189291 次, 今日 26 次					</small>
+				</div>
+				<p class="link">by <a href="http://www.zhangxinxu.com/">zhangxinxu</a> from <a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a><br>
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=3695">http://www.zhangxinxu.com/wordpress/?p=3695</a></p>
+<h3>一、哟，requestAnimationFrame, 新同学，先自我介绍下</h3>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e93ouawd4vj204503r747.jpg" width="149" height="135" alt="大家好" class="alignnone"><br>
+Hello, 大家好，我就是风姿卓越，万种迷人的<code>requestAnimationFrame</code>，呵呵呵呵。很高兴和大家见面，请多指教！</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94al1jwmsj204603e0sn.jpg" width="150" height="122" alt="平静的众人" class="alignnone"><br>
+。。。。</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94b4k48m6j2046046wee.jpg" width="150" height="150" alt="小丸子无奈" class="alignnone"><br>
+咳咳，大家不要一副不屑的样子嘛。跟你讲，我可是很有用的。所谓人如其名，看我名字这么长，表意为“请求动画帧”，明摆着一副很屌的样子！</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94al1jwmsj204603e0sn.jpg" width="150" height="122" alt="平静的众人" class="alignnone"><br>
+。。。。按照这种说法，“樱桃小丸子”就是樱桃做的丸子咯，恩，看脑袋确实蛮像的~</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94bhy9wk3j203k03kjr9.jpg" width="150" height="150" alt="樱桃小丸子汗" class="alignnone"><br>
+。。。。</p>
+<p>想到明天就是国庆大假，今天我就小人不记大人过。给你们来副震精的图：</p>
+<p><img src="./requestAnimationFrame_files/frame-lost.png" width="408" height="129" alt="帧丢失示意" class="alignnone"></p>
+<p>相当一部分的浏览器的显示频率是<code>16.7ms</code>, 就是上图第一行的节奏，表现就是“我和你一步两步三步四步往前走……”。如果我们火力搞猛一点，例如搞个<code>10ms</code> <code>setTimeout</code>，就会是下面一行的模样——每第三个图形都无法绘制（红色箭头指示），表现就是“我和你一步两步 坑 四步往前走……”。</p>
+<p>囊爹(なんでよ)？</p>
+<p>国庆北京高速，最多每<code>16.7s</code>通过一辆车，结果，突然插入一批<code>setTimeout</code>的军车，强行要<code>10s</code>通过。显然，这是超负荷的，要想顺利进行，只能让第三辆车直接消失（正如显示绘制第三帧的丢失）。然，这是不现实的，于是就有了会堵车！</p>
+<p>同样的，显示器<code>16.7ms</code><strong>刷新间隔之前发生了其他绘制请求</strong>(<code>setTimeout</code>)，导致所有第三帧丢失，继而导致动画断续显示（堵车的感觉），这就是过度绘制带来的问题。不仅如此，这种计时器频率的降低也会对电池使用寿命造成负面影响，并会降低其他应用的性能。</p>
+<p>这也是为何<code>setTimeout</code>的定时器值推荐最小使用<code>16.7ms</code>的原因（16.7 = 1000 / 60, 即每秒60帧）。</p>
+<p>而我<code>requestAnimationFrame</code>就是为了这个而出现的。我所做的事情很简单，跟着浏览器的绘制走，如果浏览设备绘制间隔是<code>16.7ms</code>，那我就这个间隔绘制；如果浏览设备绘制间隔是<code>10ms</code>, 我就<code>10ms</code>绘制。这样就不会存在过度绘制的问题，动画不会掉帧，自然流畅的说~~ </p>
+<p>内部是这么运作的：<br>
+浏览器（如页面）每次要洗澡（重绘），就会通知我(<code>requestAnimationFrame</code>)：小丸子，我要洗澡了，你可以跟我一起洗哦！</p>
+<p>这是资源非常高效的一种利用方式。怎么讲呢？</p>
+<ol>
+<li>就算很多个小丸子要一起洗澡，浏览器只要通知一次就可以了。而<code>setTimeout</code>貌似是多个独立绘制。</li>
+<li>页面最小化了，或者被Tab切换关灯了。页面是不会洗澡的，自然，小丸子也不会洗澡的（没通知啊）。页面绘制全部停止，资源高效利用。</li>
+</ol>
+<p>肿么样？<code>requestAnimationFrame</code>桑麻我果然是万千迷人的吧！！</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94d3ohwnmj204603ga9y.jpg" width="150" height="124" alt="不错哦，四基佬表情" class="alignnone"><br>
+耶！果然有料，不是看上去的平板电脑。</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94dzrv106j202s02s744.jpg" width="150" height="150" alt="花痴 小丸子" class="alignnone"><br>
+唷~夸得人家都不好意思了！</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94al1jwmsj204603e0sn.jpg" width="150" height="122" alt="平静的众人" class="alignnone"><br>
+。。。。那你的<strong>兼容性如何</strong>？</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94e2lzuahj202r02qt8k.jpg" width="150" height="150" alt="我啊 小丸子" class="alignnone"><br>
+我的兼容性啊~~ 孬，见下面~</p>
+<p><img src="./requestAnimationFrame_files/2013-09-30_120300.png" width="580" height="293" alt="requestAnimationFrame的兼容性表 张鑫旭-鑫空间-鑫生活" class="alignnone"></p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94al1jwmsj204603e0sn.jpg" width="150" height="122" alt="平静的众人" class="alignnone"><br>
+Android设备压根就不支持嘛！其他设备基本上跟CSS3动画的支持一模一样嘛。</p>
+<p>我说小美女，据我所知，CSS3 <code>transition</code>或<code>animation</code>动画也是走的跟你一样的绘制原理（<strong>补充于2013-10-09</strong>：根据自己后来的测试，发现，CSS3动画在Tab切换回来的时候，动画表现并不暂停；通过Chrome frames工具测试发现，Tab切换之后，计算渲染绘制都停止，Tab切换回来时似乎通过内置JS计算了动画位置实现重绘，造成动画不暂停的感觉）。但是人家的实现轻松很多啊，而且相当强大，那你还有个毛线用！你该想想你一直鲜有人问津的原因了！</p>
+<h3>二、反击吧，requestAnimationFrame同学</h3>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94i9sr8x4j202s02sa9w.jpg" width="150" height="150" alt="反击" class="alignnone"><br>
+基佬们，你们的眼界太狭隘了，观点太肤浅的。首先从哲学宏观讲，事物存在必有其道理。因此，本大人肯定是有价值的。</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94al1jwmsj204603e0sn.jpg" width="150" height="122" alt="平静的众人" class="alignnone"><br>
+那你到说说你有纳尼价值~~~</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94i9sr8x4j202s02sa9w.jpg" width="150" height="150" alt="反击" class="alignnone"><br>
+准备好了木有，待会儿说出来吓死你们。听好了，足足有3大点：<br>
+<strong>1. 统一的向下兼容策略</strong><br>
+虽说CSS3实现动画即高效又方便，但是对于PC浏览器，IE8, IE9之流，你想兼容实现某些动画效果，比方说淡入淡出，敢问，你怎么实现？</p>
+<p>看你们那副呆若木鸡的表情就知道了，IE10+ CSS3实现，IE9-之流JS <code>setTimeout</code>实现，我说累不累啊，两套完全不同的style. 你改下动画时间是不是要改两处？但是我<code>requestAnimationFrame</code>跟<code>setTimeout</code>非常类似，都是单回调，用法也类似。</p>
+<div class="zxx_code">
+<pre>var handle = setTimeout(renderLoop, PERIOD);</pre>
+</div>
+<div class="zxx_code">
+<pre>var handle = requestAnimationFrame(renderLoop);</pre>
+</div>
+<p>我<code>requestAnimationFrame</code>调用一次只会重绘一次动画，因此，如果想要实现联系动画，就使用<code>renderLoop</code>反复蹂躏我吧~</p>
+<p><img src="./requestAnimationFrame_files/2013-09-30_145801.png" width="240" height="262" alt="受虐" class="alignnone"></p>
+<p>So，如果想要简单的兼容，可以这样子：</p>
+<div class="zxx_code">
+<pre>window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+</pre>
+</div>
+<p>但是呢，并不是所有设备的绘制时间间隔是<code>1000/60 ms</code>, 以及上面并木有cancel相关方法，所以，就有下面这份更全面的兼容方法：</p>
+<div class="zxx_code">
+<pre>(function() {
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for(var x = 0; x &lt; vendors.length &amp;&amp; !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||    <span style="color:green;">// Webkit中此取消方法的名字变了</span>
+                                      window[vendors[x] + 'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+            var id = window.setTimeout(function() {
+                callback(currTime + timeToCall);
+            }, timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+    }
+    if (!window.cancelAnimationFrame) {
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+    }
+}());</pre>
+</div>
+<p>上JS可<a href="./requestAnimationFrame_files/requestAnimationFrame.js.下载" target="_blank" class="a_link">点击这里</a>下载。</p>
+<p>然后，我们就可以以使用<code>setTimeout</code>的调调使用<code>requestAnimationFrame</code>方法啦，IE6也能支持哦！</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94d3ohwnmj204603ga9y.jpg" width="150" height="124" alt="不错哦，四基佬表情" class="alignnone"><br>
+耶耶耶！……</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94jtxpvjij202r02r745.jpg" width="150" height="150" alt="承蒙赏识 小丸子" class="alignnone"><br>
+多谢捧场！(*^__^*) 嘻嘻……</p>
+<p><strong>2. CSS3动画不能应用所有属性</strong><br>
+使用CSS3动画可以改变高宽，方位，角度，透明度等等。但是，就像六道带土也有弱点一样，CSS3动画也有属性鞭长莫及。比方说<code>scrollTop</code>值。如果我们希望返回顶部是个平滑滚动效果，就目前而言，CSS3似乎是无能为力的。此时，还是要JS出马，势必，我<code>requestAnimationFrame</code>大人就可以大放异彩，万众瞩目啦，哈哈哈哈哈哈哈~~</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e8d0cwhjtpg206n045tm6.gif" width="239" height="149" alt="哈哈哈哈~~" class="alignnone"></p>
+<p>比方说点下面这个按钮，滚上去再滚下来，哈哈~<br>
+<input type="button" id="scrollButton" value="点击我，看见我没有……………………………………"><br>
+<script src="./requestAnimationFrame_files/requestAnimationFrame.js.下载"></script><br>
+<script>document.getElementById("scrollButton").onclick = function() {var nowScroll = document.body.scrollTop, flag = "up";var funScroll = function() {var top = document.body.scrollTop;if (flag == "up") {top -= 20;if (top <=0) {top = 0; flag = "down";}} else if (flag == "down") {top += 20;if(top >= nowScroll) {top = nowScroll;  flag = "stop";}} else {return; }document.body.scrollTop = top;requestAnimationFrame(funScroll);};if (nowScroll) {funScroll()};	};</script></p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94d3ohwnmj204603ga9y.jpg" width="150" height="124" alt="不错哦，四基佬表情" class="alignnone"><br>
+哟哟哟，不错不错，刮目相看啊，丸子~~</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94jtxpvjij202r02r745.jpg" width="150" height="150" alt="承蒙赏识 小丸子" class="alignnone"><br>
+人家不禁夸的啦~~</p>
+<p><strong>3. CSS3支持的动画效果有限</strong><br>
+由于CSS3动画的贝塞尔曲线是一个标准3次方曲线（详见：<a href="http://www.zhangxinxu.com/wordpress/?p=3626" target="_blank">贝塞尔曲线与CSS3动画、SVG和canvas的基情</a>），因此，只能是：<code>Linear</code>, <code>Sine</code>, <code>Quad</code>, <code>Cubic</code>, <code>Expo</code>等，但对于<code>Back</code>, <code>Bounce</code>等缓动则只可观望而不可亵玩焉。 </p>
+<p>下面这张图瞅瞅，那些波澜壮阔的曲线都是CSS3木有的~~</p>
+<p><img data-src="http://image.zhangxinxu.com/image/blog/201309/2013-09-30_170002.png" width="580" height="398" alt="动画曲线大全 张鑫旭-鑫空间-鑫生活" class="alignnone"></p>
+<p>咋办，咋办？只能是JS实现啦，于是，本大人我<code>requestAnimationFrame</code>可以再一次大放异彩啦，啊哈哈哈！</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94al1jwmsj204603e0sn.jpg" width="150" height="122" alt="平静的众人" class="alignnone"><br>
+得意的太早了吧，这些动画曲线看上去很复杂，偶们显然驾驭不了了。</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94mzky6z8j202s02sq2s.jpg" width="150" height="150" alt="了不起 丸子" class="alignnone"><br>
+就知道你们这些基佬中看不中用。先给大家普及下缓动(Tween)知识吧：</p>
+<ul>
+<li>Linear：无缓动效果</li>
+<li>Quadratic：二次方的缓动（t^2）</li>
+<li>Cubic：三次方的缓动（t^3）</li>
+<li>Quartic：四次方的缓动（t^4）</li>
+<li>Quintic：五次方的缓动（t^5）</li>
+<li>Sinusoidal：正弦曲线的缓动（sin(t)）</li>
+<li>Exponential：指数曲线的缓动（2^t）</li>
+<li>Circular：圆形曲线的缓动（sqrt(1-t^2)）</li>
+<li>Elastic：指数衰减的正弦曲线缓动</li>
+<li>超过范围的三次方缓动（(s+1)*t^3 – s*t^2）</li>
+<li>指数衰减的反弹缓动</li>
+</ul>
+<p>每个效果都分三个缓动方式，分别是（可采用后面的邪恶记忆法帮助记忆）：</p>
+<ul>
+<li>easeIn：从0开始加速的缓动，想象OOXX进去，探路要花时间，因此肯定是先慢后快的；</li>
+<li>easeOut：减速到0的缓动，想象OOXX出来，肯定定先快后慢的，以防掉出来；</li>
+<li>easeInOut：前半段从0开始加速，后半段减速到0的缓动，想象OOXX进进出出，先慢后快然后再慢。</li>
+</ul>
+<p>每周动画效果都有其自身的算法。我们都知道jQuery UI中就有缓动，As脚本也内置了缓动，其中的运动算法都是一致的。我特意弄了一份，哦呵呵呵~~（因为较高，滚动显示），或<a href="https://github.com/zhangxinxu/Tween/blob/master/tween.js" target="_blank">GitHub访问</a>：</p>
+<div class="zxx_code" style="overflow:auto; height:400px; resize:vertical;">
+<pre><span style="color:green;">/*
+ * Tween.js
+ * t: current time（当前时间）
+ * b: beginning value（初始值）
+ * c: change in value（变化量）
+ * d: duration（持续时间）
+*/</span>
+var Tween = {
+    Linear: function(t, b, c, d) { return c*t/d + b; },
+    Quad: {
+        easeIn: function(t, b, c, d) {
+            return c * (t /= d) * t + b;
+        },
+        easeOut: function(t, b, c, d) {
+            return -c *(t /= d)*(t-2) + b;
+        },
+        easeInOut: function(t, b, c, d) {
+            if ((t /= d / 2) &lt; 1) return c / 2 * t * t + b;
+            return -c / 2 * ((--t) * (t-2) - 1) + b;
+        }
+    },
+    Cubic: {
+        easeIn: function(t, b, c, d) {
+            return c * (t /= d) * t * t + b;
+        },
+        easeOut: function(t, b, c, d) {
+            return c * ((t = t/d - 1) * t * t + 1) + b;
+        },
+        easeInOut: function(t, b, c, d) {
+            if ((t /= d / 2) &lt; 1) return c / 2 * t * t*t + b;
+            return c / 2*((t -= 2) * t * t + 2) + b;
+        }
+    },
+    Quart: {
+        easeIn: function(t, b, c, d) {
+            return c * (t /= d) * t * t*t + b;
+        },
+        easeOut: function(t, b, c, d) {
+            return -c * ((t = t/d - 1) * t * t*t - 1) + b;
+        },
+        easeInOut: function(t, b, c, d) {
+            if ((t /= d / 2) &lt; 1) return c / 2 * t * t * t * t + b;
+            return -c / 2 * ((t -= 2) * t * t*t - 2) + b;
+        }
+    },
+    Quint: {
+        easeIn: function(t, b, c, d) {
+            return c * (t /= d) * t * t * t * t + b;
+        },
+        easeOut: function(t, b, c, d) {
+            return c * ((t = t/d - 1) * t * t * t * t + 1) + b;
+        },
+        easeInOut: function(t, b, c, d) {
+            if ((t /= d / 2) &lt; 1) return c / 2 * t * t * t * t * t + b;
+            return c / 2*((t -= 2) * t * t * t * t + 2) + b;
+        }
+    },
+    Sine: {
+        easeIn: function(t, b, c, d) {
+            return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+        },
+        easeOut: function(t, b, c, d) {
+            return c * Math.sin(t/d * (Math.PI/2)) + b;
+        },
+        easeInOut: function(t, b, c, d) {
+            return -c / 2 * (Math.cos(Math.PI * t/d) - 1) + b;
+        }
+    },
+    Expo: {
+        easeIn: function(t, b, c, d) {
+            return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+        },
+        easeOut: function(t, b, c, d) {
+            return (t==d) ? b + c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+        },
+        easeInOut: function(t, b, c, d) {
+            if (t==0) return b;
+            if (t==d) return b+c;
+            if ((t /= d / 2) &lt; 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+            return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+        }
+    },
+    Circ: {
+        easeIn: function(t, b, c, d) {
+            return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
+        },
+        easeOut: function(t, b, c, d) {
+            return c * Math.sqrt(1 - (t = t/d - 1) * t) + b;
+        },
+        easeInOut: function(t, b, c, d) {
+            if ((t /= d / 2) &lt; 1) return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
+            return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
+        }
+    },
+    Elastic: {
+        easeIn: function(t, b, c, d, a, p) {
+            var s;
+            if (t==0) return b;
+            if ((t /= d) == 1) return b + c;
+            if (typeof p == "undefined") p = d * .3;
+            if (!a || a &lt; Math.abs(c)) {
+                s = p / 4;
+                a = c;
+            } else {
+                s = p / (2 * Math.PI) * Math.asin(c / a);
+            }
+            return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+        },
+        easeOut: function(t, b, c, d, a, p) {
+            var s;
+            if (t==0) return b;
+            if ((t /= d) == 1) return b + c;
+            if (typeof p == "undefined") p = d * .3;
+            if (!a || a &lt; Math.abs(c)) {
+                a = c; 
+                s = p / 4;
+            } else {
+                s = p/(2*Math.PI) * Math.asin(c/a);
+            }
+            return (a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b);
+        },
+        easeInOut: function(t, b, c, d, a, p) {
+            var s;
+            if (t==0) return b;
+            if ((t /= d / 2) == 2) return b+c;
+            if (typeof p == "undefined") p = d * (.3 * 1.5);
+            if (!a || a &lt; Math.abs(c)) {
+                a = c; 
+                s = p / 4;
+            } else {
+                s = p / (2  *Math.PI) * Math.asin(c / a);
+            }
+            if (t &lt; 1) return -.5 * (a * Math.pow(2, 10* (t -=1 )) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+            return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p ) * .5 + c + b;
+        }
+    },
+    Back: {
+        easeIn: function(t, b, c, d, s) {
+            if (typeof s == "undefined") s = 1.70158;
+            return c * (t /= d) * t * ((s + 1) * t - s) + b;
+        },
+        easeOut: function(t, b, c, d, s) {
+            if (typeof s == "undefined") s = 1.70158;
+            return c * ((t = t/d - 1) * t * ((s + 1) * t + s) + 1) + b;
+        },
+        easeInOut: function(t, b, c, d, s) {
+            if (typeof s == "undefined") s = 1.70158; 
+            if ((t /= d / 2) &lt; 1) return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
+            return c / 2*((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
+        }
+    },
+    Bounce: {
+        easeIn: function(t, b, c, d) {
+            return c - Tween.Bounce.easeOut(d-t, 0, c, d) + b;
+        },
+        easeOut: function(t, b, c, d) {
+            if ((t /= d) &lt; (1 / 2.75)) {
+                return c * (7.5625 * t * t) + b;
+            } else if (t &lt; (2 / 2.75)) {
+                return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+            } else if (t &lt; (2.5 / 2.75)) {
+                return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+            } else {
+                return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+            }
+        },
+        easeInOut: function(t, b, c, d) {
+            if (t &lt; d / 2) {
+                return Tween.Bounce.easeIn(t * 2, 0, c, d) * .5 + b;
+            } else {
+                return Tween.Bounce.easeOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+            }
+        }
+    }
+}
+Math.tween = Tween;</pre>
+</div>
+<p>于是，借助大人我<code>requestAnimationFrame</code>以及上面的动画算法，各种动画效果所向披靡了，哈哈哈哈！！</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94d3ohwnmj204603ga9y.jpg" width="150" height="124" alt="不错哦，四基佬表情" class="alignnone"><br>
+哇哦哇哦，大赞！可不可以给我们这些鼠辈开开眼界？</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94mzky6z8j202s02sq2s.jpg" width="150" height="150" alt="了不起 丸子" class="alignnone"><br>
+明天放假，老娘心情好，就给你们露一手，实现个铁球落下的效果。</p>
+<p>您可以狠狠地点击这里：<a class="a_link" target="_blank" href="http://www.zhangxinxu.com/study/201309/requestanimationframe-tween-easeoutbounce.html">requestAnimationFrame+Tween缓动小球落地效果</a></p>
+<p>截图如下：<br>
+<img data-src="http://image.zhangxinxu.com/image/blog/201309/2013-09-30_185243.png" width="478" height="270" alt="小球截图 张鑫旭-鑫空间-鑫生活" class="alignnone"></p>
+<p>相关源代码可以参见demo页面源代码——直接右键即可以。核心动画部分的脚本是：</p>
+<div class="zxx_code">
+<pre>funFall = function() {
+    var start = 0, during = 100;
+    var _run = function() {
+         start++;
+         var top = Tween.Bounce.easeOut(start, objBall.top, 500 - objBall.top, during);
+         ball.css("top", top);
+         shadowWithBall(top);    <span style="color:green;">// 投影跟随小球的动</span>
+         if (start &lt; during) requestAnimationFrame(_run);
+    };
+    _run();
+};</pre>
+</div>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94q3ljs7dj204603gjra.jpg" width="150" height="124" alt="太棒了 基佬们" class="alignnone"><br>
+我靠！太劲爆了！太带感了！丸子殿下，你太牛逼啦！！</p>
+<p><img src="./requestAnimationFrame_files/4b4d632fgw1e94q5eyd7lj202o02r3yd.jpg" width="150" height="150" alt="耶 小丸子" class="alignnone"><br>
+嘻嘻，小意思啦，诸位！最后，预祝大家节日快乐！！</p>
+<p><strong>补充于2014-02-08</strong><br>
+新年伊始，根据<a href="http://blog.segmentfault.com/humphry/1190000000386368" target="_blank">这篇翻译文章</a>一些测试说法，FireFox/Chrome浏览器对<code>setInterval</code>, <code>setTimeout</code>做了优化，页面处于闲置状态的时候，如果定时间隔小于<code>1</code>秒钟(<code>1000ms</code>)，则停止了定时器。与<code>requestAnimationFrame</code>有类似行为。但如果时间间隔大于或等于<code>1000ms</code>，定时器依然执行，即使页面最小化或非激活状态。</p>
+<p>参见下表：</p>
+<table class="params_table" cellpadding="0" cellspacing="1">
+<tbody>
+<tr>
+<th></th>
+<th>setInterval</th>
+<th>requestAnimationFrame</th>
+</tr>
+<tr>
+<td>IE</td>
+<td>无影响</td>
+<td>暂停</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>无影响</td>
+<td>暂停</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>&gt;=1s</td>
+<td>1s - 3s</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>&gt;=1s</td>
+<td>暂停</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>无影响</td>
+<td>暂停</td>
+</tr>
+</tbody>
+</table>
+<p><strong>相关链接</strong></p>
+<ul>
+<li>http://easings.net/zh-cn</li>
+<li>http://www.jiawin.com/requestanimationframe-animation-windmill/</li>
+<li>http://msdn.microsoft.com/zh-cn/library/ie/hh920765(v=vs.85).aspx</li>
+<li>http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/</li>
+<li>http://caniuse.com/#search=requestAnimationFrame</li>
+<li>https://github.com/zhangxinxu/Tween/blob/master/tween.js</li>
+<li>http://www.cnblogs.com/cloudgamer/archive/2009/01/06/tween.html</li>
+<li>http://blog.segmentfault.com/humphry/1190000000386368</li>
+</ul>
+<p>原创文章，转载请注明来自<a href="http://www.zhangxinxu.com/" target="_blank">张鑫旭-鑫空间-鑫生活</a>[<a href="http://www.zhangxinxu.com/" target="_blank">http://www.zhangxinxu.com</a>]<br>
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=3695" target="_blank">http://www.zhangxinxu.com/wordpress/?p=3695</a></p>
+<p>（本篇完）<span class="ins_txt">// 想要打赏？点击<a href="javascript:" id="alipayA" title="点击显示二维码">这里</a>。有话要说？点击<a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#comment" title="点击定位到评论">这里</a>。</span></p>
+<div id="daITxz" class="da_article da_bottom da_for_mobile">
+                <div class="da_fix_bar da_fix_bar_4">
+                    <span class="ad_fix_title">想要工资30K？</span>
+                    <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+                </div>
+                <a href="https://ke.qq.com/grandDetail.html?id=252463&amp;idType=0&amp;t=2" target="_blank" class="da_bottom_ht" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;ITxz&#39;, &#39;click&#39;, &#39;Not float&#39;]);"></a>
+            </div><div class="similarity"><div class="similar_title">相关文章</div><ul><li><a href="http://www.zhangxinxu.com/wordpress/2016/12/how-use-tween-js-animation-easing/">如何使用Tween.js各类原生动画运动缓动算法</a> (0.425)</li><li><a href="http://www.zhangxinxu.com/wordpress/2017/11/css3-radial-gradient-syntax-example/">CSS3 radial-gradient径向渐变语法及辅助理解案例10则</a> (0.287)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/09/as3%e5%86%99%e7%9a%84flash%e7%89%b9%e6%95%88%e8%8f%9c%e5%8d%95%ef%bc%88%e4%ba%8c%e5%8d%81%e5%85%ad%ef%bc%89/">as3写的flash特效菜单（二十六）</a> (0.192)</li><li><a href="http://www.zhangxinxu.com/wordpress/2017/03/canvas-2d-cool-affect-skills-technology/">canvas 2D炫酷动效的实现套路和需要的技术积累</a> (0.192)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/12/jquery-%e7%81%ab%e7%84%b0%e7%81%af%e6%95%88%e6%9e%9c%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95/">jQuery-火焰灯效果导航菜单</a> (0.138)</li><li><a href="http://www.zhangxinxu.com/wordpress/2017/01/share-a-animation-algorithm-js/">分享一个即插即用的私藏缓动动画JS小算法</a> (0.138)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/09/as3%e5%86%99%e7%9a%84flash%e7%89%b9%e6%95%88%e8%8f%9c%e5%8d%95%ef%bc%88%e4%b8%89%e5%8d%81%e4%b8%80%ef%bc%89/">as3写的flash特效菜单（三十一）</a> (0.115)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/12/jquery-slidetoggle%e4%bd%bf%e7%94%a8%e5%ae%9e%e4%be%8b%e4%b9%8b%e5%9e%82%e7%9b%b4%e4%b8%8b%e6%8b%89%e8%8f%9c%e5%8d%95/">jQuery之使用slideToggle实现垂直下拉菜单</a> (0.061)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/01/css3-animate%e5%ae%9e%e7%8e%b0%e5%9b%be%e7%89%87%e5%a2%993d%e7%bf%bb%e8%bd%ac%e6%95%88%e6%9e%9c/">CSS3 animate实现图片墙3D翻转效果</a> (0.061)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/01/%e5%9b%9e%e6%b5%81%e4%b8%8e%e9%87%8d%e7%bb%98%ef%bc%9acss%e6%80%a7%e8%83%bd%e8%ae%a9javascript%e5%8f%98%e6%85%a2%ef%bc%9f/">回流与重绘：CSS性能让JavaScript变慢？</a> (0.057)</li><li><a href="http://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/">超级强大的SVG SMIL animation动画详解</a> (RANDOM - 0.023)</li></ul></div><!-- Tag -->				<div class="wp_share_box">
+                	<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_tsina" title="分享到新浪微博" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#"></a>
+<a class="bds_qzone" title="分享到QQ空间" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#"></a>
+<a class="bds_tqq" title="分享到腾讯微博" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#"></a>
+<a class="bds_t163" title="分享到网易微博" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#"></a>
+<a class="bds_douban" title="分享到豆瓣网" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#"></a>
+<a class="bds_tsohu" title="分享到搜狐微博" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#"></a>
+<a class="shareCount" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" title="累计分享15次">15</a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1954626" src="./requestAnimationFrame_files/bds_s_v2.js.下载"></script>
+
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+                </div>
+								<p>标签： <a href="http://www.zhangxinxu.com/wordpress/tag/animate/" rel="tag">animate</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/requestanimationframe/" rel="tag">requestAnimationFrame</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%8a%a8%e7%94%bb/" rel="tag">动画</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%bc%b9%e6%80%a7%e7%bc%93%e5%8a%a8/" rel="tag">弹性缓动</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%be%84%e5%90%91%e6%b8%90%e5%8f%98/" rel="tag">径向渐变</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e6%80%a7%e8%83%bd/" rel="tag">性能</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e7%bc%93%e5%8a%a8/" rel="tag">缓动</a></p>			</div>
+		</div>
+
+        <h3 class="da_title">赞助商推荐<span class="sup_span">(<a href="http://www.zhangxinxu.com/sp/support.html" target="_blank">我也要赞助</a>)</span>：</h3>
+        <div class="da_col2" style="overflow: hidden;">
+        	<div class="da_for_mobile">
+                <!-- 妙味 -->
+                <div id="daMW" class="da_bottom">
+                    <div class="da_fix_bar da_ym">
+                        <span class="ad_fix_title">想学到点真东西？</span>
+                        <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+                    </div>
+                    <a href="http://www.miaov.com/index.php/example/exampleList?zxx" target="_blank" class="da_bottom_ht da_bottom_1" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;MWAD&#39;, &#39;click&#39;, &#39;Not float&#39;]);"></a>
+                </div><!-- 海棠 --><!--<div id="daHaiTang" class="da_col2_li da_bottom">
+                    <div class="da_fix_bar da_ht">
+                        <span class="ad_fix_title">从小小菜鸟到百度到底有多远？</span>
+                        <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+                    </div>
+                    <a href="http://apeclass.cn/lesson/index.html" target="_blank" class="da_bottom_y da_bottom_2" onClick="_gaq.push(['_trackEvent', 'HaiTang', 'click', 'Not float']);"></a>-->
+                    <!-- <a href="/sp/support.html" target="_blank" class="da_bottom_y"></a> -->
+                <!--</div>-->
+            </div>
+            <div id="daYideng" class="da_bottom da_for_mobile">
+                <div class="da_fix_bar da_yd">
+                    <span class="ad_fix_title">如果你有1~3年前端开发经验，不妨</span>
+                    <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+                </div>
+                <a href="https://ke.qq.com/course/222222#tuin=d45b558e" target="_blank" class="da_bottom_w" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;YIDENG&#39;, &#39;yideng&#39;, &#39;Not float&#39;]);"></a>
+            </div>
+            
+                                </div>
+
+	﻿
+<div id="respond">
+<h3 id="comments" class="respond_title">发表评论（目前86条评论）</h3>
+<div id="cancel-comment-reply"> 
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#respond" style="display:none;">点击这里取消回复。</a></small>
+</div> 
+
+
+<form action="http://www.zhangxinxu.com/wordpress/wp-comments-post.php" method="post" id="commentform" novalidate="">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required="true" required="">
+<label for="author"><small>名称 (必须)</small></label></p>
+
+<p><input type="email" name="email" id="email" value="" size="22" tabindex="2" aria-required="true" required="">
+<label for="email"><small>邮件地址(不会被公开) (必须)</small></label></p>
+
+<p><input type="url" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>网站</small></label></p>
+
+
+<!--<p><small><strong>XHTML：</strong>您可以使用这些标签：<code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="提交评论"><span id="commRem" class="ml20" style="color:#cd0000;"></span>
+<input type="hidden" name="comment_post_ID" value="3695" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+ 
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2f87921cb6"></p><p style="display: none;"></p>
+<input type="hidden" id="ak_js" name="ak_js" value="1512355784862"></form>
+
+</div>
+
+
+<!-- You can start editing here. -->
+
+	<div class="navigation">
+		<div class="alignleft"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-1/#comments">« 先前评论</a></div>
+		<div class="alignright"></div>
+	</div>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-378830">
+				<div id="div-comment-378830" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/8ef3e4eb326c5dd9c37c0abef5a19dbd" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.h5ds.com/" rel="external nofollow" class="url">馒头</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-378830">
+			2017年11月25日 17:52</a>		</div>
+
+		<p>我觉得setTimeout替代requestAnimationFrame的插件是不对的，因为如果页面有多个requestAnimationFrame时候，requestAnimationFrame里面的代码是统一执行的，不是单独执行的。而setTimeout是单独执行的，那这样就会有很大的性能问题，如果一个页面有100个动画，那兼容代码就得执行100次setTimeout，是不对的。为了保持性能一致，setTimeout的时候，触发自定义事件trigger(‘requestAnimationFrame’)，在各个动画里面绑定on.(‘requestAnimationFrame’) 事件，保持全局一个setTimeout 事件</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=378830#respond" onclick="return addComment.moveForm( &quot;div-comment-378830&quot;, &quot;378830&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给馒头">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-374323">
+				<div id="div-comment-374323" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/1b0d77f28aa0b55e71b5df9bf110cb9d" class="avatar avatar-32" height="32" width="32">			<cite class="fn">Cloud9</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-374323">
+			2017年10月19日 15:57</a>		</div>
+
+		<p>Nice</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=374323#respond" onclick="return addComment.moveForm( &quot;div-comment-374323&quot;, &quot;374323&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给Cloud9">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-368437">
+				<div id="div-comment-368437" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/6eb1f40558129727285885b6dc7288e2" class="avatar avatar-32" height="32" width="32">			<cite class="fn">旺季革</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-368437">
+			2017年08月26日 10:11</a>		</div>
+
+		<p>新人 久闻张鑫旭<br>
+故留言到此一游</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=368437#respond" onclick="return addComment.moveForm( &quot;div-comment-368437&quot;, &quot;368437&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给旺季革">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-363850">
+				<div id="div-comment-363850" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/5434c3b86734e8139ca5db88c720830e" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://0.0.1.87/" rel="external nofollow" class="url">44444444</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-363850">
+			2017年07月26日 20:20</a>		</div>
+
+		<p>最好看过浏览器c++的代码再来装逼</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=363850#respond" onclick="return addComment.moveForm( &quot;div-comment-363850&quot;, &quot;363850&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给44444444">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-2" id="comment-373340">
+				<div id="div-comment-373340" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/565eafca1546251e8df5102a1b085710" class="avatar avatar-32" height="32" width="32">			<cite class="fn">stanJ</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-373340">
+			2017年10月11日 17:18</a>		</div>
+
+		<p>说的是你自己吗</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=373340#respond" onclick="return addComment.moveForm( &quot;div-comment-373340&quot;, &quot;373340&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给stanJ">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-359781">
+				<div id="div-comment-359781" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/f0b2011cd9e99aba4a0ad1b290b7ea1c" class="avatar avatar-32" height="32" width="32">			<cite class="fn">ayaya</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-359781">
+			2017年06月14日 17:41</a>		</div>
+
+		<p>setTimeout为10ms，为什么我感觉应该丢失的是第二帧，第一帧10ms后进行绘制，此时浏览器刚开始进行渲染。然后过10ms，此时还没达到浏览器的显示频率是16.7ms，所以第二帧丢失，再过10ms，距离第一次绘制已经过去20ms了大于16.7ms，所以第三帧可以绘制，这样理解有问题吗</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=359781#respond" onclick="return addComment.moveForm( &quot;div-comment-359781&quot;, &quot;359781&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给ayaya">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-356173">
+				<div id="div-comment-356173" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/9820a5abbe99ac7d32a99d9ce8768277" class="avatar avatar-32" height="32" width="32">			<cite class="fn">徐</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-356173">
+			2017年05月9日 09:53</a>		</div>
+
+		<p>12</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=356173#respond" onclick="return addComment.moveForm( &quot;div-comment-356173&quot;, &quot;356173&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给徐">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-353226">
+				<div id="div-comment-353226" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/24b119e93af8f72a3933da72755b8c65" class="avatar avatar-32" height="32" width="32">			<cite class="fn">补充留言</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-353226">
+			2017年04月6日 15:43</a>		</div>
+
+		<p>
+	document.querySelector(‘button’).onclick = function(){ </p>
+<p>		var oT =  document.body.scrollTop,flag = ‘up';</p>
+<p>		var moveup = function(){</p>
+<p>		   var ot =  document.body.scrollTop;<br>
+		   if( flag == ‘up’ ){</p>
+<p>			    ot -= 20;<br>
+				if(ot = oT){<br>
+				    ot = oT;<br>
+				    flag = ‘stop';<br>
+				 }</p>
+<p>		   }<br>
+		   console.log(ot)<br>
+		   document.body.scrollTop = ot;<br>
+		   var x = requestAnimationFrame(moveup);<br>
+		   if(flag == ‘stop’){<br>
+			 cancelAnimationFrame(x);<br>
+		   }<br>
+		}</p>
+<p>		if(oT){<br>
+		   moveup();<br>
+		}</p>
+<p>	}<br>
+大神页面中那个向上的按钮对应的js缺少一个取消的效果以及scrollTop的兼容最好，见笑了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=353226#respond" onclick="return addComment.moveForm( &quot;div-comment-353226&quot;, &quot;353226&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给补充留言">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-350823">
+				<div id="div-comment-350823" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/492b541c0949205ebab1ca165254cd8c" class="avatar avatar-32" height="32" width="32">			<cite class="fn">zhu</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-350823">
+			2017年03月16日 15:22</a>		</div>
+
+		<p>关于easeIn，easeOut的解释。。。佩服佩服</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=350823#respond" onclick="return addComment.moveForm( &quot;div-comment-350823&quot;, &quot;350823&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给zhu">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-352655">
+				<div id="div-comment-352655" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/edc1ac530dd72632e189504c4b582baa" class="avatar avatar-32" height="32" width="32">			<cite class="fn">billzbc</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-352655">
+			2017年03月31日 14:07</a>		</div>
+
+		<p>色情男主播。。。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=352655#respond" onclick="return addComment.moveForm( &quot;div-comment-352655&quot;, &quot;352655&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给billzbc">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-350728">
+				<div id="div-comment-350728" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/bd9b30c15c1b951eddf9e5d93a8b0d25" class="avatar avatar-32" height="32" width="32">			<cite class="fn">mushroom</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-350728">
+			2017年03月15日 11:30</a>		</div>
+
+		<p>男神，接受我的膜拜~~~~</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=350728#respond" onclick="return addComment.moveForm( &quot;div-comment-350728&quot;, &quot;350728&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给mushroom">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-346425">
+				<div id="div-comment-346425" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./requestAnimationFrame_files/cd6dd81a7329a7c9d762e478179b5a4e" class="avatar avatar-32" height="32" width="32">			<cite class="fn">crixusshen</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-2/#comment-346425">
+			2017年01月30日 15:27</a>		</div>
+
+		<p>写得很棒，很喜欢你这种风格。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/?replytocom=346425#respond" onclick="return addComment.moveForm( &quot;div-comment-346425&quot;, &quot;346425&quot;, &quot;respond&quot;, &quot;3695&quot; )" aria-label="回复给crixusshen">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+	</ol>
+
+	<div class="navigation">
+		<div class="alignleft"><a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/comment-page-1/#comments">« 先前评论</a></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+
+	
+	</div>
+</div>
+	<div id="sidebar" role="complementary">
+        <div id="zxx_intro" class="sldebar_out">
+            <div class="silebar_inner" itemscope="" itemtype="http://data-vocabulary.org/Person">
+                <img src="./requestAnimationFrame_files/zxx_90_0824.jpg" itemprop="photo" class="zxx_head_image">
+                <div class="zxx_some_info">
+                    <p class="mb5"><span itemprop="name" class="fn">张鑫旭</span><sup><a itemprop="url" href="http://www.zhangxinxu.com/life/about/">more</a></sup>，09年<a href="http://www.hust.edu.cn/" target="_blank">华中科技大学</a>毕业，现<span itemprop="location">上海</span>，就职于<a href="http://www.yuewen.com/" itemprop="organization" target="_blank">阅文集团</a>，专注<span itemprop="role">web前端</span>偏前领域，钓鱼爱好者。</p>
+                    <p>邮箱：<span style="font-family:arial;">zhangxinxu@zhangxinxu.com</span></p>
+                    <p>关注我：<a href="http://weibo.com/zhangxinxu" target="_blank" rel="nofollow">新浪微博</a> <a href="https://www.zhihu.com/people/iamzhangxinxu/activities" target="_blank" rel="nofollow">知乎</a></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="topAdOut" class="sldebar_out top_da_out" style="display: block !important; position: fixed; top: 10px; left: auto; right: 10px;">
+        	<a href="javascript:" id="slideA" class="slide_a">展开</a>
+            <div class="top_da" style="display:block!important;">
+            	<div id="adSlideX" class="da_slide_x" style="display: block !important; left: 0px;">
+                    <div class="da_inner"><!--http://www.yidengxuetang.com/recruit/?hmsr=zxx_gaoduan_web_0204-->
+                        <a href="https://ke.qq.com/course/222222#tuin=d45b558e" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;YIDENG&#39;, &#39;click&#39;, &#39;Top Ad&#39;]);" style="height:300px;background-image:url(//wx2.sinaimg.cn/mw690/4b4d632fly1flizw0c2cfj209c08cdhi.jpg);"></a>
+                    </div><div class="da_inner">
+                       	<a href="http://www.iqianduan.cn/?zxx" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;IQianD&#39;, &#39;click&#39;, &#39;Top Ad&#39;]);" style="height:300px;background-image:url(//wx3.sinaimg.cn/mw690/4b4d632fgy1fl1spxex76j209c08cabu.jpg);"></a>
+                    </div><div class="da_inner">
+                        <a href="http://www.miaov.com/index.php/example/exampleList?zxx" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;MWAD&#39;, &#39;click&#39;, &#39;Top Ad&#39;]);" style="height:300px;background-image:url(//wx2.sinaimg.cn/mw690/4b4d632fgy1flovpw3lb2j20io0go0xg.jpg);"></a>
+                    </div>
+                </div>
+                <!-- 索引 -->
+                <div id="adIndexX" class="da_index_x">
+                	<a href="javascript:" class="da_index_a active">1</a>
+                    <a href="javascript:" class="da_index_a">2</a>
+                    <a href="javascript:" class="da_index_a">3</a>
+                </div>
+            </div>
+        </div><script>if (window.location != window.parent.location) { window.parent.location = window.location; }
+var eleNarrowCol = document.querySelector('.narrowcolumn');
+if (eleNarrowCol) {
+	document.getElementById('slideA').innerHTML = '收起';
+	document.getElementById('topAdOut').className += ' open';
+}
+        </script>    	<div class="sldebar_out">
+            <div class="silebar_inner slide_list">
+                <ul>
+                    <li id="search-3" class="widget widget_search"><form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="" value="" name="s" id="s"><input type="submit" id="searchsubmit" data-value="Search" value="搜索">
+</div>
+</form>
+</li><li id="categories-4" class="widget widget_categories"><h2 class="widgettitle">文章分类</h2>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.zhangxinxu.com/wordpress/category/css/">css相关</a> (246)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/">graphic相关</a> (74)
+<ul class="children">
+	<li class="cat-item cat-item-81"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/as3%e8%8f%9c%e5%8d%95/">as3菜单</a> (32)
+</li>
+	<li class="cat-item cat-item-896"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/canvas-graphic/">canvas相关</a> (15)
+</li>
+	<li class="cat-item cat-item-895"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/svg-graphic/">SVG相关</a> (26)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1097"><a href="http://www.zhangxinxu.com/wordpress/category/html/">HTML相关</a> (26)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.zhangxinxu.com/wordpress/category/js/">js相关</a> (136)
+<ul class="children">
+	<li class="cat-item cat-item-60"><a href="http://www.zhangxinxu.com/wordpress/category/js/jquery-about/">jquery相关</a> (44)
+</li>
+	<li class="cat-item cat-item-180"><a href="http://www.zhangxinxu.com/wordpress/category/js/js%e5%ae%9e%e4%be%8b/">js实例</a> (72)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-648"><a href="http://www.zhangxinxu.com/wordpress/category/mobile/">mobile相关</a> (12)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.zhangxinxu.com/wordpress/category/ps/">ps相关</a> (13)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.zhangxinxu.com/wordpress/category/web/">web综合</a> (43)
+</li>
+	<li class="cat-item cat-item-198"><a href="http://www.zhangxinxu.com/wordpress/category/%e5%a4%96%e6%96%87%e7%bf%bb%e8%af%91/">外文翻译</a> (37)
+</li>
+		</ul>
+</li><li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">文章存档</h2>		<ul>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/11/">2017年十一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/10/">2017年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/09/">2017年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/08/">2017年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/07/">2017年七月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/06/">2017年六月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/05/">2017年五月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/04/">2017年四月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/03/">2017年三月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/02/">2017年二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/01/">2017年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/12/">2016年十二月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/11/">2016年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/10/">2016年十月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/09/">2016年九月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/08/">2016年八月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/07/">2016年七月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/06/">2016年六月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/05/">2016年五月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/04/">2016年四月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/03/">2016年三月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/02/">2016年二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/01/">2016年一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/12/">2015年十二月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/11/">2015年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/10/">2015年十月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/08/">2015年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/07/">2015年七月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/06/">2015年六月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/05/">2015年五月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/04/">2015年四月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/03/">2015年三月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/02/">2015年二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/01/">2015年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/12/">2014年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/11/">2014年十一月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/10/">2014年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/09/">2014年九月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/08/">2014年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/07/">2014年七月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/06/">2014年六月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/05/">2014年五月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/04/">2014年四月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/03/">2014年三月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/02/">2014年二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/01/">2014年一月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/12/">2013年十二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/11/">2013年十一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/10/">2013年十月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/09/">2013年九月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/08/">2013年八月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/07/">2013年七月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/06/">2013年六月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/05/">2013年五月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/04/">2013年四月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/03/">2013年三月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/02/">2013年二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/01/">2013年一月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/12/">2012年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/11/">2012年十一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/10/">2012年十月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/">2012年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/08/">2012年八月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/07/">2012年七月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/">2012年六月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/05/">2012年五月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/04/">2012年四月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/03/">2012年三月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/02/">2012年二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/01/">2012年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/12/">2011年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/11/">2011年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/10/">2011年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/">2011年九月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/08/">2011年八月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/07/">2011年七月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/06/">2011年六月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/05/">2011年五月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/04/">2011年四月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/03/">2011年三月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/02/">2011年二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/01/">2011年一月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/">2010年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/">2010年十一月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/10/">2010年十月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/09/">2010年九月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/08/">2010年八月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/07/">2010年七月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/06/">2010年六月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/05/">2010年五月</a>&nbsp;(11)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/">2010年四月</a>&nbsp;(14)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/">2010年三月</a>&nbsp;(11)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/02/">2010年二月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/">2010年一月</a>&nbsp;(16)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/12/">2009年十二月</a>&nbsp;(14)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/11/">2009年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/10/">2009年十月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/09/">2009年九月</a>&nbsp;(36)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/08/">2009年八月</a>&nbsp;(12)</li>
+		</ul>
+</li>		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">最新文章</h2>		<ul>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/11/raster-image-vector-svg-canvas-primitive-js/">照片位图转SVG矢量图片JS工具primitive.js等简介</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/11/css3-radial-gradient-syntax-example/">CSS3 radial-gradient径向渐变语法及辅助理解案例10则</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/11/pure-css-colorful-circle/">3种纯CSS实现中间镂空的12色彩虹渐变圆环方法</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/11/css-css3-mask-masks/">客栈说书：CSS遮罩CSS3 mask/masks详细介绍</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/10/css3-linear-gradient-dashed-triangle-graph/">CSS3 linear-gradient线性渐变实现虚线等简单实用图形</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/10/chrome-opacity-border-radius-border-clip/">Chrome opacity非1时border-radius圆角边框剪裁问题</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/10/js-api-pointer-lock/">鼠标无限移动 JS API Pointer Lock简介</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/09/js-dom-before-after-replacewith-append-prepend/">before(),after(),prepend(),append()等新DOM方法简介</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/09/css-shapes-outside-iphone-x-head/">借助CSS Shapes实现元素滚动自动环绕iPhone X的刘海</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2017/09/web-page-comma-number/">请使用千位分隔符(逗号)表示web网页中的大数字</a>
+						</li>
+				</ul>
+		</li><li id="overall-top-10-posts" class="widget widget_dailytopten_overall"><h2 class="widgettitle">热门总排行</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (511523)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/%e5%9f%ba%e4%ba%8ehtml5%e7%9a%84%e5%8f%af%e9%a2%84%e8%a7%88%e5%a4%9a%e5%9b%be%e7%89%87ajax%e4%b8%8a%e4%bc%a0/">基于HTML5的可预览多图片Ajax上传</a> (441127)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (422759)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/jquery-powerfloat%e4%b8%87%e8%83%bd%e6%b5%ae%e5%8a%a8%e5%b1%82%e4%b8%8b%e6%8b%89%e5%b1%82%e6%8f%92%e4%bb%b6/">jQuery powerFloat万能浮动层下拉层插件</a> (383586)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/%e6%8b%9c%e6%8b%9c%e4%ba%86%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80-%e5%9f%ba%e4%ba%8edisplayinline-block%e7%9a%84%e5%88%97%e8%a1%a8%e5%b8%83%e5%b1%80/">拜拜了,浮动布局-基于display:inline-block的列表布局</a> (370192)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/css-box-flex%e5%b1%9e%e6%80%a7%ef%bc%8c%e7%84%b6%e5%90%8e%e5%bc%b9%e6%80%a7%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b%e7%ae%80%e4%bb%8b/">CSS box-flex属性，然后弹性盒子模型简介</a> (357105)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/jquery-pagination-ajax%e5%88%86%e9%a1%b5%e6%8f%92%e4%bb%b6%e4%b8%ad%e6%96%87%e8%af%a6%e8%a7%a3/">jQuery Pagination Ajax分页插件中文详解</a> (332086)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/%e8%ae%a9ie6ie7ie8%e6%b5%8f%e8%a7%88%e5%99%a8%e6%94%af%e6%8c%81css3%e5%b1%9e%e6%80%a7/">让IE6/IE7/IE8浏览器支持CSS3属性</a> (331593)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/">理解CSS3 transform中的Matrix(矩阵)</a> (309363)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (297599)</li>
+</ul>
+</li><li id="daily-top-10-posts" class="widget widget_dailytopten"><h2 class="widgettitle">今日热门</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/css%e5%ae%9e%e7%8e%b0%e5%85%bc%e5%ae%b9%e6%80%a7%e7%9a%84%e6%b8%90%e5%8f%98%e8%83%8c%e6%99%afgradient%e6%95%88%e6%9e%9c/">CSS实现兼容性的渐变背景(gradient)效果</a> (127)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (97)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (93)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/javascript%e5%ae%9e%e7%8e%b0%e6%9c%80%e7%ae%80%e5%8d%95%e7%9a%84%e6%8b%96%e6%8b%bd%e6%95%88%e6%9e%9c/">JavaScript实现最简单的拖拽效果</a> (65)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2017/11/raster-image-vector-svg-canvas-primitive-js/">照片位图转SVG矢量图片JS工具primitive.js等简介</a> (62)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2009/11/css%e8%a1%8c%e9%ab%98line-height%e7%9a%84%e4%b8%80%e4%ba%9b%e6%b7%b1%e5%85%a5%e7%90%86%e8%a7%a3%e5%8f%8a%e5%ba%94%e7%94%a8/">css行高line-height的一些深入理解及应用</a> (60)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/%e6%8b%9c%e6%8b%9c%e4%ba%86%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80-%e5%9f%ba%e4%ba%8edisplayinline-block%e7%9a%84%e5%88%97%e8%a1%a8%e5%b8%83%e5%b1%80/">拜拜了,浮动布局-基于display:inline-block的列表布局</a> (60)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2011/02/html5-drag-drop-%e6%8b%96%e6%8b%bd%e4%b8%8e%e6%8b%96%e6%94%be%e7%ae%80%e4%bb%8b/">HTML5 drag &amp; drop 拖拽与拖放简介</a> (59)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/">超级强大的SVG SMIL animation动画详解</a> (52)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/04/js-mousewheel-dommousescroll-event/">JS滚轮事件(mousewheel/DOMMouseScroll)了解</a> (51)</li>
+</ul>
+</li>                </ul>
+            </div>
+        </div>
+	</div>
+<div id="footer" role="contentinfo">
+<p>
+Powered by <a href="http://wordpress.org/">WordPress</a> | Designed by <a href="http://www.zhangxinxu.com/">zhangxinxu</a><br>
+Copyright© 2009-2017 张鑫旭-鑫空间-鑫生活<br>
+<a target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备09015569号</a>
+</p>
+</div>
+<script src="./requestAnimationFrame_files/logger.js.下载"></script></div>
+
+
+<script type="text/javascript" src="./requestAnimationFrame_files/form.js.下载"></script>
+<script type="text/javascript" src="./requestAnimationFrame_files/comment-reply.min.js.下载"></script>
+
+<div id="footbar" role="toolbar" class="slideout">
+	<div class="foot_yy_x hidden" id="footYyX">
+    	<div class="foot_yy_title">
+        	<span class="l">我的应用</span>
+            <a href="javascript:" class="r" id="footYYClose">-</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">工具与应用</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/base64.html">图片转base64(拖进来)</a>
+			<a class="foot_yy_a" href="http://browserhacks.com/">浏览器hack</a>
+            <a class="foot_yy_a" href="http://cubic-bezier.com/">CSS贝塞尔曲线可视化</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/css-compress-mini.html">CSS在线压缩工具</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/calculator.html">简易在线计算器</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">在线资源</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/api14/">jQuery 1.4 API中文版</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/GitHub/demo-Snap.svg/demo/basic/">Snap.svg中文文档</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/stylus/">stylus中文版参考文档</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/css3/">CSS3中文共享参考指南</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/character.html">非主流字符及字符图案</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/mt/">MooTools 1.2中文文档</a>
+        </div>
+        <div>&nbsp;</div>
+        <a href="javascript:" class="foot_yy foot_yy_on nowrap" id="footYYOff"><img src="./requestAnimationFrame_files/zxx_ico.png" class="vimg"> 我的应用</a>
+    </div>
+    <a href="javascript:" class="foot_yy nowrap" id="footYYShow"><img src="./requestAnimationFrame_files/zxx_ico.png" class="vimg"> 我的应用</a>
+    <span class="foot_rss l">
+    	<a class="foot_rss_a" href="http://www.zhangxinxu.com/wordpress/?feed=rss2">文章(RSS)</a>
+            </span>
+    <a href="http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/#" id="backToTop" class="foot_top">返回顶部↑</a>
+	<a href="http://www.zhangxinxu.com/wordpress/wp-login.php" class="foot_login"><i class="icon-male"></i>登录</a>
+</div>
+
+<script src="./requestAnimationFrame_files/script-min.js.下载"></script>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-11205167-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<div id="daYidengFloat" class="da_bottom da_for_mobile hidden" style="display: block;">
+                <div class="da_fix_bar da_yd">
+                    <span class="ad_fix_title">如果你有1~3年前端开发经验，不妨</span>
+                    <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+                </div>
+                <a href="https://ke.qq.com/course/222222#tuin=d45b558e" target="_blank" class="da_bottom_w" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;YIDENG&#39;, &#39;yideng&#39;, &#39;float&#39;]);"></a>
+            </div></body></html>

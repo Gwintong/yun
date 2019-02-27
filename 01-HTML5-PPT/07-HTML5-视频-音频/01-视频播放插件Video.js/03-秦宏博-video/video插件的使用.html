@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Video.js</title>
+	<!-- 引入video-js.min.css -->
+	<link href="css/video-js.min.css" rel="stylesheet">	
+	<style>
+		body{
+			background-color: #191919
+		}
+		.m{ 
+			width: 740px; height: 400px; 
+			margin-left: auto; 
+			margin-right: auto; 
+			margin-top: 100px; 
+		}
+		button{
+			margin-left: 10px;
+		}
+		.input1{
+			width: 20px;
+			height: 12px;
+		}
+		/*这里自定义播放窗口样式*/
+		.video-js{
+			margin: 0 auto;
+			width: 800px;
+			height: 400px;
+			border: 2px dashed #fff;
+		}
+		/*自定义按钮样式*/
+		.video-js .vjs-big-play-button{
+			width: 50px;
+			height: 50px;
+			border-radius:50%;
+			background-color: #fff;
+			opacity:.5;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="m">
+		<!-- 播放按钮默认在左上角，如果想让播放按钮居中，可在video 标签添加额外的vjs-big-play-centered样式 -->
+		<!-- 如果对播放按钮样式不满意可自定义.video-js .vjs-big-play-button{/*这里的样式重写*/}。 -->
+			<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="740" height="400" data-setup='{"techOrder": ["html5", "flash", "other supported tech"]}'>
+				<source src="http://jq22com.qiniudn.com/jq22-sp.mp4" type="video/mp4">
+				<p class="vjs-no-js">
+					不支持的提示信息
+					<a href="http://videojs.com/html5-video-support/" target="_blank">下载新版浏览器</a>
+				</p>
+			</video>
+
+			<button class="btn0">播放</button>
+			<button class="btn1">暂停</button>
+			<button class="btn2">获取播放进度</button>
+			<button class="btn3">跳转到<input class="input1" type="text">秒</button>
+			<button class="btn4"></button>
+			
+		  <!-- 引入video.js -->
+		  <script src="js/jquery.1.11.3.min.js"></script>
+		  <script src="js/videojs-ie8.min.js"></script>
+		  <script src="js/video.min.js"></script>
+		  <!-- <script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
+    	  <script src="http://vjs.zencdn.net/5.0.2/video.js"></script> -->
+		  <script type="text/javascript">
+
+		// =================格式=====================
+				var myPlayer = videojs('my-video');
+				videojs("my-video").ready(function(){
+					var myPlayer = this;
+					// videojs.options.flash.swf = "flash/iceage4.swf";
+
+					// 自动播放
+					// myPlayer.play();
+					
+					//播放
+					$(".btn0").click(function(){
+						myPlayer.play();
+					});
+
+					//暂停
+					$(".btn1").click(function(){
+						myPlayer.pause();
+					});
+
+					//获取播放进度(秒)
+					$(".btn2").click(function(){
+
+						var whereYouAt = myPlayer.currentTime();
+						console.log("播放进度:" + whereYouAt + "s");
+
+					});
+
+					// 设置播放进度（秒）
+					$(".btn3").click(function(){
+						var num = $(".input1").val();
+						myPlayer.currentTime(num);
+					});
+
+					//视频时长：加载完成视频才可以知道视频时长，且在flash情况下无效
+					setTimeout(function(){
+						var howLongIsThis = myPlayer.duration();
+						$(".btn4").html("视频时长：" + howLongIsThis + "s");
+					},200)
+
+					// 缓冲，就是返回下载了多少，这里视频在本地所以看不出来
+					var whatHasBeenBuffered = myPlayer.buffered();
+
+					// 声音大小（0-1之间）
+					var howLoudIsIt = myPlayer.volume();
+					// 设置声音大小
+					myPlayer.volume(0.5);
+
+					//事件绑定
+					// demo1：播放结束时触发事件
+					myPlayer.on("ended", function(){
+					    alert("播放结束");
+					});
+					//demo2:播放暂停时触发事件
+					myPlayer.on("pause", function(){
+					    alert("我是广告");
+					});
+
+					// 删除事件 
+					// myPlayer.removeEvent("eventName", myFunc);
+				});
+		</script>
+	</div>
+
+</body>
+</html>

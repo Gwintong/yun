@@ -1,0 +1,8 @@
+如何给SVG填充和描边应用线性渐变
+
+https://www.cnblogs.com/zhanggf/p/5911338.html
+
+
+如何制作SVG颜色渐变动画效果
+
+http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201504141680.html

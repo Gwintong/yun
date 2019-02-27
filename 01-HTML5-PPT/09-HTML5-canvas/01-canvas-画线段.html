@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script>
+    window.onload=function(){
+      var canvas = document.getElementById("canvas");
+      
+             if (canvas == null)
+                 return false;
+             var context = canvas.getContext("2d");
+
+            //context.beginPath();
+             context.strokeStyle = "rgb(250,0,0)";
+             context.fillStyle = "rgb(250,0,0)";
+             context.lineWidth = 10
+
+             //第一次lineTo的时候和moveTo功能一样
+             context.lineTo(100, 100);
+             //之后的lineTo会以上次lineTo的节点为开始
+             context.lineTo(200, 200);
+             context.lineTo(200, 100);
+             context.moveTo(200, 50);
+             context.lineTo(100,50);
+             context.lineTo(50,300);
+             context.stroke();
+    }
+</script>
+<style>
+    canvas { background:orange;}
+</style>
+</head>
+<body>
+    <canvas id="canvas" width="500px" height="300px"></canvas>
+</body>
+</html>

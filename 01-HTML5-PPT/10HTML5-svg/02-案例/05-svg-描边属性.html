@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0;}
+        svg { 
+            border: 1px solid red; 
+            width: 600px; 
+            height: 600px;
+            
+        }
+        svg line:nth-child(1) {
+            /*每两个数字： 第一个代表线长，第二个间隔*/
+            /*stroke-dasharray: 10,70,30,50; */
+            stroke-dasharray: 100,10,15,9; 
+            /* 线的偏移 */
+            stroke-dashoffset: 50;
+        }
+    </style>
+    
+</head>
+<body>
+    <svg>
+        <line x1="50" y1="50" x2="350" y2="50" stroke="#f00"></line>
+        <line x1="50" y1="150" x2="350" y2="150" stroke="#f00"></line>
+    </svg>
+
+</body>
+</html>

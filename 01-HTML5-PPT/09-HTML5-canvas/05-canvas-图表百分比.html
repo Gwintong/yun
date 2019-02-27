@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+	<style>
+	canvas {
+		background: #e2e2e2;
+	}
+	</style>
+</head>
+
+<body>
+	<canvas width="300" height="300" id="chart">
+	</canvas>
+	
+	<script>
+
+	// colors
+	// 圈圈的颜色，百分比颜色，中间空的白的颜色，中间文字的颜色
+	var colors = ['#F00','#900','#FFF','#909'];
+	
+	// per: 数字,必须, 0-100， 百分比
+	// colorIndex: 数字, 必须，数组colors的index值。
+	// w:数字,不是必须，默认150，大半径。
+	function draw(per,colorIndex,w){
+		var w = w || 150;
+		var paper = document.getElementById('chart'); //取得canvas绘图区域
+		var chart = paper.getContext('2d'); //2D绘图模式
+		var startPoint = Math.PI*1.75; // 百分比的开始点  Math.PI是一个半圆，Math.PI*2是一个圆
+		var endPoint = Math.PI*(2*(per/100)+1.75); // 百分比的结束点   （2+0.95）
+
+		chart.fillStyle = colors[colorIndex]; //设置填充的颜色
+		chart.beginPath(); //开始绘图
+		chart.moveTo(150,150); //绘图开始点
+		chart.arc(150,150,w,startPoint,endPoint,true); //绘制圆(弧), (150圆心X坐标,150圆心Y坐标,w圆的半径,startPoint开始点,endPoint结束点,true逆时针);
+		chart.fill();//填充绘制的圆
+	}
+
+	function chart(per){
+		draw(100,1); //画大圆
+		draw(per,0); //画百分比的圆
+		draw(100,2,100); //画中间的空白圆
+
+		var paper = document.getElementById('chart');
+		var chart = paper.getContext('2d');
+		chart.font ="4em Arial"; //字体属性
+		chart.fillStyle = colors[3] //字体的颜色
+		chart.fillText(per+'%', 90, 170); //绘制文字
+	}
+	chart(60); //执行
+	</script>
+</body>
+</html>

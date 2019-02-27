@@ -1,0 +1,37 @@
+<!Doctype html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>Canvas study</title>
+</head>
+<body>
+	<canvas id="canvas" style="display:block; border:1px solid #000; margin:50px auto;">
+		当前浏览器不支持Canvas，请您更换浏览器后再进行试验
+	</canvas>
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById('canvas');
+
+			canvas.width = 1024;
+			canvas.height = 768;
+
+			var context = canvas.getContext('2d');
+			//使用context进行绘制
+
+			context.moveTo(100,100)
+			context.lineTo(700,700) 
+			context.lineTo(100,700)
+			context.lineTo(100,100)
+
+			context.fillStyle = "rgb(2,100,30)"
+			context.fill()
+
+			context.lineWidth = 5
+			context.strokeStyle = '#005588'
+			//提供了绘制的状态
+
+			context.stroke();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0;}
+        svg { border: 1px solid red; width: 600px; height: 600px;}
+    </style>
+    
+</head>
+<body>
+    
+        <!-- demo1: 单一图形 -->
+            <!-- <svg>
+                <rect x="10" y="10" rx="5" ry="5" width="150" height="100" stroke="red" fill="blue"></rect>
+            </svg> -->
+        
+
+
+        <!-- demo2 -->
+            <!-- <svg>
+                <g id="shape">
+                    <rect x="10" y="10" rx="5" ry="5" width="150" height="100" stroke="red" fill="blue"></rect>
+                    <circle cx="100" cy="100" r="50" stroke="red" fill="yellow"></circle>
+                </g>
+                <use xlink:href="#shape" x="50" y="25" />
+                <use xlink:href="#shape" x="250" y="250" />
+                <use xlink:href="#shape" x="150" y="150" />
+            </svg> -->
+
+
+
+
+        <!-- demo3 -->
+                <svg>
+                    <!-- <defs>的内部（图形将不可见直到使用use来引用它）或外部。 -->
+                    <defs >
+                        <g id="shape">
+                            <rect x="10" y="10" rx="5" ry="5" width="150" height="100" stroke="red" fill="blue"></rect>
+                            <circle cx="100" cy="100" r="50" stroke="red" fill="yellow"></circle>
+                        </g>
+                    </defs>
+                        <use xlink:href="#shape" x="50" y="25" />
+                        <use xlink:href="#shape" x="250" y="250" />
+                    
+                </svg>
+        
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <a href="08-requestAnimationFrame的使用.html" target="_blank">进入下一个</a>
+    <script>
+        // var n = 1;
+        // setInterval(function(){
+        //     console.log(n);
+        //     n++;
+        // },1000);
+        
+        var n = 1;
+        function animate() {  
+            console.log(n);
+            n++;
+            timer = requestAnimationFrame(animate);  
+        }  
+        var timer = requestAnimationFrame(animate); 
+    </script>
+</body>
+</html>

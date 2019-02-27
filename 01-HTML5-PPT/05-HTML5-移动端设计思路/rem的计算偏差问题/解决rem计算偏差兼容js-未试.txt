@@ -1,0 +1,27 @@
+参考网址： https://www.jianshu.com/p/134196ca5298
+
+    // 适配js
+    (function () {
+        function get() {
+            var size = window.getComputedStyle(document.documentElement, null).getPropertyValue("font-size");
+            return parseFloat(size);
+        }
+        function set(size) {
+            document.documentElement.style.fontSize = size + "px";
+        }
+        // 720是设计稿尺寸，100为基数，例如：设计稿中某元素为100px，CSS中是1rem
+        var size = 100 * (window.innerWidth / 720);
+        set(size);
+        // 校正html字体大小
+        function fix() {
+            var target = 100 * (window.innerWidth / 720).toFixed(4);
+            var current = get().toFixed(4);
+            if (current != target) {
+                var size = target * (target / current);
+                set(size)
+            }
+        }
+        fix();
+    })();   
+
+
